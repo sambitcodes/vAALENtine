@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPhotoStack();
     initBackgroundMusic();
     initFloatingVibe();
+    createLightBulbs();
 
     // Animate elements
     setTimeout(() => {
@@ -153,3 +154,53 @@ function initFloatingVibe() {
     setInterval(createSymbol, 2000);
 }
 
+
+function createLightBulbs() {
+    const container = document.getElementById('bulb-container');
+    if (!container) return;
+
+    // Clear existing if any
+    container.innerHTML = '';
+
+    const bulbCount = 8; // Fewer but larger bulbs
+
+    for (let i = 0; i < bulbCount; i++) {
+        // Assembly Container
+        const assembly = document.createElement('div');
+        assembly.classList.add('hanging-assembly');
+
+        // Random Position (Left)
+        const left = Math.random() * 90 + 5; // 5% to 95%
+        assembly.style.left = `${left}%`;
+
+        // Random Size
+        const scale = 0.5 + Math.random() * 0.5; // 0.5 to 1.0 scale
+        assembly.style.transform = `scale(${scale})`;
+
+        // Random Swing Delay
+        assembly.style.animationDelay = `${Math.random() * 2}s`;
+        assembly.style.animationDuration = `${3 + Math.random() * 2}s`;
+
+        // Wire
+        const wire = document.createElement('div');
+        wire.classList.add('bulb-wire');
+        const wireLength = 30 + Math.random() * 100; // 30px to 130px hanging
+        wire.style.height = `${wireLength}px`;
+
+        // Socket
+        const socket = document.createElement('div');
+        socket.classList.add('bulb-socket');
+
+        // Glass (Bulb)
+        const glass = document.createElement('div');
+        glass.classList.add('bulb-glass');
+        // Random Flicker Delay
+        glass.style.animationDelay = `${Math.random() * 2}s`;
+
+        // Append
+        assembly.appendChild(wire);
+        assembly.appendChild(socket);
+        assembly.appendChild(glass);
+        container.appendChild(assembly);
+    }
+}

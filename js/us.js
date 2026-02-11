@@ -49,23 +49,132 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (matchBtn) {
         matchBtn.addEventListener('click', () => {
-            profilesWrapper.classList.add('hidden');
-            choiceContainer.classList.add('hidden');
-            mergedContainer.classList.remove('hidden');
-            mergedContainer.innerHTML = `
-                <div class="profile-card" style="width: 100%; max-width: 600px; margin: 50px auto; animation: fadeIn 1.5s forwards;">
-                    <h2 class="card-title">The Perfect Match</h2>
-                    <div class="card-alias">"Bound Together"</div>
-                    <p style="color: #eee; font-size: 1.2rem; margin: 30px 0; line-height: 1.6;">
-                        Wait for it... Something magical is coming. Our story is just beginning a new chapter.
-                    </p>
-                    <div class="card-footer">
-                        <button class="btn-choice match" onclick="location.reload()">Back to Realities</button>
-                    </div>
-                </div>
-            `;
-            if (typeof triggerConfetti === 'function') triggerConfetti(3000);
+            // 1. Audio: Fade Out Music
+            if (bgMusic) {
+                let vol = bgMusic.volume;
+                const fadeOut = setInterval(() => {
+                    if (vol > 0.05) {
+                        vol -= 0.05;
+                        bgMusic.volume = vol;
+                    } else {
+                        clearInterval(fadeOut);
+                        bgMusic.pause();
+                        bgMusic.currentTime = 0;
+                    }
+                }, 100);
+            }
+
+            // PHASE 1: PULSING (0s - 5s)
+            const cards = document.querySelectorAll('.profile-card');
+            cards.forEach(card => {
+                if (card.classList.contains('aalen')) card.classList.add('cosmic-glow', 'aalen');
+                if (card.classList.contains('sambit')) card.classList.add('cosmic-glow', 'sambit');
+            });
+
+            // Play Slow Heartbeat
+            const heartSlow = new Audio('https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3'); // Fallback or use specific URL if found
+            // Using a generic heartbeat placeholder from search results if possible, or a known one.
+            // Let's use a standard heartbeat sound.
+            const heartbeat = new Audio('https://assets.mixkit.co/active_storage/sfx/2069/2069-preview.mp3'); // Heartbeat slow
+            heartbeat.volume = 1.0;
+            heartbeat.loop = true;
+            heartbeat.play().catch(e => console.log("Heartbeat sound failed:", e));
+
+
+            // PHASE 2: RUSH (5s - 8s)
+            setTimeout(() => {
+                // Stop slow heartbeat
+                heartbeat.pause();
+
+                // Play Fast Heartbeat
+                const heartFast = new Audio('https://assets.mixkit.co/active_storage/sfx/2072/2072-preview.mp3'); // Fast heartbeat
+                heartFast.volume = 1.0;
+                heartFast.play().catch(e => console.log("Fast heartbeat failed:", e));
+
+                // Start Acceleration
+                cards.forEach(card => card.classList.add('accelerate-center'));
+
+                // PHASE 3: IMPACT (8s)
+                setTimeout(() => {
+                    // Stop fast heartbeat
+                    heartFast.pause();
+
+                    // Flash Overlay
+                    let flash = document.querySelector('.flash-overlay');
+                    if (!flash) {
+                        flash = document.createElement('div');
+                        flash.classList.add('flash-overlay');
+                        document.body.appendChild(flash);
+                    }
+                    flash.classList.add('flash-active');
+
+                    // Play Magic Boom Sound
+                    const boomSound = new Audio('https://assets.mixkit.co/active_storage/sfx/1444/1444-preview.mp3');
+                    boomSound.volume = 1.0;
+                    boomSound.play().catch(e => console.log("Boom sound failed:", e));
+
+                    // Hide Old Cards
+                    profilesWrapper.classList.add('hidden');
+                    // Hide Choice Buttons specifically since they are now inside wrapper or separate
+                    const choiceBtnContainer = document.querySelector('.choice-container');
+                    if (choiceBtnContainer) choiceBtnContainer.classList.add('hidden');
+
+                    // REVEAL PHASE (Wait 1.5s inside flash)
+                    setTimeout(() => {
+                        // Play Cheering
+                        const cheering = new Audio('https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3');
+                        cheering.volume = 1.0;
+                        cheering.play().catch(e => console.log("Cheering sound failed:", e));
+
+                        mergedContainer.classList.remove('hidden');
+                        mergedContainer.innerHTML = `
+                            <div class="profile-card heart-shape">
+                                <div class="profile-pic-container">
+                                    <img src="pictures/prof-pics/together_prof.jpg" alt="Us" class="profile-pic">
+                                </div>
+                                <h2 class="card-title">Sambit & Aalen</h2>
+                                <div class="card-alias">"The Reality"</div>
+                                <p style="font-size: 1.1rem; margin-top: 1rem; font-weight: 500;">
+                                    Two chaos agents, one beautiful mess.<br>
+                                    Partners in Crime forever.
+                                </p>
+                            </div>
+                        `;
+
+                        // Rose Petal Shower
+                        createRoseShower();
+
+                        // Cleanup Flash
+                        setTimeout(() => {
+                            flash.classList.remove('flash-active');
+                            flash.remove();
+                        }, 3000);
+
+                    }, 1500); // Reveal starts after flash settles
+
+                }, 3000); // Acceleration duration (matches CSS 3s)
+            }, 5000); // Glow duration (5s)
         });
+    }
+
+    function createRoseShower() {
+        const colors = ['#ff004f', '#ff4d6d', '#ffb3c1', '#c9184a'];
+        const duration = 8000;
+        const interval = setInterval(() => {
+            const petal = document.createElement('div');
+            petal.classList.add('rose-petal');
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            petal.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            petal.style.opacity = Math.random();
+            petal.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+
+            document.body.appendChild(petal);
+
+            setTimeout(() => petal.remove(), 5000);
+        }, 100);
+
+        setTimeout(() => clearInterval(interval), duration);
     }
 
     if (unmatchBtn) {

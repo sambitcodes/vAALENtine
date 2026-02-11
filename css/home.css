@@ -127,3 +127,160 @@
         opacity: 0;
     }
 }
+
+/* Aesthetic Neon Border */
+/* Aesthetic Neon Border - High Intensity */
+.hero-section::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 8px solid rgba(255, 0, 60, 1);
+    /* Stronger Red Core */
+    box-shadow:
+        0 0 30px rgba(255, 0, 60, 0.9),
+        0 0 60px rgba(255, 0, 60, 0.6),
+        0 0 100px rgba(255, 0, 60, 0.4),
+        inset 0 0 30px rgba(255, 0, 60, 0.9),
+        inset 0 0 80px rgba(255, 0, 60, 0.5);
+    pointer-events: none;
+    z-index: 999;
+    animation: neonFlickerHigh 4s infinite;
+}
+
+@keyframes neonFlickerHigh {
+
+    0%,
+    10%,
+    20%,
+    50%,
+    55%,
+    65%,
+    90%,
+    100% {
+        opacity: 1;
+        box-shadow:
+            0 0 30px rgba(255, 0, 60, 0.9),
+            0 0 60px rgba(255, 0, 60, 0.6),
+            0 0 100px rgba(255, 0, 60, 0.4),
+            inset 0 0 30px rgba(255, 0, 60, 0.9),
+            inset 0 0 80px rgba(255, 0, 60, 0.5);
+    }
+
+    /* Occasional Dimming/Flicker */
+    52%,
+    54% {
+        opacity: 0.8;
+        box-shadow:
+            0 0 10px rgba(255, 0, 60, 0.7),
+            0 0 30px rgba(255, 0, 60, 0.5),
+            inset 0 0 10px rgba(255, 0, 60, 0.7);
+    }
+}
+
+/* Hanging Light Bulbs */
+#bulb-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 998;
+    overflow: hidden;
+}
+
+.hanging-assembly {
+    position: absolute;
+    top: -20px;
+    /* Start slightly above viewport */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    animation: bulbSwing 3s ease-in-out infinite alternate;
+}
+
+/* The Wire */
+.bulb-wire {
+    width: 2px;
+    background: rgba(50, 50, 50, 0.8);
+    height: 100px;
+    /* Dynamic via JS */
+}
+
+/* The Bulb Socket */
+.bulb-socket {
+    width: 20px;
+    height: 15px;
+    background: #222;
+    border-radius: 4px;
+}
+
+/* The Glowing Glass */
+.bulb-glass {
+    width: 40px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 30%, #fff, #ffd700);
+    border-radius: 50% 50% 40% 40%;
+    margin-top: -5px;
+    position: relative;
+    box-shadow:
+        0 0 20px 5px rgba(255, 215, 0, 0.8),
+        0 0 60px 20px rgba(255, 165, 0, 0.4),
+        0 0 100px 40px rgba(255, 140, 0, 0.2);
+    animation: bulbFlickerGold 4s infinite alternate;
+}
+
+/* Filament Detail */
+.bulb-glass::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 60%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-bottom: none;
+    border-radius: 50% 50% 0 0;
+    opacity: 0.5;
+}
+
+@keyframes bulbSwing {
+    from {
+        transform: rotate(-3deg);
+    }
+
+    to {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes bulbFlickerGold {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
+
+    52% {
+        opacity: 0.4;
+    }
+
+    54% {
+        opacity: 0.8;
+    }
+
+    90% {
+        box-shadow: 0 0 30px 10px rgba(255, 215, 0, 1), 0 0 80px 30px rgba(255, 165, 0, 0.6);
+    }
+}
