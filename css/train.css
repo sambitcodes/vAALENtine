@@ -1,0 +1,665 @@
+/* TRAIN JOURNEY STYLES - REVAMPED */
+
+#trainContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #020111, #191621, #1e1e2f);
+    /* Deep Night Sky */
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    z-index: 1000;
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 100px 70px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 200px 150px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 400px 40px, #fff, rgba(0, 0, 0, 0));
+    background-size: 550px 550px;
+    animation: twinkle 4s infinite;
+}
+
+#theMoon {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    font-size: 5rem;
+    filter: drop-shadow(0 0 25px rgba(255, 255, 200, 0.6));
+    animation: moonWink 6s infinite ease-in-out;
+    z-index: 10;
+}
+
+@keyframes moonWink {
+
+    0%,
+    90%,
+    100% {
+        transform: scale(1);
+    }
+
+    95% {
+        transform: scaleY(0.1);
+    }
+}
+
+/* TRACK & GROUND SYSTEM */
+#worldContainer {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    transition: transform 3s ease-in-out;
+    will-change: transform;
+}
+
+.station-section {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    border-right: none;
+}
+
+/* GROUND LAYER - Bottom 18% */
+.ground-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 18%;
+    background: linear-gradient(to bottom, #1a1a1a 0%, #0d0d0d 100%);
+    border-top: 4px solid #4a3b2a;
+    /* Dirt edge */
+    z-index: 20;
+}
+
+/* TRACKS - Sitting ON TOP of ground */
+.track-segment {
+    position: absolute;
+    bottom: 18%;
+    /* Exactly on top of ground */
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: #333;
+    border-top: 2px solid #555;
+    /* Rail shine */
+    z-index: 25;
+}
+
+.track-segment::after {
+    /* Sleepers */
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: repeating-linear-gradient(90deg, #2a2a2a 0, #2a2a2a 10px, transparent 10px, transparent 30px);
+}
+
+/* SCENERY - Trees */
+.scenery-tree {
+    position: absolute;
+    bottom: 18%;
+    /* Planted on ground */
+    font-size: 8rem;
+    /* Big trees */
+    z-index: 10;
+    /* Behind train, on ground */
+    filter: brightness(0.7);
+}
+
+.scenery-rock {
+    position: absolute;
+    bottom: 18%;
+    font-size: 4rem;
+    z-index: 15;
+}
+
+/* BRIDGE & WATER (Index 5) */
+.water-area {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+    /* Water is lower than ground level visually? */
+    background: #001133;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.wave {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%23004488" opacity="0.4"/></svg>');
+    background-repeat: repeat-x;
+    animation: waveMove 10s linear infinite;
+}
+
+.w1 {
+    bottom: 0;
+    z-index: 1;
+    opacity: 0.7;
+    animation-duration: 7s;
+}
+
+.w2 {
+    bottom: 5px;
+    z-index: 2;
+    opacity: 0.5;
+    animation-duration: 12s;
+    transform: scaleY(0.8);
+}
+
+.w3 {
+    bottom: 10px;
+    z-index: 3;
+    opacity: 0.3;
+    animation-duration: 5s;
+    transform: scaleY(1.2);
+}
+
+@keyframes waveMove {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.bridge-structure {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 18%;
+    /* Matches ground height */
+    z-index: 21;
+    /* Above water */
+    background:
+        repeating-linear-gradient(90deg, transparent 0, transparent 48px, #880000 48px, #880000 52px),
+        /* Pillars */
+        linear-gradient(to bottom, #440000 0, #440000 5px, transparent 5px);
+    /* Top Rail */
+    border-top: 5px solid #660000;
+}
+
+/* THE TRAIN */
+#theTrain {
+    position: fixed;
+    bottom: 18.2%;
+    /* Just touching the rail (18% + 0.2% adjustment) */
+    left: 10%;
+    /* Center-ish */
+    font-size: 350px;
+    /* MASSIVE */
+    z-index: 100;
+    filter: drop-shadow(5px 10px 15px rgba(0, 0, 0, 0.8));
+    transition: transform 0.1s;
+    /* Faster shake response */
+    transform-origin: bottom center;
+}
+
+.train-shaking {
+    animation: trainShake 0.15s infinite;
+}
+
+/* STATIONS */
+.station-pole {
+    width: 25px;
+    height: 400px;
+    /* Taller pole */
+    background: #222;
+    position: absolute;
+    bottom: 18%;
+    /* Planted on ground */
+    left: 50vw;
+    /* Fixed to viewport center */
+    transform: translateX(-50%);
+    z-index: 15;
+    box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.station-sign {
+    position: absolute;
+    bottom: calc(18% + 350px);
+    /* Pole height + offset */
+    left: 50vw;
+    /* Fixed to viewport center */
+    transform: translateX(-50%);
+    background: #3e2723;
+    border: 6px solid #ffd700;
+    /* Gold border */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    cursor: pointer;
+    min-width: 400px;
+    min-height: 250px;
+    /* Taller board */
+    display: flex;
+    /* Centering content */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    transition: transform 0.3s;
+}
+
+.station-sign:hover {
+    transform: translateX(-50%) scale(1.05);
+    /* Maintain center X */
+    border-color: #fff;
+}
+
+.station-index {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: 900;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.station-name {
+    font-family: 'Courier New', monospace;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #000;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.station-sub {
+    font-size: 1rem;
+    color: #ccc;
+    font-style: italic;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* MODAL & CONTROLS */
+#trainControls {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 2000;
+}
+
+.train-btn {
+    background: #e91e63;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(233, 30, 99, 0.5);
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.train-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 3000;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    align-items: center;
+    justify-content: center;
+}
+
+.train-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    background: #222;
+    border: 2px solid #444;
+    width: 80%;
+    max-height: 85vh;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+/* UTILS */
+@keyframes trainShake {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Parallax Backgrounds */
+.parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.stars {
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 100px 70px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 200px 150px, #fff, rgba(0, 0, 0, 0));
+    background-size: 500px 500px;
+    animation: twinkle 5s infinite;
+}
+
+/* Track Container - This moves */
+#worldContainer {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    /* Will be set dynamically or fit content */
+    transition: transform 3s ease-in-out;
+    will-change: transform;
+}
+
+/* Each Station Section (Viewport Width) */
+.station-section {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-right: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.station-sign {
+    position: absolute;
+    bottom: 30%;
+    background: #4a3b2a;
+    border: 4px solid #d4af37;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 10;
+    min-width: 300px;
+}
+
+.station-sign:hover {
+    transform: scale(1.1) translateY(-10px);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+.station-name {
+    font-family: 'Courier New', monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffecd2;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.station-pole {
+    width: 20px;
+    height: 300px;
+    background: #2c2c2c;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    background-image: linear-gradient(90deg, #111, #444, #111);
+}
+
+/* The Train - Fixed on Screen */
+#theTrain {
+    position: fixed;
+    bottom: 12%;
+    left: 5%;
+    font-size: 240px;
+    z-index: 50;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
+    transition: transform 0.5s;
+    transform-origin: bottom center;
+}
+
+.train-shaking {
+    animation: trainShake 0.2s infinite;
+}
+
+/* UI Controls */
+#trainControls {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 2000;
+}
+
+.train-btn {
+    background: #e91e63;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(233, 30, 99, 0.5);
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+#speedControls {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 2000;
+    display: flex;
+    gap: 10px;
+}
+
+.speed-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.speed-btn.active {
+    background: #ffd700;
+    color: #000;
+    transform: scale(1.1);
+}
+
+.train-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 3000;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    align-items: center;
+    justify-content: center;
+}
+
+.train-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* MODAL & AESTHETIC POLAROIDS */
+.modal-content {
+    background: url('/pictures/wood-pattern.png'), #222;
+    /* Wood texture fallback */
+    background-size: cover;
+    border: none;
+    width: 90%;
+    height: 90%;
+    padding: 50px 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    box-shadow: inset 0 0 100px #000;
+}
+
+/* LED STRIP */
+.led-strip {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 100px;
+    /* Below title */
+    left: 0;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: space-around;
+}
+
+.led-strip::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    box-shadow: 0 0 15px #ff00de, 0 0 25px #ff00de;
+    /* Pink Glow */
+}
+
+/* POLAROID FRAMES */
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 60px;
+    /* Space for wire */
+    padding-top: 40px;
+}
+
+.polaroid-frame {
+    background: #fff;
+    padding: 15px 15px 50px 15px;
+    /* Bottom heavy for caption */
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+    cursor: pointer;
+    position: relative;
+    max-width: 300px;
+}
+
+.polaroid-frame:hover {
+    transform: scale(1.1) rotate(0deg) !important;
+    z-index: 100;
+}
+
+.polaroid-frame::before {
+    /* CLIP */
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: silver;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+.polaroid-frame img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+.polaroid-caption {
+    font-family: 'Courier New', monospace;
+    color: #333;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* UTILS */
+@keyframes trainShake {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
