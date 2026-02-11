@@ -195,8 +195,73 @@ const SoundFX = {
         this.playTone(800, 'sine', 0.05);
     },
 
+    playHover: function () {
+        // Very short, high blip for hover
+        this.playTone(1200, 'sine', 0.03);
+    },
+
     playChoice: function () {
         // Lower tech click
         this.playTone(400, 'square', 0.05);
+    },
+
+    playMillionaireCorrect: function () {
+        this.init();
+        const now = this.ctx.currentTime;
+        // Dramatic chord (C Major + Octave)
+        [261.63, 329.63, 392.00, 523.25].forEach((freq, i) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.frequency.value = freq;
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            gain.gain.setValueAtTime(0, now);
+            gain.gain.linearRampToValueAtTime(0.2, now + 0.1);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 2.0); // Long sustain
+
+            osc.start(now);
+            osc.stop(now + 2.5);
+        });
+    },
+
+    playMillionaireWrong: function () {
+        this.init();
+        const now = this.ctx.currentTime;
+        // Discordant tritone / jarring sound
+        [100, 145].forEach((freq) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.value = freq;
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            gain.gain.setValueAtTime(0.2, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 1.0);
+
+            osc.start(now);
+            osc.stop(now + 1.0);
+        });
+    },
+
+    // Background Music Controller
+    bgMusic: null,
+
+    playSuspenseMusic: function () {
+        if (!this.bgMusic) {
+            this.bgMusic = new Audio('pictures/suspense.mp3');
+            this.bgMusic.loop = true;
+            this.bgMusic.volume = 0.5;
+        }
+        this.bgMusic.currentTime = 0;
+        this.bgMusic.play().catch(e => console.log("Music play failed:", e));
+    },
+
+    stopSuspenseMusic: function () {
+        if (this.bgMusic) {
+            this.bgMusic.pause();
+            this.bgMusic.currentTime = 0;
+        }
     }
 };

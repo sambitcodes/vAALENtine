@@ -48,10 +48,19 @@
             <div id="gameArea" class="hidden">
                 <div class="game-header">
                     <button id="backButton" class="btn-icon">← Back</button>
-                    <span id="currentCategoryTitle">Category</span>
+
+                    <div class="timer-container">
+                        <svg class="timer-svg" viewBox="0 0 100 100">
+                            <circle class="timer-bg" cx="50" cy="50" r="45"></circle>
+                            <circle id="timerProgress" class="timer-progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <span id="timerText">10</span>
+                    </div>
+
                     <div class="score-container">
                         <span class="score-box score-correct">Correct: <span id="correctCount">0</span></span>
                         <span class="score-box score-wrong">Wrong: <span id="wrongCount">0</span></span>
+                        <span class="score-box score-unanswered">Missed: <span id="missedCount">0</span></span>
                     </div>
                 </div>
                 <div id="questionContainer"></div>

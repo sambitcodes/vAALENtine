@@ -6,16 +6,22 @@
     max-width: 900px;
     margin: 2rem auto;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
+    /* Bright Background with Neon Cyan/Blue Theme */
+    background: rgba(240, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* Neon Blue Glow */
+    border: 3px solid #00d2ff;
+    box-shadow:
+        0 0 15px #00d2ff,
+        0 0 30px rgba(0, 210, 255, 0.5),
+        inset 0 0 20px rgba(0, 210, 255, 0.2);
     position: relative;
     min-height: 650px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 #india-map-container {
@@ -33,18 +39,24 @@
 }
 
 .state {
-    fill: #fdf2f2;
-    stroke: #ff9999;
-    stroke-width: 1;
-    transition: all 0.3s ease;
+    fill: #e6fffa;
+    /* Very light teal */
+    fill-opacity: 0.9;
+    stroke: #ffea00;
+    /* Neon Yellow Border */
+    stroke-width: 1.5;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
 }
 
 .state:hover {
-    fill: #ffe4e4;
-    stroke-width: 2;
-    filter: brightness(1.05);
-    transform: translateY(-2px);
+    fill: #b2f5ea;
+    stroke: #ffd700;
+    /* Gold on hover */
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 8px rgba(255, 234, 0, 0.6));
+    transform: translateY(-3px) scale(1.01);
+    z-index: 10;
 }
 
 .state.correct {

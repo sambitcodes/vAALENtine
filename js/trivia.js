@@ -65,6 +65,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadCategories();
 
     document.getElementById('backButton').addEventListener('click', () => {
+        // Stop any active game state
+        stopTimer();
+        SoundFX.stopSuspenseMusic();
+        SoundFX.playClick();
+
         document.getElementById('gameArea').classList.add('hidden');
         document.getElementById('triviaResult').classList.add('hidden');
         document.getElementById('categorySelection').classList.remove('hidden');
@@ -99,7 +104,17 @@ function loadCategories() {
                 <p>${getCategoryCount(cat)} Questions</p>
             </div>
         `;
-        btn.onclick = () => startCategory(cat);
+        btn.innerHTML = `
+            <div class="category-content">
+                <h3>${cat}</h3>
+                <p>${getCategoryCount(cat)} Questions</p>
+            </div>
+        `;
+        btn.onclick = () => {
+            SoundFX.playClick();
+            startCategory(cat);
+        };
+        btn.onmouseenter = () => SoundFX.playHover();
         container.appendChild(btn);
     });
 }
@@ -112,6 +127,7 @@ async function startCategory(category) {
     currentCategory = category;
     correctCount = 0;
     wrongCount = 0;
+    missedCount = 0; // Reset missed count
     currentQuestionIndex = 0;
 
     // Show Loading
@@ -143,15 +159,80 @@ async function startCategory(category) {
     document.body.style.backgroundAttachment = "fixed";
     document.body.classList.add('topic-active');
 
-    document.getElementById('currentCategoryTitle').textContent = category;
     updateScoreDisplay();
 
+    // Start Music & Timer only after user clicks "Start"
+    showWelcomeScreen();
+}
+
+function showWelcomeScreen() {
+    const container = document.getElementById('questionContainer');
+    container.innerHTML = `
+        <div class="trivia-question-card" style="text-align: center;">
+            <h2>${currentCategory}</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">You have 10 seconds per question.<br>Good luck!</p>
+            <button class="option-btn" onclick="startGame()" style="margin: 0 auto; display: inline-block; background: var(--primary); color: white; border: none;">Start Game</button>
+        </div>
+    `;
+}
+
+function startGame() {
     showQuestion();
 }
+
+let timerInterval;
+const TIME_LIMIT = 10;
+
+function startTimer() {
+    let timeLeft = TIME_LIMIT;
+    const timerText = document.getElementById('timerText');
+    const timerProgress = document.getElementById('timerProgress');
+    const totalDash = 283; // 2 * PI * 45
+
+    timerText.textContent = timeLeft;
+    timerProgress.style.strokeDashoffset = 0;
+
+    // Reset animation
+    timerProgress.style.transition = 'none';
+    timerProgress.offsetHeight; /* trigger reflow */
+    timerProgress.style.transition = 'stroke-dashoffset 1s linear';
+
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timerText.textContent = timeLeft;
+
+        // Update circle progress
+        const offset = totalDash - (timeLeft / TIME_LIMIT) * totalDash;
+        timerProgress.style.strokeDashoffset = offset;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            handleUnanswered();
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+function handleUnanswered() {
+    wrongCount++; // Or separately track unanswered if desired, but request said "unanswered tally"
+    // Actually request said "unanswered question is added into a tally as unanswered"
+    // So let's track it separately in variable, but maybe show as wrong in standard game logic?
+    // Let's add a separate counter.
+    missedCount++;
+    updateScoreDisplay();
+    showFeedback(false, true); // isCorrect=false, isTimeout=true
+}
+
+let missedCount = 0;
 
 function updateScoreDisplay() {
     document.getElementById('correctCount').textContent = correctCount;
     document.getElementById('wrongCount').textContent = wrongCount;
+    document.getElementById('missedCount').textContent = missedCount;
 }
 
 function showQuestion() {
@@ -168,45 +249,63 @@ function showQuestion() {
             <h2>${q.question}</h2>
             <div class="options-grid">
                 ${q.options.map((opt, i) => `
-                    <button class="option-btn" onclick="handleAnswer(${i})">${opt}</button>
+                    <button class="option-btn" onclick="handleAnswer(${i})" onmouseenter="SoundFX.playHover()" onmousedown="SoundFX.playClick()">${opt}</button>
                 `).join('')}
             </div>
             <div class="progress-indicator">Question ${currentQuestionIndex + 1} of ${currentQuestions.length}</div>
         </div>
     `;
+
+    // Start Logic
+    SoundFX.playSuspenseMusic();
+    startTimer();
 }
 
 function handleAnswer(selectedIndex) {
+    stopTimer();
+    SoundFX.stopSuspenseMusic();
+
     const q = currentQuestions[currentQuestionIndex];
     const isCorrect = selectedIndex === q.correctIndex;
 
     if (isCorrect) {
         correctCount++;
+        SoundFX.playMillionaireCorrect();
     } else {
         wrongCount++;
+        SoundFX.playMillionaireWrong();
     }
     updateScoreDisplay();
 
-    showFeedback(isCorrect);
+    showFeedback(isCorrect, false);
 }
 
-function showFeedback(isCorrect) {
+function showFeedback(isCorrect, isTimeout = false) {
     const overlay = document.getElementById('feedbackOverlay');
     const title = document.getElementById('feedbackTitle');
     const gif = document.getElementById('feedbackGif');
     const text = document.getElementById('feedbackText');
 
-    // Sound
-    const audio = new Audio(isCorrect ? MEDIA.sounds.correct : MEDIA.sounds.incorrect);
-    audio.play().catch(e => console.log('Audio play failed', e));
+    // Music stopped in handleAnswer or handleUnanswered calls before this if needed
+    // But handleUnanswered calls this directly, so ensure music stops there too?
+    // Actually handleAnswer stops it. handleUnanswered needs to stop it.
+    SoundFX.stopSuspenseMusic();
+
+    if (isTimeout) SoundFX.playMillionaireWrong(); // Use wrong sound for timeout
 
     // GIF
     const catMedia = MEDIA.gifs[currentCategory] || MEDIA.gifs.default;
     gif.src = isCorrect ? catMedia.correct : catMedia.incorrect;
 
-    title.textContent = isCorrect ? "YAY! Correct! 🎉" : "Oops! Wrong! 😅";
-    title.style.color = isCorrect ? "var(--success)" : "var(--error)";
-    text.textContent = isCorrect ? "You nailed it!" : "Better luck next time!";
+    if (isTimeout) {
+        title.textContent = "Time's Up! ⏰";
+        title.style.color = "var(--warning)";
+        text.textContent = "You gotta be faster than that!";
+    } else {
+        title.textContent = isCorrect ? "YAY! Correct! 🎉" : "Oops! Wrong! 😅";
+        title.style.color = isCorrect ? "var(--success)" : "var(--error)";
+        text.textContent = isCorrect ? "You nailed it!" : "Better luck next time!";
+    }
 
     overlay.classList.remove('hidden');
 
