@@ -49,6 +49,12 @@
             <div id="questionOverlay" class="question-overlay">
                 <div class="map-question">
                     <h3 id="questionText">What is the capital of this state?</h3>
+
+                    <div class="hint-container">
+                        <button id="hintBtn" class="hint-btn" onclick="toggleHint()">💡 Show Hint</button>
+                        <div id="hintText" class="hint-text hidden"></div>
+                    </div>
+
                     <div id="optionsGrid" class="options-grid">
                         <!-- Options injected here -->
                     </div>
