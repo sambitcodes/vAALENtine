@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: vaalentine
+    env: docker
+    plan: free
+    region: ohio
+    branch: main
+    numInstances: 1
+    healthCheckPath: /api/config
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+      - key: GROQ_API_KEY
+        sync: false # Set this manually in Render Dashboard
