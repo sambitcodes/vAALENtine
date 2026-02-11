@@ -100,7 +100,7 @@ const MEMORY_DATA = [
     { title: "Late Night Echoes", image: "the last call/2.jpg", description: "Seconds felt like hours on those calls." },
     { title: "Seaside Soul", image: "the mandarmani trip/3.jpg", description: "The memories we made at the coast." },
     { title: "Fiery Flavors", image: "a chillis date never disappoints/2.jpg", description: "Back at our favorite spot!" },
-    { title: "Healing Chapters", image: "the rough patch/2.jpg", description: "Growing stronger through every challenge." },
+    { title: "Healing Chapters", image: "the rough patch/3.jpg", description: "Growing stronger through every challenge." },
     { title: "Deep Soul Talk", image: "when we talked for the first time/2.jpg", description: "Finding so much in common." },
     { title: "Mandarmani Magic", image: "the mandarmani trip/4.jpg", description: "The beauty of the ocean matched our joy." },
     { title: "Bridge To Forever", image: "the last walk to remember/3.jpg", description: "Peaceful moments under the stars." },

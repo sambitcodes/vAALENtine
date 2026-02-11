@@ -21,13 +21,14 @@ function initPhotoStack() {
     // Real photos from pictures/slide-aal
     // Re-ordering again to ensure no broken images at the start
     const photoList = [
-        "IMG_0370.jpg", "IMG_1198.PNG", "IMG_1216.PNG", "IMG_1219.PNG", "IMG_1234.PNG",
-        "IMG_1331.PNG", "IMG_4156.PNG", "IMG_4235.PNG", "IMG_4292.PNG", "IMG_4404.PNG",
-        "IMG_4406.PNG", "IMG_4474.PNG", "IMG_4544.PNG", "IMG_4894.PNG", "IMG_4916.PNG",
-        "IMG_5407.PNG", "IMG_5447.PNG", "IMG_5451.PNG", "IMG_5472.PNG", "IMG_5512.PNG",
-        "IMG_5521.PNG", "IMG_5613.PNG", "IMG_5618.PNG", "IMG_5789.PNG", "IMG_5816.PNG",
-        "IMG_6105.PNG", "IMG_7555.PNG", "IMG_7656_Original.jpg", "IMG_7674.PNG", "IMG_7793.PNG",
-        "IMG_7857.PNG", "IMG_8642.PNG", "IMG_9263.jpg", "IMG_0250.JPG"
+        "IMG_0001.jpg", "IMG_0370.jpg", "IMG_1198.png", "IMG_1216.png", "IMG_1219.png",
+        "IMG_1234.png", "IMG_1331.png", "IMG_4156.png", "IMG_4235.png", "IMG_4292.png",
+        "IMG_4404.PNG", "IMG_4406.PNG", "IMG_4474.png", "IMG_4544.png", "IMG_4894.PNG",
+        "IMG_4916.PNG", "IMG_5407.PNG", "IMG_5447.PNG", "IMG_5451.PNG", "IMG_5472.PNG",
+        "IMG_5512.PNG", "IMG_5521.PNG", "IMG_5613.png", "IMG_5618.png", "IMG_5759.PNG",
+        "IMG_5789.png", "IMG_5816.png", "IMG_6090.png", "IMG_6105.png", "IMG_6392.png",
+        "IMG_6626.png", "IMG_6791.png", "IMG_7228.jpg", "IMG_7555.png", "IMG_7674.png",
+        "IMG_7718.jpg", "IMG_7793.png", "IMG_7857.PNG", "IMG_8642.png", "IMG_9263.jpg"
     ];
 
     const PHOTO_COUNT = photoList.length;
