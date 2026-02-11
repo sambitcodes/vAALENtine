@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Heart Heist - Escape Room</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/escape.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">💝 vAALENtine</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="us.html" class="nav-link">Us</a>
+                <a href="memories.html" class="nav-link">Memories</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="trivia.html" class="nav-link">Trivia</a>
+                <a href="states.html" class="nav-link">Map</a>
+                <a href="scramble.html" class="nav-link">Scramble</a>
+                <a href="escape.html" class="nav-link active">Escape Room</a>
+                <a href="finale.html" class="nav-link">Finale</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="escape-container">
+        <!-- Stage 0: Intro -->
+        <div id="stage-intro" class="stage active">
+            <div class="stage-content glass-panel">
+                <h1>🔐 The Heart Heist</h1>
+                <p>You've been locked out of the Valentine's Vault! To break in and claim your prize, you must solve 3
+                    puzzles.</p>
+                <div class="lock-icon">🔒</div>
+                <button onclick="startGame()" class="btn-escape">Start the Heist</button>
+            </div>
+        </div>
+
+        <!-- Stage 1: The Pattern Lock -->
+        <div id="stage-1" class="stage hidden">
+            <div class="stage-content glass-panel">
+                <h2>Level 1: The Pattern Lock</h2>
+                <p>Crack the sequence to override the security system.</p>
+                <div class="clue-box">
+                    <p>Clue: "It starts with the day we met..." (Select the numbers in ascending order)</p>
+                </div>
+                <div id="pattern-grid" class="pattern-grid">
+                    <!-- Injected via JS -->
+                </div>
+                <p id="pattern-feedback" class="feedback-text"></p>
+            </div>
+        </div>
+
+        <!-- Stage 2: The Memory Cipher -->
+        <div id="stage-2" class="stage hidden">
+            <div class="stage-content glass-panel">
+                <h2>Level 2: The Memory Cipher</h2>
+                <p>Only someone who knows me well can answer this.</p>
+                <div class="clue-box">
+                    <p id="cipher-question">Question Loading...</p>
+                </div>
+                <input type="text" id="cipher-input" placeholder="Enter the code word" autocomplete="off">
+                <button onclick="checkCipher()" class="btn-escape">Unlock</button>
+                <p id="cipher-feedback" class="feedback-text"></p>
+                <button onclick="showHint(2)" class="hint-btn">Need a Hint?</button>
+                <p id="hint-2" class="hint-text hidden"></p>
+            </div>
+        </div>
+
+        <!-- Stage 3: The Final Key -->
+        <div id="stage-3" class="stage hidden">
+            <div class="stage-content glass-panel">
+                <h2>Level 3: The Final Key</h2>
+                <p>Unscramble the phrase to open the vault.</p>
+                <div class="scramble-box">
+                    <h3 id="scrambled-text">L V O E O Y U</h3>
+                </div>
+                <input type="text" id="final-input" placeholder="What does it say?" autocomplete="off">
+                <button onclick="checkFinal()" class="btn-escape">Open Vault</button>
+                <p id="final-feedback" class="feedback-text"></p>
+            </div>
+        </div>
+
+        <!-- Stage 4: Success -->
+        <div id="stage-success" class="stage hidden">
+            <div class="stage-content glass-panel">
+                <h1>🎉 VAULT OPENED!</h1>
+                <p>You are officially the Master Thief of Hearts.</p>
+                <div class="reward-box">
+                    <p>Your Reward:</p>
+                    <h3>A Lifetime Supply of My Annoying Jokes</h3>
+                </div>
+                <a href="music.html" class="btn-escape">Claim Reward (Next Level)</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/escape.js"></script>
+</body>
+
+</html>

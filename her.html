@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her - vAALENtine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">💝 vAALENtine</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="her.html" class="nav-link active">Her</a>
+                <a href="him.html" class="nav-link">Him</a>
+                <a href="memories.html" class="nav-link">Memories</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="trivia.html" class="nav-link">Trivia</a>
+                <a href="states.html" class="nav-link">Map</a>
+                <a href="scramble.html" class="nav-link">Scramble</a>
+                <a href="escape.html" class="nav-link">Escape Room</a>
+                <a href="finale.html" class="nav-link">Finale</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem;">Do You Know
+                Her?</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Let's see if you've been
+                paying attention to her...</p>
+
+            <div id="quizContainer" class="quiz-container">
+                <div id="quizProgress" class="quiz-progress"></div>
+                <div id="quizQuestion" class="quiz-question"></div>
+                <div id="quizOptions" class="quiz-options"></div>
+                <button id="quizNext" class="btn btn-secondary" disabled>Next Question</button>
+            </div>
+
+            <div id="quizResult" class="quiz-result hidden">
+                <div class="result-content">
+                    <h3 id="resultTitle"></h3>
+                    <p id="resultMessage"></p>
+                    <button id="quizRestart" class="btn btn-primary">Play Again</button>
+                    <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/her.js"></script>
+</body>
+
+</html>

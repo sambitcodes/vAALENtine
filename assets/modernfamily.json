@@ -1,0 +1,858 @@
+{
+    "topic": "Modern Family",
+    "batch_size": 50,
+    "style": "plot_event_based",
+    "questions": [
+        {
+            "id": "MF-PLOT-001",
+            "season": 5,
+            "episode_title": "Suddenly, Last Summer",
+            "question": "After same-sex marriage is legalized in California, what do Mitch and Cam BOTH secretly plan (without realizing the other is also planning it)?",
+            "options": {
+                "A": "A surprise proposal",
+                "B": "A secret adoption",
+                "C": "A move to Missouri",
+                "D": "A new business venture"
+            },
+            "answer": "A",
+            "answer_text": "A surprise proposal",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-002",
+            "season": 5,
+            "episode_title": "Suddenly, Last Summer",
+            "question": "In the same episode, who do Cam and Mitch recruit to help make their separate proposal plans work?",
+            "options": {
+                "A": "Cam recruits Jay and Gloria; Mitch recruits Claire and Phil",
+                "B": "Cam recruits Luke and Manny; Mitch recruits Alex and Haley",
+                "C": "Cam recruits Pepper and Ronaldo; Mitch recruits Andy and Beth",
+                "D": "Cam recruits Shorty and Darlene; Mitch recruits Gil Thorpe and his dad"
+            },
+            "answer": "A",
+            "answer_text": "Cam recruits Jay and Gloria; Mitch recruits Claire and Phil",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-003",
+            "season": 5,
+            "episode_title": "First Days",
+            "question": "What major milestone happens for Manny and Luke at the start of this episode?",
+            "options": {
+                "A": "They start high school",
+                "B": "They graduate high school",
+                "C": "They get their first apartment",
+                "D": "They join a band"
+            },
+            "answer": "A",
+            "answer_text": "They start high school",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-004",
+            "season": 5,
+            "episode_title": "First Days",
+            "question": "Phil and Gloria end up doing what together after confiding in each other about letting their sons go?",
+            "options": {
+                "A": "Becoming extras in a commercial",
+                "B": "Starting a salsa business",
+                "C": "Getting stuck in an elevator",
+                "D": "Winning a bowling tournament"
+            },
+            "answer": "A",
+            "answer_text": "Becoming extras in a commercial",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-005",
+            "season": 5,
+            "episode_title": "First Days",
+            "question": "What new job move does Claire make in this episode?",
+            "options": {
+                "A": "She joins Jay's company",
+                "B": "She becomes a school principal",
+                "C": "She becomes a nurse",
+                "D": "She opens a restaurant"
+            },
+            "answer": "A",
+            "answer_text": "She joins Jay's company",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-006",
+            "season": 5,
+            "episode_title": "Larry's Wife",
+            "question": "What worries Lily when her cat Larry doesn't come home for days?",
+            "options": {
+                "A": "That Larry has a wife",
+                "B": "That Larry is sick",
+                "C": "That Larry is secretly a dog",
+                "D": "That Larry ran away to Australia"
+            },
+            "answer": "A",
+            "answer_text": "That Larry has a wife",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-007",
+            "season": 5,
+            "episode_title": "Larry's Wife",
+            "question": "In the same episode, what fear does Gloria develop about little Joe?",
+            "options": {
+                "A": "She worries he is evil",
+                "B": "She worries he is allergic to Stella",
+                "C": "She worries he will move away",
+                "D": "She worries he is failing school"
+            },
+            "answer": "A",
+            "answer_text": "She worries he is evil",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-008",
+            "season": 5,
+            "episode_title": "Farm Strong",
+            "question": "Who visits Cam and Mitch, forcing them to figure out how to tell her they’re getting married?",
+            "options": {
+                "A": "Cam's sister Pam",
+                "B": "Mitch's mom DeDe",
+                "C": "Gloria's sister Sonia",
+                "D": "Phil's dad Frank"
+            },
+            "answer": "A",
+            "answer_text": "Cam's sister Pam",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-009",
+            "season": 5,
+            "episode_title": "The Late Show",
+            "question": "What event does Jay plan that everyone is running late to?",
+            "options": {
+                "A": "Dinner reservations at a new restaurant",
+                "B": "A funeral",
+                "C": "A wedding rehearsal",
+                "D": "A magic show audition"
+            },
+            "answer": "A",
+            "answer_text": "Dinner reservations at a new restaurant",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-010",
+            "season": 5,
+            "episode_title": "The Late Show",
+            "question": "While the chaos unfolds, who babysits Lily?",
+            "options": {
+                "A": "Alex",
+                "B": "Haley",
+                "C": "Manny",
+                "D": "Jay"
+            },
+            "answer": "A",
+            "answer_text": "Alex",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-011",
+            "season": 5,
+            "episode_title": "The Help",
+            "question": "What type of nanny does Gloria end up hiring for Joe that Jay and Manny dislike?",
+            "options": {
+                "A": "A male nanny",
+                "B": "A live-in magician",
+                "C": "A football coach",
+                "D": "A dance instructor"
+            },
+            "answer": "A",
+            "answer_text": "A male nanny",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-012",
+            "season": 5,
+            "episode_title": "The Help",
+            "question": "Why does Phil's dad Frank stay with the Dunphys for a while?",
+            "options": {
+                "A": "He just broke up with someone",
+                "B": "His house is under renovation",
+                "C": "He is starting a new job",
+                "D": "He got lost on a road trip"
+            },
+            "answer": "A",
+            "answer_text": "He just broke up with someone",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-013",
+            "season": 5,
+            "episode_title": "The Help",
+            "question": "Who do Cam and Mitch ask to plan their wedding?",
+            "options": {
+                "A": "Pepper",
+                "B": "Andy",
+                "C": "Shorty",
+                "D": "Gil Thorpe"
+            },
+            "answer": "A",
+            "answer_text": "Pepper",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-014",
+            "season": 5,
+            "episode_title": "A Fair to Remember",
+            "question": "Where does the family (except Haley) go in this episode?",
+            "options": {
+                "A": "A school fair",
+                "B": "A hospital",
+                "C": "A ski resort",
+                "D": "A courthouse"
+            },
+            "answer": "A",
+            "answer_text": "A school fair",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-015",
+            "season": 5,
+            "episode_title": "A Fair to Remember",
+            "question": "While everyone else is at the fair, what does Haley plan to do that gets interrupted by Andy’s presence?",
+            "options": {
+                "A": "Relax at Jay and Gloria's pool",
+                "B": "Go to a college interview",
+                "C": "Throw a party at the Dunphy house",
+                "D": "Train for a marathon"
+            },
+            "answer": "A",
+            "answer_text": "Relax at Jay and Gloria's pool",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-016",
+            "season": 5,
+            "episode_title": "ClosetCon '13",
+            "question": "What event do Jay and Claire attend in this episode?",
+            "options": {
+                "A": "A closet convention",
+                "B": "A high school reunion",
+                "C": "A charity gala",
+                "D": "A film premiere"
+            },
+            "answer": "A",
+            "answer_text": "A closet convention",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-017",
+            "season": 5,
+            "episode_title": "ClosetCon '13",
+            "question": "What does Phil discover about Jay during this episode?",
+            "options": {
+                "A": "Jay is hiding something in a secret closet",
+                "B": "Jay is moving to another state",
+                "C": "Jay is writing a novel",
+                "D": "Jay is joining a band"
+            },
+            "answer": "A",
+            "answer_text": "Jay is hiding something in a secret closet",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-018",
+            "season": 5,
+            "episode_title": "The Big Game",
+            "question": "What big responsibility is Cam preparing for in this episode?",
+            "options": {
+                "A": "Coaching an important football game that could break a record",
+                "B": "Performing a magic audition",
+                "C": "Running a 10K race",
+                "D": "Delivering a graduation speech"
+            },
+            "answer": "A",
+            "answer_text": "Coaching an important football game that could break a record",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-019",
+            "season": 5,
+            "episode_title": "The Old Man & the Tree",
+            "question": "What activity do Jay and Manny do together for Christmas in this episode?",
+            "options": {
+                "A": "Cut down their own Christmas tree",
+                "B": "Build a treehouse",
+                "C": "Go caroling",
+                "D": "Host a holiday parade"
+            },
+            "answer": "A",
+            "answer_text": "Cut down their own Christmas tree",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-020",
+            "season": 5,
+            "episode_title": "And One to Grow On",
+            "question": "What does Phil trick Luke into doing that unexpectedly lands Phil in trouble?",
+            "options": {
+                "A": "Taking a dance class",
+                "B": "Joining the football team",
+                "C": "Entering a chess tournament",
+                "D": "Going to clown school"
+            },
+            "answer": "A",
+            "answer_text": "Taking a dance class",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-021",
+            "season": 5,
+            "episode_title": "Under Pressure",
+            "question": "What major event for Alex is happening that adds pressure for Claire?",
+            "options": {
+                "A": "Alex's high school open house",
+                "B": "Alex's wedding",
+                "C": "Alex's hospital surgery",
+                "D": "Alex's first day of kindergarten"
+            },
+            "answer": "A",
+            "answer_text": "Alex's high school open house",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-022",
+            "season": 5,
+            "episode_title": "Under Pressure",
+            "question": "What do Luke and Manny do in this episode?",
+            "options": {
+                "A": "They date twins",
+                "B": "They get lost in Vegas",
+                "C": "They start an online business",
+                "D": "They build a she-shed"
+            },
+            "answer": "A",
+            "answer_text": "They date twins",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-023",
+            "season": 5,
+            "episode_title": "The Feud",
+            "question": "What problem does Claire get because Mitch and Cam fail to warn her about Lily?",
+            "options": {
+                "A": "She catches lice",
+                "B": "She loses her job",
+                "C": "She misses a flight",
+                "D": "She breaks her leg"
+            },
+            "answer": "A",
+            "answer_text": "She catches lice",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-024",
+            "season": 5,
+            "episode_title": "Other People's Children",
+            "question": "What does Jay decide to teach Luke in this episode?",
+            "options": {
+                "A": "Woodworking",
+                "B": "French cooking",
+                "C": "Magic tricks",
+                "D": "Clown performance"
+            },
+            "answer": "A",
+            "answer_text": "Woodworking",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-025",
+            "season": 5,
+            "episode_title": "Other People's Children",
+            "question": "What wedding-related task do Claire and Gloria help Lily with?",
+            "options": {
+                "A": "Choosing a flower girl dress",
+                "B": "Writing wedding vows",
+                "C": "Booking the venue",
+                "D": "Picking a honeymoon destination"
+            },
+            "answer": "A",
+            "answer_text": "Choosing a flower girl dress",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-026",
+            "season": 5,
+            "episode_title": "Las Vegas",
+            "question": "Where do the adults travel in this episode?",
+            "options": {
+                "A": "Las Vegas",
+                "B": "Australia",
+                "C": "Hawaii",
+                "D": "Disneyland"
+            },
+            "answer": "A",
+            "answer_text": "Las Vegas",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-027",
+            "season": 5,
+            "episode_title": "Las Vegas",
+            "question": "What risky habit does Claire rekindle while in Vegas?",
+            "options": {
+                "A": "Her gambling addiction",
+                "B": "Her fear of flying",
+                "C": "Her obsession with exercise",
+                "D": "Her hoarding"
+            },
+            "answer": "A",
+            "answer_text": "Her gambling addiction",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-028",
+            "season": 5,
+            "episode_title": "Las Vegas",
+            "question": "What does Phil try to gain entry into during the Vegas trip?",
+            "options": {
+                "A": "A secret, prestigious magic society",
+                "B": "A poker championship",
+                "C": "A celebrity VIP club",
+                "D": "A cooking competition"
+            },
+            "answer": "A",
+            "answer_text": "A secret, prestigious magic society",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-029",
+            "season": 5,
+            "episode_title": "Australia",
+            "question": "Why does the family travel to Australia in this episode?",
+            "options": {
+                "A": "Phil wants to fulfill his mother's wish that he visit the country where he was conceived",
+                "B": "Jay is opening a new closet store there",
+                "C": "Mitch and Cam are adopting another child there",
+                "D": "Claire has a marathon there"
+            },
+            "answer": "A",
+            "answer_text": "Phil wants to fulfill his mother's wish that he visit the country where he was conceived",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-030",
+            "season": 5,
+            "episode_title": "Sleeper",
+            "question": "What competition does Jay secretly enter Stella in?",
+            "options": {
+                "A": "A dog show",
+                "B": "A racing competition",
+                "C": "A talent show",
+                "D": "A fashion runway show"
+            },
+            "answer": "A",
+            "answer_text": "A dog show",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-031",
+            "season": 5,
+            "episode_title": "Message Received",
+            "question": "Why do Mitch and Cam decide to sell some prized possessions?",
+            "options": {
+                "A": "Their wedding is getting too big and costly",
+                "B": "They are moving to Australia",
+                "C": "They are buying a new houseboat",
+                "D": "They lost their jobs"
+            },
+            "answer": "A",
+            "answer_text": "Their wedding is getting too big and costly",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-032",
+            "season": 5,
+            "episode_title": "The Wedding (Part 2)",
+            "question": "When Cam and Mitch’s wedding day goes awry, who finds a new place to relocate the wedding?",
+            "options": {
+                "A": "Pepper",
+                "B": "Phil",
+                "C": "Luke",
+                "D": "Shorty"
+            },
+            "answer": "A",
+            "answer_text": "Pepper",
+            "citations": [
+                "[page:6]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-033",
+            "season": 6,
+            "episode_title": "The Long Honeymoon",
+            "question": "What is Cameron reluctant to do at the start of Season 6?",
+            "options": {
+                "A": "Conclude the honeymoon with Mitchell",
+                "B": "Sell the Dunphy house",
+                "C": "Coach football again",
+                "D": "Go back to law school"
+            },
+            "answer": "A",
+            "answer_text": "Conclude the honeymoon with Mitchell",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-034",
+            "season": 6,
+            "episode_title": "Do Not Push",
+            "question": "What campus do the Dunphys visit that helps Alex have a realization about college?",
+            "options": {
+                "A": "Caltech",
+                "B": "Princeton",
+                "C": "UCLA",
+                "D": "Stanford"
+            },
+            "answer": "A",
+            "answer_text": "Caltech",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-035",
+            "season": 6,
+            "episode_title": "Marco Polo",
+            "question": "Why are the Dunphys living in a hotel temporarily in this episode?",
+            "options": {
+                "A": "They have to temporarily leave their house",
+                "B": "They won a free vacation",
+                "C": "They got locked out for one night",
+                "D": "They are moving to a new city"
+            },
+            "answer": "A",
+            "answer_text": "They have to temporarily leave their house",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-036",
+            "season": 6,
+            "episode_title": "Won't You Be Our Neighbor",
+            "question": "What is Phil and Claire’s first impression storyline centered on in this episode?",
+            "options": {
+                "A": "Meeting their new obnoxious neighbors",
+                "B": "Buying a new car for Haley",
+                "C": "Throwing a big Halloween party",
+                "D": "Preparing for Alex's graduation"
+            },
+            "answer": "A",
+            "answer_text": "Meeting their new obnoxious neighbors",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-037",
+            "season": 6,
+            "episode_title": "Halloween 3: AwesomeLand",
+            "question": "What does Phil do to Claire’s usual Halloween tradition?",
+            "options": {
+                "A": "He takes over and creates his own Halloween fest",
+                "B": "He cancels it completely",
+                "C": "He moves it to Thanksgiving",
+                "D": "He turns it into a magic show audition"
+            },
+            "answer": "A",
+            "answer_text": "He takes over and creates his own Halloween fest",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-038",
+            "season": 6,
+            "episode_title": "Halloween 3: AwesomeLand",
+            "question": "Which costume does Jay refuse to wear (choosing Prince Charming instead)?",
+            "options": {
+                "A": "Shrek",
+                "B": "Batman",
+                "C": "A dinosaur",
+                "D": "A clown"
+            },
+            "answer": "A",
+            "answer_text": "Shrek",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-039",
+            "season": 6,
+            "episode_title": "Queer Eyes, Full Hearts",
+            "question": "What does Gloria do to push Manny to learn Spanish?",
+            "options": {
+                "A": "She hires a Spanish tutor named Diego",
+                "B": "She sends him to a boarding school in Colombia",
+                "C": "She bans French from the house",
+                "D": "She signs him up for a cooking show"
+            },
+            "answer": "A",
+            "answer_text": "She hires a Spanish tutor named Diego",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-040",
+            "season": 6,
+            "episode_title": "Three Turkeys",
+            "question": "What secret backup does Claire prepare because she doesn’t trust Phil and Luke’s Thanksgiving cooking?",
+            "options": {
+                "A": "A hidden turkey",
+                "B": "A hidden cake",
+                "C": "A hidden ham",
+                "D": "A hidden pizza order"
+            },
+            "answer": "A",
+            "answer_text": "A hidden turkey",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-041",
+            "season": 6,
+            "episode_title": "Strangers in the Night",
+            "question": "When Alex says she has a boyfriend, what do Phil and Claire worry about?",
+            "options": {
+                "A": "That she made up an imaginary boyfriend because of pressure",
+                "B": "That she’s secretly married",
+                "C": "That she’s quitting school",
+                "D": "That she’s moving to Vegas"
+            },
+            "answer": "A",
+            "answer_text": "That she made up an imaginary boyfriend because of pressure",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-042",
+            "season": 6,
+            "episode_title": "Haley's 21st Birthday",
+            "question": "What big gift do Jay and Phil struggle with for Haley in this episode?",
+            "options": {
+                "A": "A new car",
+                "B": "A diamond necklace",
+                "C": "A house",
+                "D": "A trip to Australia"
+            },
+            "answer": "A",
+            "answer_text": "A new car",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-043",
+            "season": 6,
+            "episode_title": "The Day We Almost Died",
+            "question": "What triggers everyone to reevaluate their lives in this episode?",
+            "options": {
+                "A": "A near-death experience while driving to get breakfast",
+                "B": "A hurricane hitting the neighborhood",
+                "C": "A big lottery win",
+                "D": "A fire at Jay's company"
+            },
+            "answer": "A",
+            "answer_text": "A near-death experience while driving to get breakfast",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-044",
+            "season": 6,
+            "episode_title": "Rash Decisions",
+            "question": "What surprising issue does Gloria discover about Joe?",
+            "options": {
+                "A": "He may be allergic to Stella",
+                "B": "He can speak fluent Spanish",
+                "C": "He has a secret online business",
+                "D": "He is afraid of cars forever"
+            },
+            "answer": "A",
+            "answer_text": "He may be allergic to Stella",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-045",
+            "season": 6,
+            "episode_title": "Fight or Flight",
+            "question": "What sparks conflict on Phil and Claire’s flight home from a reunion weekend?",
+            "options": {
+                "A": "Claire takes the only First Class seat",
+                "B": "Phil loses the luggage",
+                "C": "They get stuck on the runway for 12 hours",
+                "D": "They accidentally fly to Vegas"
+            },
+            "answer": "A",
+            "answer_text": "Claire takes the only First Class seat",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-046",
+            "season": 6,
+            "episode_title": "Connection Lost",
+            "question": "Where is Claire when she becomes desperate to reach Haley after their fight?",
+            "options": {
+                "A": "Stuck at the airport",
+                "B": "At a hotel in Vegas",
+                "C": "At Caltech",
+                "D": "At a lake house"
+            },
+            "answer": "A",
+            "answer_text": "Stuck at the airport",
+            "citations": [
+                "[web:56]",
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-047",
+            "season": 6,
+            "episode_title": "Connection Lost",
+            "question": "In her panic, what does Claire do to track Haley’s phone location?",
+            "options": {
+                "A": "She hacks Haley’s iCloud account",
+                "B": "She calls the police immediately",
+                "C": "She hires a private investigator",
+                "D": "She checks Luke’s bucket list"
+            },
+            "answer": "A",
+            "answer_text": "She hacks Haley’s iCloud account",
+            "citations": [
+                "[web:56]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-048",
+            "season": 6,
+            "episode_title": "American Skyper",
+            "question": "Why is Phil stuck in Seattle in this episode?",
+            "options": {
+                "A": "An ear infection during a business trip",
+                "B": "He loses his passport",
+                "C": "He is auditioning for a magic show",
+                "D": "He buys the wrong plane ticket"
+            },
+            "answer": "A",
+            "answer_text": "An ear infection during a business trip",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-049",
+            "season": 6,
+            "episode_title": "American Skyper",
+            "question": "What does Phil discover about Andy and Haley by the end of this episode?",
+            "options": {
+                "A": "They love each other",
+                "B": "They are secretly married",
+                "C": "They are moving to Australia",
+                "D": "They started a salsa company"
+            },
+            "answer": "A",
+            "answer_text": "They love each other",
+            "citations": [
+                "[page:7]"
+            ]
+        },
+        {
+            "id": "MF-PLOT-050",
+            "season": 9,
+            "episode_title": "Lake Life",
+            "question": "What major natural event is the family gathered to witness during the lake vacation?",
+            "options": {
+                "A": "A solar eclipse",
+                "B": "A meteor shower",
+                "C": "A hurricane",
+                "D": "An earthquake"
+            },
+            "answer": "A",
+            "answer_text": "A solar eclipse",
+            "citations": [
+                "[page:8]"
+            ]
+        }
+    ]
+}

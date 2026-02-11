@@ -1,0 +1,230 @@
+/* ========================================
+   INDIAN MAP GAME STYLES
+   ======================================== */
+
+.map-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#india-map-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.india-map-svg {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+.state {
+    fill: #fdf2f2;
+    stroke: #ff9999;
+    stroke-width: 1;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.state:hover {
+    fill: #ffe4e4;
+    stroke-width: 2;
+    filter: brightness(1.05);
+}
+
+.state.correct {
+    fill: #d1fae5 !important;
+    stroke: #10b981 !important;
+    stroke-width: 2 !important;
+}
+
+.state.incorrect {
+    fill: #fee2e2 !important;
+    stroke: #ef4444 !important;
+    stroke-width: 2 !important;
+}
+
+/* Question Overlay */
+.question-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: white;
+    padding: 2.5rem;
+    border-radius: 25px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.question-overlay.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.map-question h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.options-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.option-btn {
+    background: #f8f9fa;
+    border: 2px solid #edeff2;
+    padding: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    color: #4a5568;
+}
+
+.option-btn:hover {
+    background: #fff;
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.1);
+}
+
+/* Stats */
+.game-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    font-weight: 600;
+}
+
+.stat-item {
+    background: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+#endGameBtn {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+    transition: all 0.3s ease;
+}
+
+#endGameBtn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+    background: #ff5e6c;
+}
+
+/* Result Modal */
+.result-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.result-modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 3rem;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.result-score {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.result-message {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .map-container {
+        margin: 1rem;
+        padding: 0.5rem;
+        min-height: 400px;
+    }
+
+    .question-overlay {
+        padding: 1.5rem;
+    }
+
+    .map-question h3 {
+        font-size: 1.2rem;
+    }
+}

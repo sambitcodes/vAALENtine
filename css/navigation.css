@@ -1,0 +1,78 @@
+.nav-bar {
+    display: flex;
+    justify-content: flex-end;
+    /* Align to right */
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem 2rem;
+    /* Add padding */
+}
+
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* Keep logo left, links right */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.app-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background: var(--primary-light);
+    color: white;
+    border-color: var(--primary);
+}
+
+.nav-link.active {
+    background: var(--primary);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,807 @@
+{
+    "show": "Grey's Anatomy",
+    "basis": "Season 2 episode synopses",
+    "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)",
+    "questions": [
+        {
+            "id": 1,
+            "season": 2,
+            "episode_overall": 10,
+            "episode_in_season": 1,
+            "episode_title": "Raindrops Keep Falling on My Head",
+            "question": "In 'Raindrops Keep Falling on My Head', who collapses at the bar and needs a very expensive surgery?",
+            "options": [
+                "Joe the bartender",
+                "Denny Duquette",
+                "Finn Dandridge",
+                "Thatcher Grey"
+            ],
+            "answer": "Joe the bartender",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 2,
+            "season": 2,
+            "episode_overall": 10,
+            "episode_in_season": 1,
+            "episode_title": "Raindrops Keep Falling on My Head",
+            "question": "In the same episode, what does Cristina tell Meredith without revealing who the father is?",
+            "options": [
+                "She is pregnant",
+                "She is getting married",
+                "She failed her boards",
+                "She is moving out of Seattle"
+            ],
+            "answer": "She is pregnant",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 3,
+            "season": 2,
+            "episode_overall": 11,
+            "episode_in_season": 2,
+            "episode_title": "Enough Is Enough (No More Tears)",
+            "question": "In 'Enough Is Enough', what does Adele do in order to care for Dr. Webber?",
+            "options": [
+                "Cuts her vacation short",
+                "Moves into the hospital",
+                "Fires his surgeon",
+                "Leaves him alone to recover"
+            ],
+            "answer": "Cuts her vacation short",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 4,
+            "season": 2,
+            "episode_overall": 11,
+            "episode_in_season": 2,
+            "episode_title": "Enough Is Enough (No More Tears)",
+            "question": "In 'Enough Is Enough', what bizarre thing has a patient swallowed (as described in the synopsis)?",
+            "options": [
+                "The heads of ten Judy dolls",
+                "A scalpel",
+                "A wedding ring",
+                "A set of keys"
+            ],
+            "answer": "The heads of ten Judy dolls",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 5,
+            "season": 2,
+            "episode_overall": 12,
+            "episode_in_season": 3,
+            "episode_title": "Make Me Lose Control",
+            "question": "In 'Make Me Lose Control', why is Ellis Grey brought to the hospital?",
+            "options": [
+                "Possible diverticulitis",
+                "A heart attack",
+                "A train accident injury",
+                "A gunshot wound"
+            ],
+            "answer": "Possible diverticulitis",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 6,
+            "season": 2,
+            "episode_overall": 12,
+            "episode_in_season": 3,
+            "episode_title": "Make Me Lose Control",
+            "question": "In 'Make Me Lose Control', what emergency procedure does Addison perform on Cristina that ends the pregnancy?",
+            "options": [
+                "Removes her Fallopian tube",
+                "Performs a C-section",
+                "Removes her appendix",
+                "Transplants a heart"
+            ],
+            "answer": "Removes her Fallopian tube",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 7,
+            "season": 2,
+            "episode_overall": 13,
+            "episode_in_season": 4,
+            "episode_title": "Deny, Deny, Deny",
+            "question": "In 'Deny, Deny, Deny', what syndrome does Cristina diagnose in Burke and Izzie's patient?",
+            "options": [
+                "Münchhausen syndrome",
+                "Alzheimer's disease",
+                "Cystic fibrosis",
+                "Obsessive-compulsive disorder"
+            ],
+            "answer": "Münchhausen syndrome",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 8,
+            "season": 2,
+            "episode_overall": 13,
+            "episode_in_season": 4,
+            "episode_title": "Deny, Deny, Deny",
+            "question": "In 'Deny, Deny, Deny', what does Alex learn right before his planned date with Izzie?",
+            "options": [
+                "He failed one of his medical board exams and must retake it",
+                "He got promoted to attending",
+                "He is being transferred to pediatrics",
+                "He is being sued for malpractice"
+            ],
+            "answer": "He failed one of his medical board exams and must retake it",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 9,
+            "season": 2,
+            "episode_overall": 14,
+            "episode_in_season": 5,
+            "episode_title": "Bring the Pain",
+            "question": "In 'Bring the Pain', why do George and Alex perform surgery in an elevator?",
+            "options": [
+                "They're trapped with a critical gunshot patient and there's no time to reach the OR",
+                "The OR is closed for inspection",
+                "They are practicing for boards",
+                "A hospital drill requires it"
+            ],
+            "answer": "They're trapped with a critical gunshot patient and there's no time to reach the OR",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 10,
+            "season": 2,
+            "episode_overall": 14,
+            "episode_in_season": 5,
+            "episode_title": "Bring the Pain",
+            "question": "At the end of 'Bring the Pain', what does Meredith ask Derek to do?",
+            "options": [
+                "Choose her",
+                "Move out immediately",
+                "Quit surgery",
+                "Leave Addison and go to New York"
+            ],
+            "answer": "Choose her",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 11,
+            "season": 2,
+            "episode_overall": 15,
+            "episode_in_season": 6,
+            "episode_title": "Into You Like a Train",
+            "question": "In 'Into You Like a Train', what major event sends multiple severely injured patients to Seattle Grace?",
+            "options": [
+                "A train crash",
+                "A ferry crash",
+                "A plane crash",
+                "A hospital fire"
+            ],
+            "answer": "A train crash",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 12,
+            "season": 2,
+            "episode_overall": 15,
+            "episode_in_season": 6,
+            "episode_title": "Into You Like a Train",
+            "question": "In 'Into You Like a Train', how are two patients from the crash physically connected when they arrive?",
+            "options": [
+                "They are both impaled by a long pole and stuck face to face",
+                "They are handcuffed together",
+                "They are pinned under a car together",
+                "They are connected by IV tubing"
+            ],
+            "answer": "They are both impaled by a long pole and stuck face to face",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 13,
+            "season": 2,
+            "episode_overall": 16,
+            "episode_in_season": 7,
+            "episode_title": "Something to Talk About",
+            "question": "In 'Something to Talk About', what unusual condition does the patient Shane appear to have?",
+            "options": [
+                "A hysterical pregnancy",
+                "Spontaneous orgasms",
+                "A brain tumor",
+                "A lightning injury"
+            ],
+            "answer": "A hysterical pregnancy",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 14,
+            "season": 2,
+            "episode_overall": 16,
+            "episode_in_season": 7,
+            "episode_title": "Something to Talk About",
+            "question": "In 'Something to Talk About', what does Alex do at Joe's that 'knocks Izzie’s socks off'?",
+            "options": [
+                "Sweeps her into a dramatic kiss",
+                "Asks her to marry him",
+                "Gives her his board results",
+                "Introduces her to his parents"
+            ],
+            "answer": "Sweeps her into a dramatic kiss",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 15,
+            "season": 2,
+            "episode_overall": 17,
+            "episode_in_season": 8,
+            "episode_title": "Let It Be",
+            "question": "In 'Let It Be', what do Derek and Addison’s friends from Manhattan come to Seattle Grace seeking?",
+            "options": [
+                "A radical preemptive operation to avoid breast and ovarian cancer",
+                "A heart transplant for their child",
+                "Treatment after a train crash",
+                "A new experimental cure for OCD"
+            ],
+            "answer": "A radical preemptive operation to avoid breast and ovarian cancer",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 16,
+            "season": 2,
+            "episode_overall": 17,
+            "episode_in_season": 8,
+            "episode_title": "Let It Be",
+            "question": "In 'Let It Be', what does Webber learn about Bailey after being disappointed by her fellowship decision?",
+            "options": [
+                "Bailey is pregnant",
+                "Bailey is quitting surgery",
+                "Bailey is moving away",
+                "Bailey failed her boards"
+            ],
+            "answer": "Bailey is pregnant",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 17,
+            "season": 2,
+            "episode_overall": 18,
+            "episode_in_season": 9,
+            "episode_title": "Thanks for the Memories",
+            "question": "In 'Thanks for the Memories', what does Izzie plan for the Thanksgiving holiday?",
+            "options": [
+                "A big dinner",
+                "A hospital talent show",
+                "A surgical competition",
+                "A road trip to visit family"
+            ],
+            "answer": "A big dinner",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 18,
+            "season": 2,
+            "episode_overall": 18,
+            "episode_in_season": 9,
+            "episode_title": "Thanks for the Memories",
+            "question": "In 'Thanks for the Memories', what is true about the patient Meredith treats at the hospital?",
+            "options": [
+                "They have been in a vegetative state for 16 years",
+                "They are impaled by a pole",
+                "They swallowed ten doll heads",
+                "They were struck by lightning"
+            ],
+            "answer": "They have been in a vegetative state for 16 years",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 19,
+            "season": 2,
+            "episode_overall": 19,
+            "episode_in_season": 10,
+            "episode_title": "Much too Much",
+            "question": "In 'Much too Much', why does Meredith feel mortified when her one-night stand appears at the hospital?",
+            "options": [
+                "He is suffering from priapism and needs treatment",
+                "He is Addison’s attorney",
+                "He is Derek’s brother",
+                "He is a new intern on Meredith’s service"
+            ],
+            "answer": "He is suffering from priapism and needs treatment",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 20,
+            "season": 2,
+            "episode_overall": 19,
+            "episode_in_season": 10,
+            "episode_title": "Much too Much",
+            "question": "In 'Much too Much', what high-risk pregnancy case are Izzie, Addison, and Derek assigned to?",
+            "options": [
+                "A woman carrying quintuplets",
+                "A woman carrying twins",
+                "A patient with an ectopic pregnancy",
+                "A surrogate pregnancy for a celebrity"
+            ],
+            "answer": "A woman carrying quintuplets",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 21,
+            "season": 2,
+            "episode_overall": 20,
+            "episode_in_season": 11,
+            "episode_title": "Owner of a Lonely Heart",
+            "question": "In 'Owner of a Lonely Heart', why does inmate Constance Ferguson put her health at risk?",
+            "options": [
+                "To get out of solitary confinement",
+                "To qualify for a transplant",
+                "To avoid being transferred",
+                "To get a TV interview"
+            ],
+            "answer": "To get out of solitary confinement",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 22,
+            "season": 2,
+            "episode_overall": 20,
+            "episode_in_season": 11,
+            "episode_title": "Owner of a Lonely Heart",
+            "question": "In 'Owner of a Lonely Heart', what do Meredith and Izzie buy to repair their friendship?",
+            "options": [
+                "A dog",
+                "A car",
+                "A new couch",
+                "A wedding cake"
+            ],
+            "answer": "A dog",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 23,
+            "season": 2,
+            "episode_overall": 21,
+            "episode_in_season": 12,
+            "episode_title": "Grandma Got Run Over by a Reindeer",
+            "question": "In 'Grandma Got Run Over by a Reindeer', what does the young boy need?",
+            "options": [
+                "A heart transplant",
+                "A liver transplant",
+                "A lung transplant",
+                "A kidney transplant"
+            ],
+            "answer": "A heart transplant",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 24,
+            "season": 2,
+            "episode_overall": 21,
+            "episode_in_season": 12,
+            "episode_title": "Grandma Got Run Over by a Reindeer",
+            "question": "In 'Grandma Got Run Over by a Reindeer', what are the interns trying to help Alex do?",
+            "options": [
+                "Prepare to re-take his exam",
+                "Write a research paper",
+                "Plan a wedding",
+                "Move into a new apartment"
+            ],
+            "answer": "Prepare to re-take his exam",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 25,
+            "season": 2,
+            "episode_overall": 22,
+            "episode_in_season": 13,
+            "episode_title": "Begin the Begin",
+            "question": "In 'Begin the Begin', what weekly hour limit does Webber enforce for interns?",
+            "options": [
+                "80 hours per week maximum",
+                "100 hours per week minimum",
+                "40 hours per week maximum",
+                "60 hours per week minimum"
+            ],
+            "answer": "80 hours per week maximum",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 26,
+            "season": 2,
+            "episode_overall": 22,
+            "episode_in_season": 13,
+            "episode_title": "Begin the Begin",
+            "question": "In 'Begin the Begin', which heart-transplant patient does Izzie share chemistry with?",
+            "options": [
+                "Denny Duquette",
+                "Joe the bartender",
+                "Dylan Young",
+                "Finn Dandridge"
+            ],
+            "answer": "Denny Duquette",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 27,
+            "season": 2,
+            "episode_overall": 23,
+            "episode_in_season": 14,
+            "episode_title": "Tell Me Sweet Little Lies",
+            "question": "In 'Tell Me Sweet Little Lies', what does Alex finally ask Izzie to do because he's too nervous to do it himself?",
+            "options": [
+                "Open his exam results",
+                "Call Derek for help",
+                "Move in with him",
+                "Quit the program with him"
+            ],
+            "answer": "Open his exam results",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 28,
+            "season": 2,
+            "episode_overall": 23,
+            "episode_in_season": 14,
+            "episode_title": "Tell Me Sweet Little Lies",
+            "question": "In 'Tell Me Sweet Little Lies', what does Meredith do with the dog after George threatens to move out?",
+            "options": [
+                "Gives the dog to Derek and Addison",
+                "Gives the dog to Bailey",
+                "Leaves the dog at Joe’s bar",
+                "Returns the dog to the shelter"
+            ],
+            "answer": "Gives the dog to Derek and Addison",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 29,
+            "season": 2,
+            "episode_overall": 24,
+            "episode_in_season": 15,
+            "episode_title": "Break on Through",
+            "question": "In 'Break on Through', what is happening at the hospital that affects staffing and care?",
+            "options": [
+                "A nurses' strike",
+                "A power outage",
+                "A flood",
+                "A quarantine lockdown"
+            ],
+            "answer": "A nurses' strike",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 30,
+            "season": 2,
+            "episode_overall": 24,
+            "episode_in_season": 15,
+            "episode_title": "Break on Through",
+            "question": "In 'Break on Through', what does Meredith do that she isn't supposed to do?",
+            "options": [
+                "Revives an elderly patient",
+                "Cuts an LVAD wire",
+                "Signs Derek’s divorce papers",
+                "Steals a donor heart"
+            ],
+            "answer": "Revives an elderly patient",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 31,
+            "season": 2,
+            "episode_overall": 25,
+            "episode_in_season": 16,
+            "episode_title": "It's the End of the World",
+            "question": "In 'It's the End of the World', what dangerous situation is brought in by a paramedic?",
+            "options": [
+                "A man with live ammunition in his chest",
+                "A man impaled by a pole",
+                "A mass poisoning",
+                "A hospital shooting"
+            ],
+            "answer": "A man with live ammunition in his chest",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 32,
+            "season": 2,
+            "episode_overall": 25,
+            "episode_in_season": 16,
+            "episode_title": "It's the End of the World",
+            "question": "In 'It's the End of the World', what is the only thing initially preventing an explosion in the patient’s chest?",
+            "options": [
+                "The paramedic's hand",
+                "A clamp",
+                "A bandage",
+                "A sedative drip"
+            ],
+            "answer": "The paramedic's hand",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 33,
+            "season": 2,
+            "episode_overall": 26,
+            "episode_in_season": 17,
+            "episode_title": "As We Know It",
+            "question": "In 'As We Know It', who replaces the paramedic’s hand inside the patient to prevent the explosion?",
+            "options": [
+                "Meredith",
+                "Cristina",
+                "Izzie",
+                "George"
+            ],
+            "answer": "Meredith",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 34,
+            "season": 2,
+            "episode_overall": 26,
+            "episode_in_season": 17,
+            "episode_title": "As We Know It",
+            "question": "In 'As We Know It', who dies when the explosive detonates after Meredith removes it?",
+            "options": [
+                "Dylan (the bomb squad chief)",
+                "Denny Duquette",
+                "Joe the bartender",
+                "Ellis Grey"
+            ],
+            "answer": "Dylan (the bomb squad chief)",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 35,
+            "season": 2,
+            "episode_overall": 27,
+            "episode_in_season": 18,
+            "episode_title": "Yesterday",
+            "question": "In 'Yesterday', which doctor arrives in Seattle to try to convince Addison to continue their relationship?",
+            "options": [
+                "Dr. Mark Sloan",
+                "Dr. Erica Hahn",
+                "Dr. Sydney Heron",
+                "Dr. Finn Dandridge"
+            ],
+            "answer": "Dr. Mark Sloan",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 36,
+            "season": 2,
+            "episode_overall": 27,
+            "episode_in_season": 18,
+            "episode_title": "Yesterday",
+            "question": "In 'Yesterday', how does Derek react when Mark introduces himself to Meredith?",
+            "options": [
+                "He punches Mark",
+                "He hires Mark immediately",
+                "He thanks Mark politely",
+                "He walks away silently"
+            ],
+            "answer": "He punches Mark",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 37,
+            "season": 2,
+            "episode_overall": 28,
+            "episode_in_season": 19,
+            "episode_title": "What Have I Done to Deserve This?",
+            "question": "In 'What Have I Done to Deserve This?', what happens to George after he and Meredith avoid each other at work?",
+            "options": [
+                "He falls down a stairwell and dislocates his shoulder",
+                "He gets impaled in a crash",
+                "He collapses at Joe’s bar",
+                "He fails his boards and is fired"
+            ],
+            "answer": "He falls down a stairwell and dislocates his shoulder",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 38,
+            "season": 2,
+            "episode_overall": 28,
+            "episode_in_season": 19,
+            "episode_title": "What Have I Done to Deserve This?",
+            "question": "In 'What Have I Done to Deserve This?', which ortho resident does George catch the eye of?",
+            "options": [
+                "Dr. Callie Torres",
+                "Dr. Sydney Heron",
+                "Dr. Addison Montgomery",
+                "Dr. Erica Hahn"
+            ],
+            "answer": "Dr. Callie Torres",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 39,
+            "season": 2,
+            "episode_overall": 29,
+            "episode_in_season": 20,
+            "episode_title": "Band-Aid Covers the Bullet Hole",
+            "question": "In 'Band-Aid Covers the Bullet Hole', who ends up watching baby Tucker for the remainder of the day?",
+            "options": [
+                "Cristina",
+                "Meredith",
+                "Izzie",
+                "Alex"
+            ],
+            "answer": "Cristina",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 40,
+            "season": 2,
+            "episode_overall": 29,
+            "episode_in_season": 20,
+            "episode_title": "Band-Aid Covers the Bullet Hole",
+            "question": "In 'Band-Aid Covers the Bullet Hole', what object is stuck in a woman’s neck?",
+            "options": [
+                "A fork",
+                "A bullet",
+                "A pen",
+                "A nail"
+            ],
+            "answer": "A fork",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 41,
+            "season": 2,
+            "episode_overall": 30,
+            "episode_in_season": 21,
+            "episode_title": "Superstition",
+            "question": "In 'Superstition', what makes Izzie especially nervous during the day’s series of deaths?",
+            "options": [
+                "Denny’s surgery",
+                "Addison’s divorce papers",
+                "George moving out",
+                "Alex’s board retake schedule"
+            ],
+            "answer": "Denny’s surgery",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 42,
+            "season": 2,
+            "episode_overall": 30,
+            "episode_in_season": 21,
+            "episode_title": "Superstition",
+            "question": "In 'Superstition', what does the patient treated by Meredith and Bailey claim caused her injury?",
+            "options": [
+                "Being struck by lightning",
+                "A train crash",
+                "A restaurant shooting",
+                "A bomb explosion"
+            ],
+            "answer": "Being struck by lightning",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 43,
+            "season": 2,
+            "episode_overall": 31,
+            "episode_in_season": 22,
+            "episode_title": "The Name of the Game",
+            "question": "In 'The Name of the Game', what does Bailey worry Dr. Webber is doing to her?",
+            "options": [
+                "Mommy-tracking her",
+                "Blacklisting her",
+                "Covering up her mistakes",
+                "Replacing her with Sydney"
+            ],
+            "answer": "Mommy-tracking her",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 44,
+            "season": 2,
+            "episode_overall": 31,
+            "episode_in_season": 22,
+            "episode_title": "The Name of the Game",
+            "question": "In 'The Name of the Game', what does Meredith take up along with a vow of celibacy?",
+            "options": [
+                "Knitting",
+                "Painting",
+                "Guitar",
+                "Yoga instruction"
+            ],
+            "answer": "Knitting",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 45,
+            "season": 2,
+            "episode_overall": 32,
+            "episode_in_season": 23,
+            "episode_title": "Blues for Sister Someone",
+            "question": "In 'Blues for Sister Someone', what does Addison’s pregnant patient ask for without her religious husband knowing?",
+            "options": [
+                "Her tubes to be tied off-record",
+                "A second honeymoon",
+                "A new heart immediately",
+                "A secret adoption plan"
+            ],
+            "answer": "Her tubes to be tied off-record",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 46,
+            "season": 2,
+            "episode_overall": 32,
+            "episode_in_season": 23,
+            "episode_title": "Blues for Sister Someone",
+            "question": "In 'Blues for Sister Someone', what device does Burke’s musical hero want removed because it ruined violin playing?",
+            "options": [
+                "A pacemaker",
+                "A hip implant",
+                "A heart valve",
+                "A cochlear implant"
+            ],
+            "answer": "A pacemaker",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 47,
+            "season": 2,
+            "episode_overall": 33,
+            "episode_in_season": 24,
+            "episode_title": "Damage Case",
+            "question": "In 'Damage Case', what caused the car accident involving a family (per the synopsis)?",
+            "options": [
+                "A surgical intern from another hospital",
+                "A train derailment",
+                "A bomb blast",
+                "A lightning strike"
+            ],
+            "answer": "A surgical intern from another hospital",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 48,
+            "season": 2,
+            "episode_overall": 33,
+            "episode_in_season": 24,
+            "episode_title": "Damage Case",
+            "question": "In 'Damage Case', what does Alex do to save the baby after the pregnant wife dies?",
+            "options": [
+                "Performs a Caesarean section",
+                "Performs a heart transplant",
+                "Removes a brain tumor",
+                "Cuts an LVAD wire"
+            ],
+            "answer": "Performs a Caesarean section",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 49,
+            "season": 2,
+            "episode_overall": 34,
+            "episode_in_season": 25,
+            "episode_title": "17 Seconds",
+            "question": "In '17 Seconds', where are the gunshot victims coming from?",
+            "options": [
+                "A nearby restaurant",
+                "An airport",
+                "Joe’s bar",
+                "Inside the hospital"
+            ],
+            "answer": "A nearby restaurant",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        },
+        {
+            "id": 50,
+            "season": 2,
+            "episode_overall": 35,
+            "episode_in_season": 26,
+            "episode_title": "Deterioration of the Fight or Flight Response",
+            "question": "In 'Deterioration of the Fight or Flight Response', what does Izzie do that forces everyone to help keep Denny alive?",
+            "options": [
+                "Cuts Denny’s LVAD wire",
+                "Moves Denny to another hospital",
+                "Refuses to treat Denny",
+                "Deletes Denny’s chart"
+            ],
+            "answer": "Cuts Denny’s LVAD wire",
+            "source_url": "https://en.wikipedia.org/wiki/Grey%27s_Anatomy_episodes_(Season_2)"
+        }
+    ]
+}

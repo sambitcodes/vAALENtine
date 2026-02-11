@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VvAALENtine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/finale.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">💝 vAALENtine</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="us.html" class="nav-link">Us</a>
+                <a href="memories.html" class="nav-link">Memories</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="trivia.html" class="nav-link">Trivia</a>
+                <a href="states.html" class="nav-link">Map</a>
+                <a href="scramble.html" class="nav-link">Scramble</a>
+                <a href="escape.html" class="nav-link">Escape Room</a>
+                <a href="finale.html" class="nav-link active">Finale</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="finale-section">
+        <div class="container">
+            <div class="finale-content">
+                <h2 class="finale-question" id="finaleQuestion">Will you be my Valentine this year, just for one silly
+                    day?</h2>
+
+                <div class="finale-buttons" id="finaleButtons">
+                    <button id="yesBtn" class="btn btn-yes">Yes</button>
+                    <button id="noBtn" class="btn btn-no">No</button>
+                </div>
+
+                <p class="finale-note">Jokes apart, answer honestly. I'll respect it.</p>
+                <button id="reallyNoBtn" class="btn-really-no hidden">Really, No</button>
+
+                <div id="finaleResult" class="finale-result hidden">
+                    <div class="finale-result-content">
+                        <h3 id="finaleResultTitle"></h3>
+                        <p id="finaleResultMessage"></p>
+                        <a href="index.html" class="btn btn-primary" style="margin-top: 2rem;">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/finale.js"></script>
+</body>
+
+</html>

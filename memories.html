@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories - vAALENtine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/memories.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">💝 vAALENtine</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="us.html" class="nav-link">Us</a>
+                <a href="memories.html" class="nav-link active">Memories</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="trivia.html" class="nav-link">Trivia</a>
+                <a href="states.html" class="nav-link">Map</a>
+                <a href="scramble.html" class="nav-link">Scramble</a>
+                <a href="escape.html" class="nav-link">Escape Room</a>
+                <a href="finale.html" class="nav-link">Finale</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem;">Our Journey
+                Board</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Roll the dice to revisit
+                our memories!</p>
+
+            <div class="game-wrapper">
+                <div class="game-container">
+                    <!-- The Monopoly Board (Grid) -->
+                    <div id="monopolyBoard" class="monopoly-board">
+                        <!-- Center Decoration: Logo & Brand -->
+                        <div class="board-center-decoration">
+                            <div class="bulbs-container">
+                                <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+                                <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+                                <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+                                <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+                            </div>
+                            <h1 class="logo-text">DUOpoly</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side Controls - Now Inside Wrapper for Side-by-Side -->
+                <div class="controls-sidebar">
+                    <div class="control-panel">
+                        <h3>Game Controls</h3>
+                        <div id="dice" class="dice">
+                            <div class="face front">1</div>
+                            <div class="face back">6</div>
+                            <div class="face right">3</div>
+                            <div class="face left">4</div>
+                            <div class="face top">5</div>
+                            <div class="face bottom">2</div>
+                        </div>
+                        <button id="rollBtn" class="btn btn-primary btn-lg">Roll Dice 🎲</button>
+                        <div id="gameStatus" class="status-box">Ready to roll!</div>
+                    </div>
+
+                    <div class="stats-panel">
+                        <h4>Current Block</h4>
+                        <p id="currentBlockInfo">-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Memory Modal -->
+        <div id="memoryModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 id="modalTitle">Memory Title</h2>
+                <div class="img-container">
+                    <img id="modalImage" src="" alt="Memory" class="modal-image">
+                </div>
+                <p id="modalDate" class="modal-date">Date</p>
+                <p id="modalDesc">Description goes here...</p>
+                <button class="btn btn-secondary close-btn">Close</button>
+            </div>
+        </div>
+
+        <!-- Event Popup (Chance/Chill) -->
+        <div id="eventPopup" class="modal hidden">
+            <div class="modal-content event-content">
+                <h2 id="eventTitle">Message</h2>
+                <p id="eventMessage">Text goes here...</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="index.html" class="btn btn-secondary">Back to Home</a>
+        </div>
+        </div>
+    </section>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/memories.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+[
+    {
+        "category": "Supernatural",
+        "question": "What is the name of Dean's beloved 1967 Chevy Impala?",
+        "options": [
+            "Baby",
+            "Beast",
+            "Sweetie",
+            "Darling"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Supernatural",
+        "question": "What is Sam Winchester irrationally afraid of?",
+        "options": [
+            "Spiders",
+            "Clowns",
+            "Heights",
+            "Flying"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "What is Bobby Singer's famous catchphrase?",
+        "options": [
+            "Balls!",
+            "Idjits!",
+            "Morons!",
+            "Fools!"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "What nickname does Crowley affectionately give to Sam?",
+        "options": [
+            "Squirrel",
+            "Moose",
+            "Giraffe",
+            "Puppy"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "How does Castiel introduce himself to Dean?",
+        "options": [
+            "I'm an Angel of the Lord.",
+            "I'm the one who gripped you tight and raised you from perdition.",
+            "I'm your new best friend.",
+            "I'm here to save you."
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "What is the Winchester family motto?",
+        "options": [
+            "Family don't end with blood.",
+            "Saving people, hunting things, the family business.",
+            "Driver picks the music, shotgun shuts his cakehole.",
+            "Always keep fighting."
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "Which legendary gun can kill (almost) anything?",
+        "options": [
+            "The Winchester",
+            "The Colt",
+            "The Smith & Wesson",
+            "The Magnum"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "How did Mary Winchester die in the pilot episode?",
+        "options": [
+            "She was shot",
+            "Car accident",
+            "Burned on the ceiling",
+            "Demonic possession"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "category": "Supernatural",
+        "question": "Who is the King of Hell for a significant part of the series?",
+        "options": [
+            "Lucifer",
+            "Azazel",
+            "Crowley",
+            "Ruby"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "category": "Supernatural",
+        "question": "What is the name of the bunker where the Winchesters live?",
+        "options": [
+            "The Batcave",
+            "The Men of Letters Bunker",
+            "The Hunter's Lodge",
+            "The Safe House"
+        ],
+        "correctIndex": 1
+    }
+]

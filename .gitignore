@@ -1,0 +1,6 @@
+node_modules
+.env
+arcade.db
+assets/arcade.db.bak
+*.log
+.DS_Store

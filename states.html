@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vAALENtine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/states.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">💝 vAALENtine</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="us.html" class="nav-link">Us</a>
+                <a href="memories.html" class="nav-link">Memories</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="trivia.html" class="nav-link">Trivia</a>
+                <a href="states.html" class="nav-link active">Map</a>
+                <a href="scramble.html" class="nav-link">Scramble</a>
+                <a href="escape.html" class="nav-link">Escape Room</a>
+                <a href="finale.html" class="nav-link">Finale</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-container">
+        <div class="header-section">
+            <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem;">Indian
+                Geography Challenge 🇮🇳</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Click on a state to reveal
+                a question. Can you name them all?</p>
+        </div>
+
+        <div class="map-container">
+            <div id="india-map-container">
+                <!-- SVG injected via JS -->
+                <p style="text-align:center; padding: 2rem;">Loading Map...</p>
+            </div>
+
+            <!-- Question Overlay -->
+            <div id="questionOverlay" class="question-overlay">
+                <div class="map-question">
+                    <h3 id="questionText">What is the capital of this state?</h3>
+                    <div id="optionsGrid" class="options-grid">
+                        <!-- Options injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-stats">
+            <div class="stat-item">Guesses: <span id="attemptCount">0</span></div>
+            <div class="stat-item">Correct: <span id="correctCount">0</span></div>
+            <div class="stat-item">Incorrect: <span id="wrongCount">0</span></div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="endGameBtn" class="btn primary-btn">End Game</button>
+        </div>
+    </main>
+
+    <!-- Result Modal -->
+    <div id="gameResultModal" class="result-modal hidden">
+        <div class="modal-content">
+            <h2 id="resultTitle">Game Finished!</h2>
+            <div class="result-score">
+                <p>Guesses: <span id="finalGuesses">0</span></p>
+                <p>Correct: <span id="finalCorrect">0</span></p>
+            </div>
+            <p id="resultMessage" class="result-message"></p>
+            <button onclick="closeResultModal()" class="btn primary-btn">Play Again</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with 💝 for the best geographer I know</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/states.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</body>
+
+</html>

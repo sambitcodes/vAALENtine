@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vAALENtine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/games.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">💝 vAALENtine</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="us.html" class="nav-link">Us</a>
+                <a href="memories.html" class="nav-link">Memories</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="trivia.html" class="nav-link">Trivia</a>
+                <a href="states.html" class="nav-link">Map</a>
+                <a href="scramble.html" class="nav-link active">Scramble</a>
+                <a href="escape.html" class="nav-link">Escape Room</a>
+                <a href="finale.html" class="nav-link">Finale</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem;">Word Scramble
+                Challenge</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Unscramble words from your
+                world</p>
+
+            <div class="game-container">
+                <div class="game-stats">
+                    <span>Score: <strong id="gameScore">0</strong></span>
+                    <span>Round: <strong id="gameRound">1</strong></span>
+                </div>
+
+                <div class="scramble-word" id="scrambledWord"></div>
+                <p class="game-hint" id="gameHint"></p>
+
+                <div class="game-input-wrapper">
+                    <input type="text" id="gameInput" class="game-input" placeholder="Type your answer...">
+                    <button id="gameSubmit" class="btn btn-primary">Submit</button>
+                </div>
+
+                <div id="gameFeedback" class="game-feedback"></div>
+
+                <div id="gameComplete" class="game-complete hidden">
+                    <h3>Game Complete! 🎉</h3>
+                    <p id="gameCompleteMessage"></p>
+                    <button id="gameRestart" class="btn btn-primary">Play Again</button>
+                    <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/scramble.js"></script>
+</body>
+
+</html>

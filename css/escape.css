@@ -1,0 +1,206 @@
+/* Escape Room Styles */
+:root {
+    --escape-bg: linear-gradient(135deg, #2c3e50, #4ca1af);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --neon-accent: #00f260;
+    --error-color: #ef4444;
+}
+
+body {
+    background: var(--escape-bg);
+    min-height: 100vh;
+}
+
+.escape-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2rem;
+}
+
+.stage {
+    width: 100%;
+    max-width: 600px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1,
+h2 {
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-escape {
+    background: white;
+    color: #2c3e50;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-escape:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    background: #f8fafc;
+}
+
+/* Level 1: Pattern Grid */
+.pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem auto;
+    max-width: 300px;
+}
+
+.pattern-btn {
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pattern-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.pattern-btn.selected {
+    background: var(--neon-accent);
+    color: #2c3e50;
+    transform: scale(0.95);
+}
+
+/* Level 2 & 3 Inputs */
+input[type="text"] {
+    width: 80%;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+input[type="text"]:focus {
+    border-color: var(--neon-accent);
+    outline: none;
+}
+
+/* Feedback & Hints */
+.feedback-text {
+    margin-top: 1rem;
+    font-weight: bold;
+    min-height: 1.5rem;
+}
+
+.feedback-text.error {
+    color: var(--error-color);
+}
+
+.feedback-text.success {
+    color: var(--neon-accent);
+}
+
+.hint-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.hint-text {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.lock-icon {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.shake {
+    animation: shake 0.3s ease-in-out;
+}

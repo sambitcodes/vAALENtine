@@ -1,0 +1,82 @@
+.mood-selector {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.mood-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.mood-btn {
+    padding: 0.7rem 1.5rem;
+    border: 2px solid var(--border);
+    background: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.mood-btn:hover,
+.mood-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.playlist-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.playlist-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.playlist-card:hover {
+    transform: translateY(-5px);
+}
+
+.playlist-card h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.mood-tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--primary-light);
+    color: white;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.play-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.play-btn:hover {
+    background: #e0a500;
+}
+
+.bg-music-control {
+    text-align: center;
+    margin-top: 2rem;
+}

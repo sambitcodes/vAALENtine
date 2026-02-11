@@ -1,0 +1,129 @@
+/* Photo Stack Container */
+.photo-stack-container {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto 3rem;
+    perspective: 1000px;
+}
+
+.stacked-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 5px solid white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background: #eee;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateZ(-200px) rotateY(0deg);
+}
+
+.stacked-photo.active {
+    opacity: 1;
+    z-index: 10;
+    transform: translateZ(0) rotateY(0deg);
+}
+
+.stacked-photo.prev {
+    opacity: 0.5;
+    z-index: 5;
+    transform: translateX(-60px) translateZ(-100px) rotateY(-15deg);
+}
+
+.stacked-photo.next {
+    opacity: 0.5;
+    z-index: 5;
+    transform: translateX(60px) translateZ(-100px) rotateY(15deg);
+}
+
+/* Layered Look (Back of the stack) */
+.stacked-photo.layer-1 {
+    transform: translateY(-10px) translateZ(-20px) rotate(2deg);
+    opacity: 0.8;
+    z-index: 9;
+}
+
+.stacked-photo.layer-2 {
+    transform: translateY(-20px) translateZ(-40px) rotate(-3deg);
+    opacity: 0.6;
+    z-index: 8;
+}
+
+.stacked-photo.layer-3 {
+    transform: translateY(-30px) translateZ(-60px) rotate(4deg);
+    opacity: 0.4;
+    z-index: 7;
+}
+
+/* Entrance Animation */
+@keyframes photoEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Hover effect on stack (removed empty for now) */
+.photo-stack-container:hover .stacked-photo {
+    transform: scale(1.02);
+}
+
+/* Floating Animation for Hey AALEN card */
+.personal-note-section {
+    animation: floatingCard 4s ease-in-out infinite;
+    position: relative;
+    z-index: 20;
+}
+
+@keyframes floatingCard {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Floating Valentine Elements */
+.floating-vibe {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.6;
+    animation: driftUp linear forwards;
+    user-select: none;
+}
+
+@keyframes driftUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-110vh) translateX(var(--drift)) rotate(360deg);
+        opacity: 0;
+    }
+}

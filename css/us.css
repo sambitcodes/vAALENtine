@@ -1,0 +1,360 @@
+/* Profile Cards Styling - Us Page */
+.section {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--bg-primary);
+    /* Dim the background */
+}
+
+.profiles-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 20px;
+    flex-wrap: wrap;
+    perspective: 1000px;
+}
+
+.profile-card {
+    background: rgba(0, 0, 0, 0.75);
+    /* Dark background for high contrast */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    padding: 40px;
+    width: 380px;
+    min-height: 550px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.6s;
+    overflow: hidden;
+    animation: float 6s infinite ease-in-out;
+}
+
+.profile-card.aalen {
+    box-shadow: 0 15px 45px rgba(255, 51, 102, 0.4), inset 0 0 20px rgba(255, 51, 102, 0.1);
+    animation-delay: 0s;
+}
+
+.profile-card.sambit {
+    box-shadow: 0 15px 45px rgba(0, 204, 255, 0.4), inset 0 0 20px rgba(0, 204, 255, 0.1);
+    border-color: rgba(0, 204, 255, 0.3);
+    animation-delay: -3s;
+}
+
+.profile-card:hover {
+    transform: translateY(-15px) rotateY(10deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.profile-pic-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    padding: 5px;
+    background: linear-gradient(45deg, var(--primary), #ff00cc);
+    box-shadow: 0 0 25px rgba(255, 51, 102, 0.6);
+    position: relative;
+}
+
+.sambit .profile-pic-container {
+    background: linear-gradient(45deg, #00ccff, #0066ff);
+    box-shadow: 0 0 25px rgba(0, 204, 255, 0.6);
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #000;
+}
+
+.card-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.card-alias {
+    font-size: 1.3rem;
+    color: #ff3366;
+    /* Sharper pink */
+    font-weight: 800;
+    margin-bottom: 25px;
+    font-style: italic;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
+}
+
+.sambit .card-alias {
+    color: #00eeff;
+    /* Brighter blue */
+    text-shadow: 0 0 10px rgba(0, 204, 255, 0.3);
+}
+
+.card-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.detail-label {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: #00eeff;
+    /* Cyan labels by default */
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.aalen .detail-label {
+    color: #ff3366;
+    /* Pink labels for Aalen */
+}
+
+.detail-value {
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.card-footer {
+    margin-top: auto;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.loves-section {
+    padding: 10px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.loves-value {
+    color: #ff3366;
+    display: block;
+    margin-top: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    background: rgba(255, 51, 102, 0.15);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.sambit .loves-value {
+    color: #00ccff;
+    background: rgba(0, 204, 255, 0.15);
+}
+
+/* Choice Buttons Container */
+.choice-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+.btn-choice {
+    padding: 15px 40px;
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+}
+
+.btn-choice.match {
+    background: linear-gradient(135deg, #00ff88, #00ccff);
+    color: #1a1a1a;
+    box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+}
+
+.btn-choice.unmatch {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ff3366;
+    border: 1px solid rgba(255, 51, 102, 0.3);
+    box-shadow: 0 10px 25px rgba(255, 51, 102, 0.1);
+}
+
+.btn-choice:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.btn-choice.match:hover {
+    box-shadow: 0 15px 35px rgba(0, 255, 136, 0.5);
+}
+
+.btn-choice.unmatch:hover {
+    background: #ff3366;
+    color: #fff;
+    box-shadow: 0 15px 35px rgba(255, 51, 102, 0.4);
+}
+
+/* Blip Overlay & Countdown */
+.blip-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.countdown-container {
+    text-align: center;
+}
+
+#countdownDisplay {
+    font-size: 8rem;
+    font-weight: 900;
+    color: #fff;
+    display: block;
+    animation: pulseCount 1s infinite;
+}
+
+.blip-message {
+    font-size: 1.5rem;
+    color: #ff3366;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-top: 20px;
+}
+
+.final-message {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #eee;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    max-width: 800px;
+    animation: fadeIn 2s forwards;
+}
+
+/* Disintegration Effect (The Blip) */
+.disintegrating {
+    animation: disintegrate 10s forwards ease-in;
+    pointer-events: none;
+}
+
+@keyframes disintegrate {
+    0% {
+        opacity: 1;
+        filter: blur(0) contrast(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        filter: blur(2px) contrast(1.2) sepia(0.5);
+        transform: scale(0.98) skew(1deg);
+    }
+
+    100% {
+        opacity: 0;
+        filter: blur(20px) contrast(0) brightness(2);
+        transform: translateY(-50px) scale(1.2) rotate(5deg);
+    }
+}
+
+@keyframes pulseCount {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hidden Utility */
+.hidden {
+    display: none !important;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    33% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+
+    66% {
+        transform: translateY(5px) rotate(-1deg);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 850px) {
+    .profiles-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-card {
+        width: 100%;
+        max-width: 380px;
+        min-height: auto;
+    }
+
+    .choice-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}

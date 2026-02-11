@@ -1,0 +1,602 @@
+[
+    {
+        "id": 1,
+        "episode": 1,
+        "question": "In Episode 1, what movie are the five friends watching in Taek's bedroom at the start?",
+        "options": [
+            "A Better Tomorrow II",
+            "Die Hard",
+            "Forrest Gump",
+            "Titanic"
+        ],
+        "answer": "A Better Tomorrow II"
+    },
+    {
+        "id": 2,
+        "episode": 1,
+        "question": "In Episode 1, after learning Madagascar won't participate, which country's delegation is Deok-sun reassigned to for the Olympics ceremony?",
+        "options": [
+            "Uganda",
+            "Kenya",
+            "Nigeria",
+            "Ghana"
+        ],
+        "answer": "Uganda"
+    },
+    {
+        "id": 3,
+        "episode": 1,
+        "question": "In Episode 1, what emergency forces the Sung family to flee their home at night?",
+        "options": [
+            "Carbon monoxide poisoning",
+            "A kitchen fire",
+            "A burglary",
+            "A flooded basement"
+        ],
+        "answer": "Carbon monoxide poisoning"
+    },
+    {
+        "id": 4,
+        "episode": 2,
+        "question": "In Episode 2, who visits the Sung family and tells stories about raising her children?",
+        "options": [
+            "Dong-il's mother (Grandma)",
+            "Mi-ran's sister",
+            "Sun-young's mother-in-law",
+            "Moo-sung's aunt"
+        ],
+        "answer": "Dong-il's mother (Grandma)"
+    },
+    {
+        "id": 5,
+        "episode": 2,
+        "question": "In Episode 2, what nicknames do Deok-sun's two classmates go by at Ssangmun Girls' High?",
+        "options": [
+            "Joey Wong and Maggie Cheung",
+            "Romy and Michele",
+            "Thelma and Louise",
+            "Bonnie and Clyde"
+        ],
+        "answer": "Joey Wong and Maggie Cheung"
+    },
+    {
+        "id": 6,
+        "episode": 2,
+        "question": "In Episode 2, when Dong-il asks Taek when he misses his mother the most, what does Taek answer?",
+        "options": [
+            "Every day",
+            "Only on birthdays",
+            "Only during holidays",
+            "When he loses a match"
+        ],
+        "answer": "Every day"
+    },
+    {
+        "id": 7,
+        "episode": 3,
+        "question": "In Episode 3, what important item does Deok-sun accidentally leave behind on the train during the school trip?",
+        "options": [
+            "Her parents' expensive camera",
+            "Her passport",
+            "Her diary",
+            "Her cassette player"
+        ],
+        "answer": "Her parents' expensive camera"
+    },
+    {
+        "id": 8,
+        "episode": 3,
+        "question": "In Episode 3, what happens when Joey and Maggie try to venture into the boys' pavilion during the trip?",
+        "options": [
+            "They are injured after falling from a high ledge",
+            "They win the talent contest",
+            "They get expelled",
+            "They get lost overnight"
+        ],
+        "answer": "They are injured after falling from a high ledge"
+    },
+    {
+        "id": 9,
+        "episode": 3,
+        "question": "In Episode 3, how did the Kim family become wealthy overnight a few years earlier?",
+        "options": [
+            "They won a jackpot from an Olympic-themed lottery ticket",
+            "They inherited a house",
+            "They sold a family business",
+            "They won a national quiz contest"
+        ],
+        "answer": "They won a jackpot from an Olympic-themed lottery ticket"
+    },
+    {
+        "id": 10,
+        "episode": 4,
+        "question": "In Episode 4, what embarrassing thing happens on the crowded bus involving Deok-sun and Jung-hwan?",
+        "options": [
+            "Deok-sun rips open Jung-hwan's shirt",
+            "Deok-sun spills soup on him",
+            "Jung-hwan drops his wallet",
+            "They fall asleep and miss their stop"
+        ],
+        "answer": "Deok-sun rips open Jung-hwan's shirt"
+    },
+    {
+        "id": 11,
+        "episode": 4,
+        "question": "In Episode 4, why is Taek especially shaken emotionally?",
+        "options": [
+            "He suffers his first professional match loss",
+            "He loses his passport",
+            "He gets suspended from school",
+            "He fails an entrance exam"
+        ],
+        "answer": "He suffers his first professional match loss"
+    },
+    {
+        "id": 12,
+        "episode": 4,
+        "question": "In Episode 4, what do the friends teach Taek as a way to let his feelings out?",
+        "options": [
+            "How to swear",
+            "How to meditate",
+            "How to sing karaoke",
+            "How to write a diary"
+        ],
+        "answer": "How to swear"
+    },
+    {
+        "id": 13,
+        "episode": 5,
+        "question": "In Episode 5, what major trouble does Bo-ra get into related to the student protests?",
+        "options": [
+            "She gets arrested",
+            "She wins a scholarship",
+            "She is elected class president",
+            "She moves abroad"
+        ],
+        "answer": "She gets arrested"
+    },
+    {
+        "id": 14,
+        "episode": 5,
+        "question": "In Episode 5, what does Sun-young buy for her children instead of expensive ingredients for special food?",
+        "options": [
+            "Banana milk",
+            "Chocolate cake",
+            "Fried chicken",
+            "Ice cream bars"
+        ],
+        "answer": "Banana milk"
+    },
+    {
+        "id": 15,
+        "episode": 5,
+        "question": "In Episode 5, how does Jung-hwan discover that Deok-sun has a crush on Sun-woo?",
+        "options": [
+            "By finding dictionary notes in Sun-woo's room",
+            "Through a confession at school",
+            "From a fortune teller",
+            "From a TV interview"
+        ],
+        "answer": "By finding dictionary notes in Sun-woo's room"
+    },
+    {
+        "id": 16,
+        "episode": 6,
+        "question": "In Episode 6, which radio program features letters and plays a major role in the episode's events?",
+        "options": [
+            "Starry Nights",
+            "Morning Melody",
+            "Late Night Seoul",
+            "Campus Radio Live"
+        ],
+        "answer": "Starry Nights"
+    },
+    {
+        "id": 17,
+        "episode": 6,
+        "question": "In Episode 6, on the first day of snow, whom does Sun-woo meet instead of confessing to Deok-sun?",
+        "options": [
+            "Bo-ra",
+            "Joey",
+            "Maggie",
+            "Song-hee"
+        ],
+        "answer": "Bo-ra"
+    },
+    {
+        "id": 18,
+        "episode": 6,
+        "question": "In Episode 6, after the radio letter incident, what does Taek ask Deok-sun over the phone?",
+        "options": [
+            "If she wants to see a movie with him",
+            "If she will tutor him",
+            "If she will move houses",
+            "If she will join a protest"
+        ],
+        "answer": "If she wants to see a movie with him"
+    },
+    {
+        "id": 19,
+        "episode": 7,
+        "question": "In Episode 7, who initiates the kids' Secret Santa game because he wants a specific LP?",
+        "options": [
+            "Jung-bong",
+            "Dong-ryong",
+            "Sun-woo",
+            "Taek"
+        ],
+        "answer": "Jung-bong"
+    },
+    {
+        "id": 20,
+        "episode": 7,
+        "question": "In Episode 7, what does Jin-joo actually mean by wanting a 'snowman'?",
+        "options": [
+            "A waffle cone with two scoops of vanilla ice cream",
+            "A real snow sculpture in the yard",
+            "A snow globe",
+            "A knitted snowman doll"
+        ],
+        "answer": "A waffle cone with two scoops of vanilla ice cream"
+    },
+    {
+        "id": 21,
+        "episode": 7,
+        "question": "In Episode 7, what heartfelt message does Taek hear from his father on an unaired portion of an interview tape?",
+        "options": [
+            "'I love you'",
+            "'I'm sorry'",
+            "'Good luck on your exam'",
+            "'Don't be late'"
+        ],
+        "answer": "'I love you'"
+    },
+    {
+        "id": 22,
+        "episode": 8,
+        "question": "In Episode 8, what sparks conflict at the Sung household when Il-hwa discovers it is missing?",
+        "options": [
+            "A large sum of money from her wallet",
+            "Her wedding ring",
+            "A bag of rice",
+            "A necklace"
+        ],
+        "answer": "A large sum of money from her wallet"
+    },
+    {
+        "id": 23,
+        "episode": 8,
+        "question": "In Episode 8, why do Jung-bong's parents take him to the hospital?",
+        "options": [
+            "His pacemaker battery needs to be replaced",
+            "He breaks an arm at school",
+            "He has food poisoning",
+            "He needs glasses urgently"
+        ],
+        "answer": "His pacemaker battery needs to be replaced"
+    },
+    {
+        "id": 24,
+        "episode": 8,
+        "question": "In Episode 8, why do Deok-sun and her friends end up arrested?",
+        "options": [
+            "A fight breaks out when Deok-sun tries to protect No-eul",
+            "They skip school and get caught",
+            "They shoplift at a store",
+            "They vandalize a classroom"
+        ],
+        "answer": "A fight breaks out when Deok-sun tries to protect No-eul"
+    },
+    {
+        "id": 25,
+        "episode": 9,
+        "question": "In Episode 9, what event does Starry Night organize that Deok-sun is excited about?",
+        "options": [
+            "A public jam session on January 11",
+            "A televised spelling bee",
+            "A winter sports festival",
+            "A school debate tournament"
+        ],
+        "answer": "A public jam session on January 11"
+    },
+    {
+        "id": 26,
+        "episode": 9,
+        "question": "In Episode 9, how much does Sun-young need to pay to avoid losing her house according to the court letter?",
+        "options": [
+            "10 million won",
+            "1 million won",
+            "100 million won",
+            "50 thousand won"
+        ],
+        "answer": "10 million won"
+    },
+    {
+        "id": 27,
+        "episode": 9,
+        "question": "In Episode 9, where does Deok-sun travel to assist Taek during his tournament?",
+        "options": [
+            "Shanghai",
+            "Tokyo",
+            "Hong Kong",
+            "Beijing"
+        ],
+        "answer": "Shanghai"
+    },
+    {
+        "id": 28,
+        "episode": 10,
+        "question": "In Episode 10, which arcade game obsession leads Jung-bong to crash into Maggie and fall for her?",
+        "options": [
+            "Bubble Bobble",
+            "Tetris",
+            "Street Fighter",
+            "Pac-Man"
+        ],
+        "answer": "Bubble Bobble"
+    },
+    {
+        "id": 29,
+        "episode": 10,
+        "question": "In Episode 10, what does Taek do when a volleyball comes flying toward Deok-sun on the beach?",
+        "options": [
+            "He protects her from the impact",
+            "He dives into the water",
+            "He runs away laughing",
+            "He throws the ball back immediately"
+        ],
+        "answer": "He protects her from the impact"
+    },
+    {
+        "id": 30,
+        "episode": 10,
+        "question": "In Episode 10, what does Dong-ryong hope to get for his birthday that his parents fail to provide?",
+        "options": [
+            "Seaweed soup made by his mother",
+            "A new bicycle",
+            "A cassette player",
+            "A pair of sneakers"
+        ],
+        "answer": "Seaweed soup made by his mother"
+    },
+    {
+        "id": 31,
+        "episode": 11,
+        "question": "In Episode 11, what new name does the fortune teller suggest Deok-sun should use to improve her chances of getting into a Seoul university?",
+        "options": [
+            "Soo-yeon",
+            "Bo-ra",
+            "Mi-ok",
+            "Ja-hyun"
+        ],
+        "answer": "Soo-yeon"
+    },
+    {
+        "id": 32,
+        "episode": 11,
+        "question": "In Episode 11, where does Sun-young secretly work in the evenings to make ends meet?",
+        "options": [
+            "A jjimjilbang (as a cleaner)",
+            "A movie theater",
+            "A bakery",
+            "A clothing shop"
+        ],
+        "answer": "A jjimjilbang (as a cleaner)"
+    },
+    {
+        "id": 33,
+        "episode": 11,
+        "question": "In Episode 11, what is Dong-il revealed to be at his bank when he outplays Mr. Ryu at Go-Stop?",
+        "options": [
+            "An anti-fraud inspector",
+            "A taxi driver",
+            "A history teacher",
+            "A prosecutor"
+        ],
+        "answer": "An anti-fraud inspector"
+    },
+    {
+        "id": 34,
+        "episode": 12,
+        "question": "In Episode 12, what career-related reason does Bo-ra give for studying to become an accountant?",
+        "options": [
+            "Her protest involvement left her with a criminal record, making teaching difficult",
+            "She wants to join Taek's management team",
+            "She failed math and must switch majors",
+            "Her parents force her to change fields"
+        ],
+        "answer": "Her protest involvement left her with a criminal record, making teaching difficult"
+    },
+    {
+        "id": 35,
+        "episode": 12,
+        "question": "In Episode 12, how does Deok-sun fend off a man who exposes himself to her near the restaurant?",
+        "options": [
+            "She insults him by saying his 'sausage' is too small, then breaks down crying",
+            "She calls the police immediately and films him",
+            "She throws water on him and runs",
+            "She pretends to know him and shouts his name"
+        ],
+        "answer": "She insults him by saying his 'sausage' is too small, then breaks down crying"
+    },
+    {
+        "id": 36,
+        "episode": 12,
+        "question": "In Episode 12, what bad news does Jung-bong learn about Maggie after finally receiving a letter?",
+        "options": [
+            "She was in a severe car accident",
+            "She moved to another country permanently",
+            "She got married",
+            "She failed her exams and quit school"
+        ],
+        "answer": "She was in a severe car accident"
+    },
+    {
+        "id": 37,
+        "episode": 13,
+        "question": "In Episode 13, what happens when the neighborhood is threatened by a thief and people chase him down?",
+        "options": [
+            "They discover it was someone they know",
+            "The thief escapes overseas",
+            "Taek catches him during a match",
+            "The police arrest the wrong person"
+        ],
+        "answer": "They discover it was someone they know"
+    },
+    {
+        "id": 38,
+        "episode": 13,
+        "question": "In Episode 13, what does the doctor find when Il-hwa fears she has breast cancer?",
+        "options": [
+            "A pocket of water under her breast",
+            "A broken rib",
+            "A severe infection",
+            "Nothing at all"
+        ],
+        "answer": "A pocket of water under her breast"
+    },
+    {
+        "id": 39,
+        "episode": 13,
+        "question": "In Episode 13, what special item does Jung-bong bring to Maggie at the hospital inside his letter?",
+        "options": [
+            "The 'Space Adventures' Blue Marble key card",
+            "A gold necklace",
+            "A plane ticket",
+            "A signed LP"
+        ],
+        "answer": "The 'Space Adventures' Blue Marble key card"
+    },
+    {
+        "id": 40,
+        "episode": 14,
+        "question": "In Episode 14, what long-standing burden does Dong-il announce has finally been resolved?",
+        "options": [
+            "His debt has been paid off",
+            "His shop is closing",
+            "He is moving abroad",
+            "He won a singing contest"
+        ],
+        "answer": "His debt has been paid off"
+    },
+    {
+        "id": 41,
+        "episode": 14,
+        "question": "In Episode 14, what medical emergency happens to the new student Song-hee at school?",
+        "options": [
+            "She has an epileptic seizure in class",
+            "She faints from hunger",
+            "She breaks her leg during PE",
+            "She has an asthma attack"
+        ],
+        "answer": "She has an epileptic seizure in class"
+    },
+    {
+        "id": 42,
+        "episode": 14,
+        "question": "In Episode 14, why do Jung-bong and Maggie initially fail to meet at the restaurant for their date?",
+        "options": [
+            "They sit on different floors without realizing it",
+            "They go on different days",
+            "A power outage closes the restaurant",
+            "Maggie cancels and doesn't come"
+        ],
+        "answer": "They sit on different floors without realizing it"
+    },
+    {
+        "id": 43,
+        "episode": 15,
+        "question": "In Episode 15, what activity does Sun-woo do with Moo-sung that surprises him because of Moo-sung's skill?",
+        "options": [
+            "Playing catch (throwing a ball)",
+            "Playing baduk",
+            "Cooking noodles",
+            "Riding a motorcycle"
+        ],
+        "answer": "Playing catch (throwing a ball)"
+    },
+    {
+        "id": 44,
+        "episode": 15,
+        "question": "In Episode 15, what happens to Sung-kyun when he decides to start exercising?",
+        "options": [
+            "He breaks his back",
+            "He wins a marathon",
+            "He becomes a dance champion",
+            "He sprains a wrist lightly"
+        ],
+        "answer": "He breaks his back"
+    },
+    {
+        "id": 45,
+        "episode": 15,
+        "question": "In Episode 15, how does Dong-ryong's mother respond when she comes to see him after he is arrested with Michol?",
+        "options": [
+            "She hugs him instead of scolding him",
+            "She refuses to speak to him",
+            "She demands he move out",
+            "She calls the principal to punish him"
+        ],
+        "answer": "She hugs him instead of scolding him"
+    },
+    {
+        "id": 46,
+        "episode": 16,
+        "question": "In Episode 16, what is the grand prize of the national dance-off competition Dong-ryong enters?",
+        "options": [
+            "A brand new car",
+            "A college scholarship",
+            "A luxury apartment",
+            "A trip to the United States"
+        ],
+        "answer": "A brand new car"
+    },
+    {
+        "id": 47,
+        "episode": 16,
+        "question": "In Episode 16, what goes wrong with Mi-ran's singing competition audition tape?",
+        "options": [
+            "Her song cassette is swapped with an eggs salesman advertisement tape",
+            "She forgets the lyrics entirely",
+            "She loses her voice the day of auditions",
+            "The judges never receive her tape"
+        ],
+        "answer": "Her song cassette is swapped with an eggs salesman advertisement tape"
+    },
+    {
+        "id": 48,
+        "episode": 16,
+        "question": "In Episode 16, who from the neighborhood advances to the next round of the KBS National Singing Competition auditions?",
+        "options": [
+            "No-eul",
+            "Dong-ryong",
+            "Mi-ran",
+            "Sung-kyun"
+        ],
+        "answer": "No-eul"
+    },
+    {
+        "id": 49,
+        "episode": 17,
+        "question": "In Episode 17 (time jump to exam results), what does Jung-hwan successfully enroll in?",
+        "options": [
+            "The Air Force Academy",
+            "Yonsei University Medical School",
+            "A community college in a smaller town",
+            "A songwriting school"
+        ],
+        "answer": "The Air Force Academy"
+    },
+    {
+        "id": 50,
+        "episode": 18,
+        "question": "In Episode 18, what job does Deok-sun have in the time-jump setting?",
+        "options": [
+            "Flight attendant for Korean Air",
+            "Baduk association director",
+            "High school teacher",
+            "Radio program producer"
+        ],
+        "answer": "Flight attendant for Korean Air"
+    }
+]

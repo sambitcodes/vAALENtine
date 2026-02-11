@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vAALENtine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/music.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">💝 vAALENtine</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="us.html" class="nav-link">Us</a>
+                <a href="memories.html" class="nav-link">Memories</a>
+                <a href="music.html" class="nav-link active">Music</a>
+                <a href="trivia.html" class="nav-link">Trivia</a>
+                <a href="states.html" class="nav-link">Map</a>
+                <a href="scramble.html" class="nav-link">Scramble</a>
+                <a href="escape.html" class="nav-link">Escape Room</a>
+                <a href="finale.html" class="nav-link">Finale</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem;">Mini Playlist
+                for You</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Warning: Listening may
+                cause sudden smiling.</p>
+
+            <div class="mood-selector">
+                <span>What mood are you in?</span>
+                <div class="mood-buttons">
+                    <button class="mood-btn active" data-mood="all">All</button>
+                    <button class="mood-btn" data-mood="happy">Happy</button>
+                    <button class="mood-btn" data-mood="chill">Chill</button>
+                    <button class="mood-btn" data-mood="nostalgic">Nostalgic</button>
+                </div>
+            </div>
+
+            <div id="playlistContainer" class="playlist-container"></div>
+
+            <div class="bg-music-control">
+                <audio id="bgMusic" loop>
+                    <source src="assets/background-music.mp3" type="audio/mpeg">
+                </audio>
+                <button id="musicToggle" class="btn btn-secondary">
+                    <span id="musicIcon">🔇</span> Background Music
+                </button>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/music.js"></script>
+</body>
+
+</html>

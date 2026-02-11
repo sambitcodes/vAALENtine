@@ -1,0 +1,602 @@
+[
+    {
+        "id": 1,
+        "episode": null,
+        "question": "Who narrates the drama's story in 'When Life Gives You Tangerines'? [page:1]",
+        "options": [
+            "Ae-sun",
+            "Gwan-sik",
+            "Their daughter Yang Geum-myeong",
+            "Bu Sang-gil"
+        ],
+        "answer": "Their daughter Yang Geum-myeong"
+    },
+    {
+        "id": 2,
+        "episode": null,
+        "question": "Where and when was Ae-sun born (as described in the synopsis)? [page:1]",
+        "options": [
+            "Busan, 1948",
+            "Jeju, 1951",
+            "Seoul, 1951",
+            "Jeju, 1961"
+        ],
+        "answer": "Jeju, 1951"
+    },
+    {
+        "id": 3,
+        "episode": null,
+        "question": "What is Ae-sun's dream according to the synopsis? [page:1]",
+        "options": [
+            "To become a doctor",
+            "To become a poet",
+            "To become a baduk champion",
+            "To become a village chief"
+        ],
+        "answer": "To become a poet"
+    },
+    {
+        "id": 4,
+        "episode": null,
+        "question": "How is Gwan-sik described in relation to Ae-sun in the synopsis? [page:1]",
+        "options": [
+            "He competes with her for votes",
+            "He cherishes and loves her",
+            "He is her strict teacher",
+            "He is her literary rival"
+        ],
+        "answer": "He cherishes and loves her"
+    },
+    {
+        "id": 5,
+        "episode": null,
+        "question": "Which two places does the series explicitly split its story between (per the episodes overview)? [page:1]",
+        "options": [
+            "Incheon and Daegu",
+            "Dodong-ri in Jeju Island and Seoul",
+            "Jeonju and Daejeon",
+            "Gwangju and Ulsan"
+        ],
+        "answer": "Dodong-ri in Jeju Island and Seoul"
+    },
+    {
+        "id": 6,
+        "episode": null,
+        "question": "What kind of worker is Ae-sun's mother Jeon Gwang-rye described as? [page:1]",
+        "options": [
+            "A bank clerk",
+            "A haenyeo (female diver)",
+            "A restaurant owner",
+            "A shaman"
+        ],
+        "answer": "A haenyeo (female diver)"
+    },
+    {
+        "id": 7,
+        "episode": null,
+        "question": "What is Gwan-sik's grandmother Park Mak-cheon described as? [page:1]",
+        "options": [
+            "A shaman",
+            "A novelist",
+            "A nurse",
+            "A judge"
+        ],
+        "answer": "A shaman"
+    },
+    {
+        "id": 8,
+        "episode": null,
+        "question": "Which character is listed as a rich fishing captain? [page:1]",
+        "options": [
+            "Bu Sang-gil",
+            "Oh Han-moo",
+            "Yang Sam-bo",
+            "Park Chung-seop"
+        ],
+        "answer": "Bu Sang-gil"
+    },
+    {
+        "id": 9,
+        "episode": null,
+        "question": "Which of the following names is Ae-sun and Gwan-sik's son (as listed in the cast/characters)? [page:1]",
+        "options": [
+            "Yang Eun-myeong",
+            "Park Yeong-bum",
+            "Bu Seong-yi",
+            "Oh Han-moo"
+        ],
+        "answer": "Yang Eun-myeong"
+    },
+    {
+        "id": 10,
+        "episode": null,
+        "question": "What narrative style is explicitly described for the show in the episodes section? [page:1]",
+        "options": [
+            "A single continuous timeline with no jumps",
+            "A non-linear narrative across decades",
+            "A mockumentary format",
+            "An anthology with unrelated stories"
+        ],
+        "answer": "A non-linear narrative across decades"
+    },
+    {
+        "id": 11,
+        "episode": 1,
+        "question": "Episode 1 says Ae-sun's big dreams are disrupted by what kind of event? [page:2]",
+        "options": [
+            "An unexpected tragedy",
+            "A scholarship award",
+            "A surprise wedding",
+            "A sports championship"
+        ],
+        "answer": "An unexpected tragedy"
+    },
+    {
+        "id": 12,
+        "episode": 1,
+        "question": "In an Episode 1 recap, where is Ae-sun sent back to and made to do menial chores? [web:122]",
+        "options": [
+            "Her teacher's home",
+            "Her uncle's house",
+            "Gwan-sik's house",
+            "A boarding school dorm"
+        ],
+        "answer": "Her uncle's house"
+    },
+    {
+        "id": 13,
+        "episode": 1,
+        "question": "In the Episode 1 recap, what promise does Ae-sun make in her poem to help her mother someday? [web:122]",
+        "options": [
+            "To buy her a house on the mainland",
+            "To give her 100 won a day",
+            "To become a famous singer",
+            "To pay for a fishing boat"
+        ],
+        "answer": "To give her 100 won a day"
+    },
+    {
+        "id": 14,
+        "episode": 1,
+        "question": "In the Episode 1 recap, what does Ae-sun throw a tantrum about after being treated unfairly at school? [web:122]",
+        "options": [
+            "Being denied class president despite winning",
+            "Being expelled for fighting",
+            "Failing an exam",
+            "Being forced to quit the film club"
+        ],
+        "answer": "Being denied class president despite winning"
+    },
+    {
+        "id": 15,
+        "episode": 1,
+        "question": "According to the Episode 1 recap, what does Ae-sun's mother do at the school to change how Ae-sun is treated? [web:122]",
+        "options": [
+            "She transfers Ae-sun immediately",
+            "She bribes the teacher",
+            "She reports the principal to police",
+            "She starts teaching the class herself"
+        ],
+        "answer": "She bribes the teacher"
+    },
+    {
+        "id": 16,
+        "episode": 1,
+        "question": "In the Episode 1 recap, what food does Ae-sun's mother prepare for her shortly before she dies? [web:122]",
+        "options": [
+            "Abalone",
+            "Seaweed soup",
+            "Pork cutlet",
+            "Red bean porridge"
+        ],
+        "answer": "Abalone"
+    },
+    {
+        "id": 17,
+        "episode": 1,
+        "question": "In the Episode 1 recap, who stays by Ae-sun's side after her mother dies? [web:122]",
+        "options": [
+            "Bu Sang-gil",
+            "Gwan-sik",
+            "Ae-sun's uncle",
+            "A school teacher"
+        ],
+        "answer": "Gwan-sik"
+    },
+    {
+        "id": 18,
+        "episode": 1,
+        "question": "In the Episode 1 recap, what does Ae-sun sit at the marketplace selling (with Gwan-sik doing much of the selling)? [web:122]",
+        "options": [
+            "Fish",
+            "Cabbages",
+            "Tangerines",
+            "Rice cakes"
+        ],
+        "answer": "Cabbages"
+    },
+    {
+        "id": 19,
+        "episode": 1,
+        "question": "In the Episode 1 recap, who arrives and chases Ae-sun away to prevent her marrying Gwan-sik? [web:122]",
+        "options": [
+            "Gwan-sik's grandmother",
+            "Ae-sun's paternal grandmother",
+            "Ae-sun's aunt",
+            "A village chief"
+        ],
+        "answer": "Gwan-sik's grandmother"
+    },
+    {
+        "id": 20,
+        "episode": 2,
+        "question": "Episode 2 describes Ae-sun and Gwan-sik taking what kind of step together as their relationship grows? [page:2]",
+        "options": [
+            "They make their first bold move together",
+            "They start a business together",
+            "They move to Japan together",
+            "They run for office together"
+        ],
+        "answer": "They make their first bold move together"
+    },
+    {
+        "id": 21,
+        "episode": 1,
+        "question": "In a recap of Episodes 1–4, where does Gwan-sik grab Ae-sun's hand before their first awkward kiss? [web:123]",
+        "options": [
+            "At the harbor",
+            "In a field while walking home",
+            "On a bus to Seoul",
+            "At a school assembly"
+        ],
+        "answer": "In a field while walking home"
+    },
+    {
+        "id": 22,
+        "episode": 1,
+        "question": "In the Episodes 1–4 recap, how is the first kiss between Ae-sun and Gwan-sik described? [web:123]",
+        "options": [
+            "A rehearsed performance",
+            "Awkward and tense",
+            "Interrupted by a crowd",
+            "A prank by classmates"
+        ],
+        "answer": "Awkward and tense"
+    },
+    {
+        "id": 23,
+        "episode": 1,
+        "question": "In the Episodes 1–4 recap, what does Ae-sun say even after the hand-holding and kiss? [web:123]",
+        "options": [
+            "She will marry him immediately",
+            "She won't marry him",
+            "She will move to Japan",
+            "She will become a diver like her mother"
+        ],
+        "answer": "She won't marry him"
+    },
+    {
+        "id": 24,
+        "episode": 1,
+        "question": "In the Episodes 1–4 recap, what is emphasized about the 'rich' man Ae-sun meets from the city? [web:123]",
+        "options": [
+            "He wants her to raise his kids and comes off abusive",
+            "He is a famous poet",
+            "He is Gwan-sik's cousin",
+            "He offers her a film scholarship"
+        ],
+        "answer": "He wants her to raise his kids and comes off abusive"
+    },
+    {
+        "id": 25,
+        "episode": 3,
+        "question": "Episode 3 mentions Ae-sun and Gwan-sik return to Jeju after what kind of incident? [page:2]",
+        "options": [
+            "A dramatic rescue",
+            "A lottery win",
+            "A graduation ceremony",
+            "A courtroom verdict"
+        ],
+        "answer": "A dramatic rescue"
+    },
+    {
+        "id": 26,
+        "episode": 3,
+        "question": "According to Episode 3's description, what emotional outcome follows Ae-sun resigning herself to a sad fate? [page:2]",
+        "options": [
+            "Gwan-sik is devastated",
+            "Gwan-sik is promoted",
+            "Ae-sun becomes class president",
+            "They celebrate a festival win"
+        ],
+        "answer": "Gwan-sik is devastated"
+    },
+    {
+        "id": 27,
+        "episode": 4,
+        "question": "Episode 4 describes a joyful phase beginning as Ae-sun and Gwan-sik become what? [page:2]",
+        "options": [
+            "Newlyweds",
+            "Business partners",
+            "Political rivals",
+            "Film students"
+        ],
+        "answer": "Newlyweds"
+    },
+    {
+        "id": 28,
+        "episode": 4,
+        "question": "What specific living situation is said to test the newlyweds' happiness in Episode 4? [page:2]",
+        "options": [
+            "Living with Ae-sun's aunt",
+            "Living with Gwan-sik's family",
+            "Living in a Seoul dormitory",
+            "Living on a fishing boat"
+        ],
+        "answer": "Living with Gwan-sik's family"
+    },
+    {
+        "id": 29,
+        "episode": 5,
+        "question": "In Episode 5, what major setback does Gwan-sik face that worries Ae-sun? [page:2]",
+        "options": [
+            "Unemployment",
+            "Arrest",
+            "A sports injury",
+            "A failed election"
+        ],
+        "answer": "Unemployment"
+    },
+    {
+        "id": 30,
+        "episode": 5,
+        "question": "In Episode 5, what kind of development is said to bring hope after Gwan-sik's setback? [page:2]",
+        "options": [
+            "A sudden opportunity emerges",
+            "A surprise inheritance arrives",
+            "A celebrity endorsement appears",
+            "A foreign scholarship is guaranteed"
+        ],
+        "answer": "A sudden opportunity emerges"
+    },
+    {
+        "id": 31,
+        "episode": 6,
+        "question": "What natural event disrupts Ae-sun and Gwan-sik's lives in Episode 6? [page:2]",
+        "options": [
+            "A sudden summer storm",
+            "A blizzard",
+            "A drought",
+            "An earthquake"
+        ],
+        "answer": "A sudden summer storm"
+    },
+    {
+        "id": 32,
+        "episode": 7,
+        "question": "Episode 7 centers partly on what approaching political event? [page:2]",
+        "options": [
+            "A village chief election",
+            "A presidential election",
+            "A school council vote",
+            "A national referendum"
+        ],
+        "answer": "A village chief election"
+    },
+    {
+        "id": 33,
+        "episode": 7,
+        "question": "Episode 7 says Ae-sun confronts what kind of opponents during the election storyline? [page:2]",
+        "options": [
+            "Corrupt rivals",
+            "Foreign agents",
+            "Her old teachers",
+            "Baduk champions"
+        ],
+        "answer": "Corrupt rivals"
+    },
+    {
+        "id": 34,
+        "episode": 7,
+        "question": "According to Episode 7's description, what dilemma does Geum-myeong face after receiving an unusual request? [page:2]",
+        "options": [
+            "An ethical dilemma",
+            "A medical dilemma",
+            "A legal dilemma",
+            "A travel dilemma"
+        ],
+        "answer": "An ethical dilemma"
+    },
+    {
+        "id": 35,
+        "episode": 7,
+        "question": "An Episode 7 recap describes Ae-sun running against whom in local elections amid corruption and Olympic-related chaos? [web:127]",
+        "options": [
+            "Bu Sang-gil",
+            "Ae-sun's uncle",
+            "A Seoul professor",
+            "Gwan-sik's father"
+        ],
+        "answer": "Bu Sang-gil"
+    },
+    {
+        "id": 36,
+        "episode": 7,
+        "question": "In the Episode 7 recap, what does Ae-sun become after winning the election? [web:127]",
+        "options": [
+            "The first female Chief in the town",
+            "A national assembly member",
+            "A university dean",
+            "A film director"
+        ],
+        "answer": "The first female Chief in the town"
+    },
+    {
+        "id": 37,
+        "episode": 7,
+        "question": "In the Episode 7 recap, what approach does Ae-sun decide NOT to use to gain votes? [web:127]",
+        "options": [
+            "Corrupt methods",
+            "Door-to-door campaigning",
+            "Public debates",
+            "Volunteer mobilization"
+        ],
+        "answer": "Corrupt methods"
+    },
+    {
+        "id": 38,
+        "episode": 8,
+        "question": "What opportunity does Geum-myeong receive in Episode 8? [page:2]",
+        "options": [
+            "A chance to study in Japan",
+            "A job managing a theater",
+            "A baduk sponsorship",
+            "A position as village chief"
+        ],
+        "answer": "A chance to study in Japan"
+    },
+    {
+        "id": 39,
+        "episode": 8,
+        "question": "Episode 8 says Ae-sun and Gwan-sik must make what kind of choice about their family's future? [page:2]",
+        "options": [
+            "A difficult decision",
+            "A purely financial bet",
+            "A legal settlement",
+            "A political endorsement"
+        ],
+        "answer": "A difficult decision"
+    },
+    {
+        "id": 40,
+        "episode": 9,
+        "question": "What living situation is said to test Ae-sun and Gwan-sik in Episode 9? [page:2]",
+        "options": [
+            "Life in a small apartment",
+            "Life in a mountain cabin",
+            "Life on a houseboat",
+            "Life in a school dorm"
+        ],
+        "answer": "Life in a small apartment"
+    },
+    {
+        "id": 41,
+        "episode": 9,
+        "question": "In Episode 9, which child do Ae-sun and Gwan-sik struggle to parent (as named in the episode description)? [page:2]",
+        "options": [
+            "Yang Eun-myeong",
+            "Yang Geum-myeong",
+            "Yang Dong-myeong",
+            "Park Yeong-bum"
+        ],
+        "answer": "Yang Eun-myeong"
+    },
+    {
+        "id": 42,
+        "episode": 9,
+        "question": "Where is Geum-myeong said to be juggling love and life in Episode 9? [page:2]",
+        "options": [
+            "Jeju",
+            "Seoul",
+            "Busan",
+            "Tokyo"
+        ],
+        "answer": "Seoul"
+    },
+    {
+        "id": 43,
+        "episode": 10,
+        "question": "Episode 10 says Geum-myeong grows closer to what type of person at work? [page:2]",
+        "options": [
+            "Her quirky colleague",
+            "Her strict supervisor",
+            "Her childhood neighbor",
+            "Her campaign manager"
+        ],
+        "answer": "Her quirky colleague"
+    },
+    {
+        "id": 44,
+        "episode": 10,
+        "question": "What personal experience of Ae-sun's is highlighted in Episode 10 as raising concern? [page:2]",
+        "options": [
+            "Troubling dreams that may hold meaning",
+            "A sudden memory loss",
+            "A secret diary being found",
+            "A lost scholarship letter"
+        ],
+        "answer": "Troubling dreams that may hold meaning"
+    },
+    {
+        "id": 45,
+        "episode": 11,
+        "question": "As Episode 11 progresses, what relationship milestone is Geum-myeong approaching? [page:2]",
+        "options": [
+            "Marriage through an engagement",
+            "A business merger",
+            "A political alliance",
+            "A study abroad interview"
+        ],
+        "answer": "Marriage through an engagement"
+    },
+    {
+        "id": 46,
+        "episode": 11,
+        "question": "What emotion is emphasized for Geum-myeong as her engagement nears marriage in Episode 11? [page:2]",
+        "options": [
+            "Doubt",
+            "Jealousy",
+            "Indifference",
+            "Relief"
+        ],
+        "answer": "Doubt"
+    },
+    {
+        "id": 47,
+        "episode": 12,
+        "question": "Where does Episode 12 say Geum-myeong goes as she mends her heart? [page:2]",
+        "options": [
+            "Back in Jeju",
+            "To Japan",
+            "To the United States",
+            "To a monastery in the mountains"
+        ],
+        "answer": "Back in Jeju"
+    },
+    {
+        "id": 48,
+        "episode": 13,
+        "question": "Episode 13 places Geum-myeong's career setback during what broader condition? [page:2]",
+        "options": [
+            "An economic downturn",
+            "A war",
+            "A natural disaster",
+            "A nationwide school strike"
+        ],
+        "answer": "An economic downturn"
+    },
+    {
+        "id": 49,
+        "episode": 14,
+        "question": "In Episode 14, what do Ae-sun and Gwan-sik do in response to Yang Eun-myeong's misfortune? [page:2]",
+        "options": [
+            "They sacrifice everything they can to help him",
+            "They send him abroad immediately",
+            "They cut ties with him",
+            "They run away to Seoul"
+        ],
+        "answer": "They sacrifice everything they can to help him"
+    },
+    {
+        "id": 50,
+        "episode": 16,
+        "question": "Episode 16 says that just as the family enjoys the fruits of their labor, what happens? [page:2]",
+        "options": [
+            "Sudden agony strikes, testing their resolve and enduring love",
+            "They win a national election",
+            "They move permanently to Japan",
+            "They open a film studio in Seoul"
+        ],
+        "answer": "Sudden agony strikes, testing their resolve and enduring love"
+    }
+]

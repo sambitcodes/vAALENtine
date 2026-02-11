@@ -1,0 +1,662 @@
+[
+    {
+        "category": "Modern Family",
+        "question": "What wedding-related task do Claire and Gloria help Lily with?",
+        "options": [
+            "Choosing a flower girl dress",
+            "Writing wedding vows",
+            "Booking the venue",
+            "Picking a honeymoon destination"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Modern Family",
+        "question": "What sparks conflict on Phil and Claire’s flight home from a reunion weekend?",
+        "options": [
+            "Claire takes the only First Class seat",
+            "Phil loses the luggage",
+            "They get stuck on the runway for 12 hours",
+            "They accidentally fly to Vegas"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Modern Family",
+        "question": "Where is Claire when she becomes desperate to reach Haley after their fight?",
+        "options": [
+            "Stuck at the airport",
+            "At a hotel in Vegas",
+            "At Caltech",
+            "At a lake house"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Modern Family",
+        "question": "While everyone else is at the fair, what does Haley plan to do that gets interrupted by Andy’s presence?",
+        "options": [
+            "Relax at Jay and Gloria's pool",
+            "Go to a college interview",
+            "Throw a party at the Dunphy house",
+            "Train for a marathon"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Modern Family",
+        "question": "What type of nanny does Gloria end up hiring for Joe that Jay and Manny dislike?",
+        "options": [
+            "A male nanny",
+            "A live-in magician",
+            "A football coach",
+            "A dance instructor"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Modern Family",
+        "question": "What risky habit does Claire rekindle while in Vegas?",
+        "options": [
+            "Her gambling addiction",
+            "Her fear of flying",
+            "Her obsession with exercise",
+            "Her hoarding"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Modern Family",
+        "question": "What does Phil discover about Jay during this episode?",
+        "options": [
+            "Jay is hiding something in a secret closet",
+            "Jay is moving to another state",
+            "Jay is writing a novel",
+            "Jay is joining a band"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Modern Family",
+        "question": "Who do Cam and Mitch ask to plan their wedding?",
+        "options": [
+            "Pepper",
+            "Andy",
+            "Shorty",
+            "Gil Thorpe"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Modern Family",
+        "question": "What major natural event is the family gathered to witness during the lake vacation?",
+        "options": [
+            "A solar eclipse",
+            "A meteor shower",
+            "A hurricane",
+            "An earthquake"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Modern Family",
+        "question": "After same-sex marriage is legalized in California, what do Mitch and Cam BOTH secretly plan (without realizing the other is also planning it)?",
+        "options": [
+            "A surprise proposal",
+            "A secret adoption",
+            "A move to Missouri",
+            "A new business venture"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Grey's Anatomy",
+        "question": "In 'It's the End of the World', what is the only thing initially preventing an explosion in the patient’s chest?",
+        "options": [
+            "The paramedic's hand",
+            "A clamp",
+            "A bandage",
+            "A sedative drip"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Grey's Anatomy",
+        "question": "In 'It's the End of the World', what dangerous situation is brought in by a paramedic?",
+        "options": [
+            "A man with live ammunition in his chest",
+            "A man impaled by a pole",
+            "A mass poisoning",
+            "A hospital shooting"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Grey's Anatomy",
+        "question": "In 'Enough Is Enough', what does Adele do in order to care for Dr. Webber?",
+        "options": [
+            "Cuts her vacation short",
+            "Moves into the hospital",
+            "Fires his surgeon",
+            "Leaves him alone to recover"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Grey's Anatomy",
+        "question": "In 'Much too Much', why does Meredith feel mortified when her one-night stand appears at the hospital?",
+        "options": [
+            "He is suffering from priapism and needs treatment",
+            "He is Addison’s attorney",
+            "He is Derek’s brother",
+            "He is a new intern on Meredith’s service"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Grey's Anatomy",
+        "question": "In 'Band-Aid Covers the Bullet Hole', what object is stuck in a woman’s neck?",
+        "options": [
+            "A fork",
+            "A bullet",
+            "A pen",
+            "A nail"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Grey's Anatomy",
+        "question": "In '17 Seconds', where are the gunshot victims coming from?",
+        "options": [
+            "A nearby restaurant",
+            "An airport",
+            "Joe’s bar",
+            "Inside the hospital"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Grey's Anatomy",
+        "question": "In 'Deny, Deny, Deny', what syndrome does Cristina diagnose in Burke and Izzie's patient?",
+        "options": [
+            "Münchhausen syndrome",
+            "Alzheimer's disease",
+            "Cystic fibrosis",
+            "Obsessive-compulsive disorder"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Grey's Anatomy",
+        "question": "In 'Deny, Deny, Deny', what does Alex learn right before his planned date with Izzie?",
+        "options": [
+            "He failed one of his medical board exams and must retake it",
+            "He got promoted to attending",
+            "He is being transferred to pediatrics",
+            "He is being sued for malpractice"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Grey's Anatomy",
+        "question": "In 'Thanks for the Memories', what is true about the patient Meredith treats at the hospital?",
+        "options": [
+            "They have been in a vegetative state for 16 years",
+            "They are impaled by a pole",
+            "They swallowed ten doll heads",
+            "They were struck by lightning"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Grey's Anatomy",
+        "question": "In 'Yesterday', how does Derek react when Mark introduces himself to Meredith?",
+        "options": [
+            "He punches Mark",
+            "He hires Mark immediately",
+            "He thanks Mark politely",
+            "He walks away silently"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Hospital Playlist",
+        "question": "In Season 2 Episode 12, what keeps life at the hospital as busy as ever?",
+        "options": [
+            "A series of tough choices and sudden crises",
+            "A new hospital merger",
+            "A citywide blackout",
+            "A doctors’ strike"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Hospital Playlist",
+        "question": "Whose aloofness frustrates someone on his team in Episode #1.4?",
+        "options": [
+            "Yang Seok-hyeong",
+            "Kim Jun-wan",
+            "Lee Ik-jun",
+            "Ahn Jeong-won"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Hospital Playlist",
+        "question": "Who struggles to get through the day after being distracted by a personal-life problem in Episode #1.8?",
+        "options": [
+            "Do Jae-hak",
+            "Ahn Jeong-won",
+            "Lee Ik-jun",
+            "Jang Hong-do"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Hospital Playlist",
+        "question": "In Season 2 Episode 1, whose growing pains continue as hospital life goes on?",
+        "options": [
+            "The five friends’",
+            "Only Jun-wan’s",
+            "Only Song-hwa’s",
+            "Only Jeong-won’s"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Hospital Playlist",
+        "question": "What interrupts the five friends’ busy lives and brings them back together?",
+        "options": [
+            "A phone call",
+            "A hospital fire drill",
+            "A surprise wedding",
+            "A medical conference"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Hospital Playlist",
+        "question": "Who is put on edge in the operating room in Episode #1.7?",
+        "options": [
+            "Kim Jun-wan",
+            "Yang Seok-hyeong",
+            "Chae Song-hwa",
+            "Lee Ik-jun"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Hospital Playlist",
+        "question": "In Season 2 Episode 7, who leaves a bad impression on a visitor in the cafeteria?",
+        "options": [
+            "Chu Min-ha",
+            "Jang Gyeo-ul",
+            "Heo Seon-bin",
+            "Jang Yun-bok"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Hospital Playlist",
+        "question": "In Episode #1.3, who are inspired by the doctors, each caring for patients in their own ways?",
+        "options": [
+            "The hospital’s med students",
+            "A visiting board of directors",
+            "A group of journalists",
+            "A rival hospital’s surgeons"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Hospital Playlist",
+        "question": "In Season 2 Episode 4, worries about whom plague Jun-wan’s ever-busy days?",
+        "options": [
+            "Ik-sun",
+            "Gyeo-ul",
+            "Rosa",
+            "Min-ha"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Hospital Playlist",
+        "question": "According to the series description, the five doctors have been friends since they entered medical school in which year?",
+        "options": [
+            "1999",
+            "2005",
+            "2010",
+            "2015"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Reply 1988",
+        "question": "In Episode 16, what is the grand prize of the national dance-off competition Dong-ryong enters?",
+        "options": [
+            "A brand new car",
+            "A college scholarship",
+            "A luxury apartment",
+            "A trip to the United States"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Reply 1988",
+        "question": "In Episode 4, what embarrassing thing happens on the crowded bus involving Deok-sun and Jung-hwan?",
+        "options": [
+            "Deok-sun rips open Jung-hwan's shirt",
+            "Deok-sun spills soup on him",
+            "Jung-hwan drops his wallet",
+            "They fall asleep and miss their stop"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Reply 1988",
+        "question": "In Episode 15, how does Dong-ryong's mother respond when she comes to see him after he is arrested with Michol?",
+        "options": [
+            "She hugs him instead of scolding him",
+            "She refuses to speak to him",
+            "She demands he move out",
+            "She calls the principal to punish him"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Reply 1988",
+        "question": "In Episode 18, what job does Deok-sun have in the time-jump setting?",
+        "options": [
+            "Flight attendant for Korean Air",
+            "Baduk association director",
+            "High school teacher",
+            "Radio program producer"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Reply 1988",
+        "question": "In Episode 5, what major trouble does Bo-ra get into related to the student protests?",
+        "options": [
+            "She gets arrested",
+            "She wins a scholarship",
+            "She is elected class president",
+            "She moves abroad"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Reply 1988",
+        "question": "In Episode 3, what important item does Deok-sun accidentally leave behind on the train during the school trip?",
+        "options": [
+            "Her parents' expensive camera",
+            "Her passport",
+            "Her diary",
+            "Her cassette player"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Reply 1988",
+        "question": "In Episode 5, what does Sun-young buy for her children instead of expensive ingredients for special food?",
+        "options": [
+            "Banana milk",
+            "Chocolate cake",
+            "Fried chicken",
+            "Ice cream bars"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Reply 1988",
+        "question": "In Episode 11, what is Dong-il revealed to be at his bank when he outplays Mr. Ryu at Go-Stop?",
+        "options": [
+            "An anti-fraud inspector",
+            "A taxi driver",
+            "A history teacher",
+            "A prosecutor"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Reply 1988",
+        "question": "In Episode 14, what medical emergency happens to the new student Song-hee at school?",
+        "options": [
+            "She has an epileptic seizure in class",
+            "She faints from hunger",
+            "She breaks her leg during PE",
+            "She has an asthma attack"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Reply 1988",
+        "question": "In Episode 11, where does Sun-young secretly work in the evenings to make ends meet?",
+        "options": [
+            "A jjimjilbang (as a cleaner)",
+            "A movie theater",
+            "A bakery",
+            "A clothing shop"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "When Life Gives you Tangerines",
+        "question": "According to Episode 7's description, what dilemma does Geum-myeong face after receiving an unusual request? [page:2]",
+        "options": [
+            "An ethical dilemma",
+            "A medical dilemma",
+            "A legal dilemma",
+            "A travel dilemma"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "When Life Gives you Tangerines",
+        "question": "In the Episode 1 recap, what promise does Ae-sun make in her poem to help her mother someday? [web:122]",
+        "options": [
+            "To buy her a house on the mainland",
+            "To give her 100 won a day",
+            "To become a famous singer",
+            "To pay for a fishing boat"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "When Life Gives you Tangerines",
+        "question": "According to Episode 3's description, what emotional outcome follows Ae-sun resigning herself to a sad fate? [page:2]",
+        "options": [
+            "Gwan-sik is devastated",
+            "Gwan-sik is promoted",
+            "Ae-sun becomes class president",
+            "They celebrate a festival win"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "When Life Gives you Tangerines",
+        "question": "In the Episode 1 recap, what does Ae-sun throw a tantrum about after being treated unfairly at school? [web:122]",
+        "options": [
+            "Being denied class president despite winning",
+            "Being expelled for fighting",
+            "Failing an exam",
+            "Being forced to quit the film club"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "When Life Gives you Tangerines",
+        "question": "What emotion is emphasized for Geum-myeong as her engagement nears marriage in Episode 11? [page:2]",
+        "options": [
+            "Doubt",
+            "Jealousy",
+            "Indifference",
+            "Relief"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "When Life Gives you Tangerines",
+        "question": "Where and when was Ae-sun born (as described in the synopsis)? [page:1]",
+        "options": [
+            "Busan, 1948",
+            "Jeju, 1951",
+            "Seoul, 1951",
+            "Jeju, 1961"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "When Life Gives you Tangerines",
+        "question": "In an Episode 1 recap, where is Ae-sun sent back to and made to do menial chores? [web:122]",
+        "options": [
+            "Her teacher's home",
+            "Her uncle's house",
+            "Gwan-sik's house",
+            "A boarding school dorm"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "When Life Gives you Tangerines",
+        "question": "How is Gwan-sik described in relation to Ae-sun in the synopsis? [page:1]",
+        "options": [
+            "He competes with her for votes",
+            "He cherishes and loves her",
+            "He is her strict teacher",
+            "He is her literary rival"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "When Life Gives you Tangerines",
+        "question": "In the Episodes 1–4 recap, how is the first kiss between Ae-sun and Gwan-sik described? [web:123]",
+        "options": [
+            "A rehearsed performance",
+            "Awkward and tense",
+            "Interrupted by a crowd",
+            "A prank by classmates"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "When Life Gives you Tangerines",
+        "question": "What natural event disrupts Ae-sun and Gwan-sik's lives in Episode 6? [page:2]",
+        "options": [
+            "A sudden summer storm",
+            "A blizzard",
+            "A drought",
+            "An earthquake"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Supernatural",
+        "question": "What is the name of Dean's beloved 1967 Chevy Impala?",
+        "options": [
+            "Baby",
+            "Beast",
+            "Sweetie",
+            "Darling"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "Supernatural",
+        "question": "What is Sam Winchester irrationally afraid of?",
+        "options": [
+            "Spiders",
+            "Clowns",
+            "Heights",
+            "Flying"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "What is Bobby Singer's famous catchphrase?",
+        "options": [
+            "Balls!",
+            "Idjits!",
+            "Morons!",
+            "Fools!"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "What nickname does Crowley affectionately give to Sam?",
+        "options": [
+            "Squirrel",
+            "Moose",
+            "Giraffe",
+            "Puppy"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "How does Castiel introduce himself to Dean?",
+        "options": [
+            "I'm an Angel of the Lord.",
+            "I'm the one who gripped you tight and raised you from perdition.",
+            "I'm your new best friend.",
+            "I'm here to save you."
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "What is the Winchester family motto?",
+        "options": [
+            "Family don't end with blood.",
+            "Saving people, hunting things, the family business.",
+            "Driver picks the music, shotgun shuts his cakehole.",
+            "Always keep fighting."
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "Which legendary gun can kill (almost) anything?",
+        "options": [
+            "The Winchester",
+            "The Colt",
+            "The Smith & Wesson",
+            "The Magnum"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Supernatural",
+        "question": "How did Mary Winchester die in the pilot episode?",
+        "options": [
+            "She was shot",
+            "Car accident",
+            "Burned on the ceiling",
+            "Demonic possession"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "category": "Supernatural",
+        "question": "Who is the King of Hell for a significant part of the series?",
+        "options": [
+            "Lucifer",
+            "Azazel",
+            "Crowley",
+            "Ruby"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "category": "Supernatural",
+        "question": "What is the name of the bunker where the Winchesters live?",
+        "options": [
+            "The Batcave",
+            "The Men of Letters Bunker",
+            "The Hunter's Lodge",
+            "The Safe House"
+        ],
+        "correctIndex": 1
+    }
+]

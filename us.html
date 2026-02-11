@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Us - vAALENtine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/us.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="pictures/aal/aal-logo.png" alt="vAALENtine Logo" class="app-logo">
+                <span>vAALENtine</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="us.html" class="nav-link active">Us</a>
+                <a href="memories.html" class="nav-link">Memories</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="trivia.html" class="nav-link">Trivia</a>
+                <a href="states.html" class="nav-link">Map</a>
+                <a href="scramble.html" class="nav-link">Scramble</a>
+                <a href="escape.html" class="nav-link">Escape Room</a>
+                <a href="finale.html" class="nav-link">Finale</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem;">Meet the
+                Partners in Crime</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">A little peek into who we
+                really are (according to each other)...</p>
+
+            <div class="profiles-wrapper">
+                <!-- Aalen's Card -->
+                <div class="profile-card aalen">
+                    <div class="profile-pic-container">
+                        <img src="pictures/prof-pics/aal_prof.JPG" alt="Aalen" class="profile-pic">
+                    </div>
+                    <div class="card-title">Aalen Talukdar</div>
+                    <div class="card-alias">"Putki"</div>
+
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Features</span>
+                            <span class="detail-value">Curvilicious, Knows how to carry sexy dresses</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Fav Hobby</span>
+                            <span class="detail-value">Dressing up late at 1 AM just cause...</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Designation</span>
+                            <span class="detail-value">Ex partner in crime, serial terrierist</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="loves-section">
+                            Loves: <span class="loves-value">Me... kidding - Not Anymore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sambit's Card -->
+                <div class="profile-card sambit">
+                    <div class="profile-pic-container">
+                        <img src="pictures/prof-pics/sam_prof.jpg" alt="Sambit" class="profile-pic">
+                    </div>
+                    <div class="card-title">Sambit Chakraborty</div>
+                    <div class="card-alias">"Bubba"</div>
+
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Features</span>
+                            <span class="detail-value">Wide shoulders according to her ?</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Fav Hobby</span>
+                            <span class="detail-value">Shifting blame on her and gaslighting</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Designation</span>
+                            <span class="detail-value">Ex partner in crime, real ankhiyon se goli maare</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="loves-section">
+                            Loves: <span class="loves-value">Her.... kidding - I have moved on</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Choice Buttons -->
+            <div class="choice-container">
+                <button id="matchBtn" class="btn-choice match">Match</button>
+                <button id="unmatchBtn" class="btn-choice unmatch">Unmatch</button>
+            </div>
+
+            <!-- Merged Card Placeholder (Hidden) -->
+            <div id="mergedCardContainer" class="merged-wrapper hidden">
+                <!-- Merged content will be injected here later -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Redirection / Blip Overlay -->
+    <div id="blipOverlay" class="blip-overlay hidden">
+        <div class="countdown-container">
+            <span id="countdownDisplay">10</span>
+            <p class="blip-message">Disintegrating reality...</p>
+        </div>
+        <div id="finalMessage" class="final-message hidden">
+            "Sorry that you feel this way that we are not worth it anymore"
+        </div>
+    </div>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <audio id="bgMusic" loop>
+        <source src="pictures/arad-us.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/us.js"></script>
+</body>
+
+</html>

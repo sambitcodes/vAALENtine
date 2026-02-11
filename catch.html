@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vAALENtine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/games.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">💝 vAALENtine</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="quiz.html" class="nav-link">Quiz</a>
+                <a href="trivia.html" class="nav-link">Trivia</a>
+                <a href="memories.html" class="nav-link">Memories</a>
+                <a href="states.html" class="nav-link">Map</a>
+                <a href="scramble.html" class="nav-link">Scramble</a>
+                <a href="catch.html" class="nav-link active">Catch Game</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="finale.html" class="nav-link">Finale</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem;">Catch the
+                Falling Hearts</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Move the basket to catch
+                hearts! Use arrow keys or on-screen buttons.</p>
+
+            <div style="text-align: center;">
+                <div class="game-stats">
+                    <span>Score: <strong id="catchScore">0</strong></span>
+                    <span>Time: <strong id="catchTime">30</strong>s</span>
+                    <span>Lives: <strong id="catchLives">❤️❤️❤️</strong></span>
+                </div>
+
+                <canvas id="catchCanvas" class="catch-game-canvas" width="600" height="400"></canvas>
+
+                <div class="game-controls">
+                    <button class="control-btn" id="leftBtn">←</button>
+                    <button class="control-btn" id="startCatchBtn">Start</button>
+                    <button class="control-btn" id="rightBtn">→</button>
+                </div>
+
+                <div id="catchGameOver" class="game-feedback hidden">
+                    <h3 style="color: var(--primary); font-size: 2rem;">Game Over!</h3>
+                    <p id="catchFinalScore" style="font-size: 1.3rem; margin: 1rem 0;"></p>
+                    <button onclick="location.reload()" class="btn btn-primary">Play Again</button>
+                    <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/catch.js"></script>
+</body>
+
+</html>

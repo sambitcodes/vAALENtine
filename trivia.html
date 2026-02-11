@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vAALENtine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/trivia.css">
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">💝 vAALENtine</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="us.html" class="nav-link">Us</a>
+                <a href="memories.html" class="nav-link">Memories</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="trivia.html" class="nav-link active">Trivia</a>
+                <a href="states.html" class="nav-link">Map</a>
+                <a href="scramble.html" class="nav-link">Scramble</a>
+                <a href="escape.html" class="nav-link">Escape Room</a>
+                <a href="finale.html" class="nav-link">Finale</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem;">TV Show
+                Trivia Challenge</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Test your knowledge about
+                your favorite shows!</p>
+
+            <!-- Category Selection -->
+            <div id="categorySelection" class="category-grid">
+                <!-- Categories injected via JS -->
+            </div>
+
+            <!-- Game Area (Hidden Initially) -->
+            <div id="gameArea" class="hidden">
+                <div class="game-header">
+                    <button id="backButton" class="btn-icon">← Back</button>
+                    <span id="currentCategoryTitle">Category</span>
+                    <div class="score-container">
+                        <span class="score-box score-correct">Correct: <span id="correctCount">0</span></span>
+                        <span class="score-box score-wrong">Wrong: <span id="wrongCount">0</span></span>
+                    </div>
+                </div>
+                <div id="questionContainer"></div>
+            </div>
+
+            <!-- Result Screen -->
+            <div id="triviaResult" class="quiz-result hidden">
+                <h3 id="triviaResultTitle"></h3>
+                <p id="triviaResultMessage"></p>
+                <button onclick="location.reload()" class="btn btn-primary">Play Again</button>
+                <a href="index.html" class="btn btn-secondary">Back to Home</a>
+            </div>
+
+            <!-- Feedback Overlay (GIFs/Sounds) -->
+            <div id="feedbackOverlay" class="feedback-overlay hidden">
+                <div class="feedback-content">
+                    <h2 id="feedbackTitle"></h2>
+                    <img id="feedbackGif" src="" alt="Reaction GIF" class="feedback-gif">
+                    <p id="feedbackText"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/trivia.js"></script>
+</body>
+
+</html>
