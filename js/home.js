@@ -21,14 +21,14 @@ function initPhotoStack() {
     // Real photos from pictures/slide-aal
     // Re-ordering again to ensure no broken images at the start
     const photoList = [
-        "IMG_0001.jpg", "IMG_0370.jpg", "IMG_1198.png", "IMG_1216.png", "IMG_1219.png",
-        "IMG_1234.png", "IMG_1331.png", "IMG_4156.png", "IMG_4235.png", "IMG_4292.png",
-        "IMG_4404.PNG", "IMG_4406.PNG", "IMG_4474.png", "IMG_4544.png", "IMG_4894.PNG",
-        "IMG_4916.PNG", "IMG_5407.PNG", "IMG_5447.PNG", "IMG_5451.PNG", "IMG_5472.PNG",
-        "IMG_5512.PNG", "IMG_5521.PNG", "IMG_5613.png", "IMG_5618.png", "IMG_5759.PNG",
-        "IMG_5789.png", "IMG_5816.png", "IMG_6090.png", "IMG_6105.png", "IMG_6392.png",
-        "IMG_6626.png", "IMG_6791.png", "IMG_7228.jpg", "IMG_7555.png", "IMG_7674.png",
-        "IMG_7718.jpg", "IMG_7793.png", "IMG_7857.PNG", "IMG_8642.png", "IMG_9263.jpg"
+        "img_0001.jpg", "img_0370.jpg", "img_1198.png", "img_1216.png", "img_1219.png",
+        "img_1234.png", "img_1331.png", "img_4156.png", "img_4235.png", "img_4292.png",
+        "img_4404.png", "img_4406.png", "img_4474.png", "img_4544.png", "img_4894.png",
+        "img_4916.png", "img_5407.png", "img_5447.png", "img_5451.png", "img_5472.png",
+        "img_5512.png", "img_5521.png", "img_5613.png", "img_5618.png", "img_5759.png",
+        "img_5789.png", "img_5816.png", "img_6090.png", "img_6105.png", "img_6392.png",
+        "img_6626.png", "img_6791.png", "img_7228.jpg", "img_7555.png", "img_7674.png",
+        "img_7718.jpg", "img_7793.png", "img_7857.png", "img_8642.png", "img_9263.jpg"
     ];
 
     const PHOTO_COUNT = photoList.length;
@@ -37,7 +37,7 @@ function initPhotoStack() {
     // Create stacked photos from the real list
     photoList.forEach((filename, i) => {
         const img = document.createElement('img');
-        img.src = `pictures/slide-aal/${filename}`;
+        img.src = `/pictures/slide-aal/${filename}`;
         img.className = 'stacked-photo';
         img.loading = 'lazy'; // Optimization for large folders
         img.alt = `Memory ${i + 1}`;

@@ -12,6 +12,7 @@ const db = new sqlite3.Database(dbPath);
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
+app.use('/pictures', express.static(path.join(__dirname, 'pictures')));
 
 // API to get full configuration
 app.get('/api/config', (req, res) => {
