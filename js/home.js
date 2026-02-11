@@ -20,15 +20,13 @@ function initPhotoStack() {
 
     // Real photos from pictures/slide-aal
     // Re-ordering again to ensure no broken images at the start
+    // Real photos from pictures/slide-aal
+    // Updated to match actual file system (20 verified images)
     const photoList = [
-        "img_0001.jpg", "img_0370.jpg", "img_1198.png", "img_1216.png", "img_1219.png",
-        "img_1234.png", "img_1331.png", "img_4156.png", "img_4235.png", "img_4292.png",
-        "img_4404.png", "img_4406.png", "img_4474.png", "img_4544.png", "img_4894.png",
-        "img_4916.png", "img_5407.png", "img_5447.png", "img_5451.png", "img_5472.png",
-        "img_5512.png", "img_5521.png", "img_5613.png", "img_5618.png", "img_5759.png",
-        "img_5789.png", "img_5816.png", "img_6090.png", "img_6105.png", "img_6392.png",
-        "img_6626.png", "img_6791.png", "img_7228.jpg", "img_7555.png", "img_7674.png",
-        "img_7718.jpg", "img_7793.png", "img_7857.png", "img_8642.png", "img_9263.jpg"
+        "img_0001.jpg", "img_0370.jpg", "img_4235.png", "img_4404.png", "img_4406.png",
+        "img_4894.png", "img_4916.png", "img_5407.png", "img_5447.png", "img_5451.png",
+        "img_5472.png", "img_5512.png", "img_5618.png", "img_5759.png", "img_6105.png",
+        "img_7228.jpg", "img_7718.jpg", "img_7857.png", "img_8642.png", "img_9263.jpg"
     ];
 
     const PHOTO_COUNT = photoList.length;
