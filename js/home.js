@@ -38,6 +38,7 @@ function initPhotoStack() {
         const img = document.createElement('img');
         img.src = `pictures/slide-aal/${filename}`;
         img.className = 'stacked-photo';
+        img.loading = 'lazy'; // Optimization for large folders
         img.alt = `Memory ${i + 1}`;
         // Handle HEIC fallback if needed (browsers don't support HEIC natively usually)
         // [NOTE] If images don't show, they might need conversion.
