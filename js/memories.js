@@ -149,7 +149,7 @@ function initBoard() {
 
             // Image
             const img = document.createElement('img');
-            img.src = `pictures/memories/${memory.image}`;
+            img.src = memory.image;
             img.className = 'block-thumb';
             // HEIC Handling fallback (visual)
             if (memory.image.toLowerCase().endsWith('.heic')) {
@@ -359,7 +359,7 @@ function openModal(data) {
     const img = document.getElementById('modalImage');
 
     if (data.image) {
-        img.src = `pictures/memories/${data.image}`;
+        img.src = data.image;
         img.className = 'modal-image polaroid-img';
         img.style.display = 'block';
 
