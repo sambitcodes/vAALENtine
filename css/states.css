@@ -66,26 +66,28 @@
     left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
 
-    /* Glass Effect */
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    /* Enhanced Glass Effect */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 255, 255, 0.6);
 
     padding: 3rem;
-    border-radius: 30px;
+    border-radius: 35px;
     box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.15),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        0 25px 60px rgba(0, 0, 0, 0.2),
+        inset 0 0 40px rgba(255, 255, 255, 0.8);
 
     z-index: 1000;
     width: 90%;
-    max-width: 500px;
+    max-width: 550px;
     text-align: center;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    /* Bouncy spring */
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background-image:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%),
+        radial-gradient(circle at top left, rgba(230, 240, 255, 0.8), transparent 70%);
 }
 
 .question-overlay.active {
@@ -95,108 +97,196 @@
 }
 
 .map-question h3 {
-    color: #2d3748;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
     font-weight: 800;
     line-height: 1.3;
-    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    background: linear-gradient(135deg, #2b6cb0 0%, #805ad5 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 5px 15px rgba(100, 100, 255, 0.15);
 }
 
 /* HINT SYSTEM */
 .hint-container {
-    margin-bottom: 1.5rem;
-    min-height: 30px;
+    margin-bottom: 2rem;
+    min-height: 40px;
 }
 
 .hint-btn {
-    background: transparent;
-    border: 2px dashed #cbd5e0;
+    background: linear-gradient(135deg, #fff 0%, #f7fafc 100%);
+    border: 2px dashed #a0aec0;
     color: #718096;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.95rem;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.2s;
-    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    gap: 8px;
+    gap: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .hint-btn:hover {
     border-color: #f6ad55;
     color: #dd6b20;
     background: #fffaf0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(237, 137, 54, 0.15);
 }
 
 .hint-text {
     margin-top: 10px;
-    font-size: 1.1rem;
-    color: #2b6cb0;
+    font-size: 1.15rem;
+    color: #2c5282;
     font-style: italic;
-    font-weight: 500;
-    background: #ebf8ff;
-    padding: 10px 15px;
-    border-radius: 10px;
-    border-left: 4px solid #4299e1;
+    font-weight: 600;
+    background: linear-gradient(to right, #ebf8ff, #e6fffa);
+    padding: 15px 20px;
+    border-radius: 16px;
+    border-left: 5px solid #4299e1;
     text-align: left;
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.4s ease;
+    box-shadow: 0 4px 12px rgba(66, 153, 225, 0.1);
 }
 
 .options-grid {
     display: grid;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    /* 2x2 grid for better balance */
 }
 
 .option-btn {
-    background: #fff;
-    border: 1px solid #e2e8f0;
+    background: white;
+    border: none;
     padding: 1.2rem;
-    border-radius: 16px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #4a5568;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 4px 6px rgba(50, 50, 93, 0.11),
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.05);
+    /* subtle 3d effect */
     position: relative;
     overflow: hidden;
+    z-index: 1;
+}
+
+.option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    border-radius: 20px;
 }
 
 .option-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
-    border-color: #cbd5e0;
-    color: #2d3748;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.option-btn:hover::before {
+    opacity: 1;
 }
 
 .option-btn:active {
     transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Stats */
 .game-stats {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-top: 2rem;
-    font-weight: 700;
-    color: #4a5568;
+    flex-wrap: wrap;
 }
 
 .stat-item {
-    background: white;
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    color: #4a5568;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+/* Specific Colors */
+.stat-guesses {
+    border-bottom: 4px solid #4299e1;
+}
+
+.stat-guesses .stat-value {
+    color: #2b6cb0;
+}
+
+.stat-correct {
+    border-bottom: 4px solid #48bb78;
+    background: linear-gradient(to bottom right, #f0fff4, #fff);
+}
+
+.stat-correct .stat-label {
+    color: #2f855a;
+}
+
+.stat-correct .stat-value {
+    color: #276749;
+}
+
+.stat-incorrect {
+    border-bottom: 4px solid #f56565;
+    background: linear-gradient(to bottom right, #fff5f5, #fff);
+}
+
+.stat-incorrect .stat-label {
+    color: #c53030;
+}
+
+.stat-incorrect .stat-value {
+    color: #9b2c2c;
 }
 
 /* Action Buttons */

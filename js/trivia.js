@@ -47,6 +47,17 @@ const MEDIA = {
     }
 };
 
+const CATEGORY_IMAGES = {
+    "Modern Family": "pictures/tvshows/modernfamily.jpg",
+    "Grey's Anatomy": "pictures/tvshows/greysanatomy.jpg",
+    "Hospital Playlist": "pictures/tvshows/hospital_playlist.jpg",
+    "Reply 1988": "pictures/tvshows/reply1988.jpg",
+    "When Life Gives you Tangerines": "pictures/tvshows/tangerines.jpg",
+    "Supernatural": "pictures/tvshows/supernaturals.jpg"
+};
+
+const DEFAULT_BG = "pictures/tvshows/modernfamily.jpg"; // Fallback
+
 document.addEventListener('DOMContentLoaded', async () => {
     if (!CONFIG.triviaQuestions) {
         await loadConfig();
@@ -57,6 +68,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('gameArea').classList.add('hidden');
         document.getElementById('triviaResult').classList.add('hidden');
         document.getElementById('categorySelection').classList.remove('hidden');
+
+        // Reset Background
+        document.body.style.backgroundImage = '';
+        document.body.classList.remove('topic-active');
 
         // Reset state and reload categories to clear loading spinner
         currentCategory = null;
@@ -71,9 +86,19 @@ function loadCategories() {
     container.innerHTML = '';
 
     categories.forEach(cat => {
-        const btn = document.createElement('button');
+        const btn = document.createElement('div');
         btn.className = 'category-card';
-        btn.innerHTML = `<h3>${cat}</h3><p>${getCategoryCount(cat)} Questions</p>`;
+
+        // Set background image
+        const bgImage = CATEGORY_IMAGES[cat] || DEFAULT_BG;
+        btn.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('${bgImage}')`;
+
+        btn.innerHTML = `
+            <div class="category-content">
+                <h3>${cat}</h3>
+                <p>${getCategoryCount(cat)} Questions</p>
+            </div>
+        `;
         btn.onclick = () => startCategory(cat);
         container.appendChild(btn);
     });
@@ -109,6 +134,15 @@ async function startCategory(category) {
 
     document.getElementById('categorySelection').classList.add('hidden');
     document.getElementById('gameArea').classList.remove('hidden');
+
+    // Set Theme Background (Blurred)
+    const bgImage = CATEGORY_IMAGES[category] || DEFAULT_BG;
+    document.body.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${bgImage}')`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundAttachment = "fixed";
+    document.body.classList.add('topic-active');
+
     document.getElementById('currentCategoryTitle').textContent = category;
     updateScoreDisplay();
 

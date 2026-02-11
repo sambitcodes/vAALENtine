@@ -44,6 +44,38 @@ const STATE_HINTS = {
     "wb": "Cultural capital, famous for durability, Durga Puja and Rasgulla."
 };
 
+const CAPITAL_HINTS = {
+    "ap": "The 'People's Capital' in the Guntur district.",
+    "ar": "Known for its fort and manufacturing industries.",
+    "as": "Seat of Government, near Guwahati.",
+    "br": "Ancient city on the southern bank of the Ganges.",
+    "ct": "A major industrial and commercial hub in Central India.",
+    "ga": "Located on the banks of the Mandovi River.",
+    "gj": "A planned city, the Green City.",
+    "hr": "Designed by Le Corbusier, shared with Punjab.",
+    "hp": "Summer capital of British India.",
+    "jk": "Summer capital famous for Dal Lake.",
+    "jh": "City of Waterfalls.",
+    "ka": "The Garden City of India.",
+    "kl": "City of Lord Anantha.",
+    "mp": "City of Lakes.",
+    "mh": "Financial capital of India, City of Dreams.",
+    "mn": "Site of the Battle of Imphal in WWII.",
+    "ml": "Scotland of the East.",
+    "mz": "The largest city in Mizoram.",
+    "nl": "Site of the Battle of Kohima.",
+    "or": "The Temple City of India.",
+    "pb": "The City Beautiful (Shared with Haryana).",
+    "rj": "The Pink City.",
+    "sk": "Located in the eastern Himalayan range.",
+    "tn": "Detroit of India.",
+    "tg": "City of Pearls.",
+    "tr": "Second largest city in North-east India.",
+    "up": "The City of Nawabs.",
+    "ut": "Valley city in the Doon Valley.",
+    "wb": "City of Joy."
+};
+
 // Fallback hint
 const DEFAULT_HINT = "Think about the location on the map!";
 
@@ -111,7 +143,7 @@ function handleStateClick(stateElement) {
     if (!currentStateTarget.id) currentStateTarget.id = stateId;
 
     // Randomly choose question type: name or capital
-    currentQuestionType = Math.random() > 0.8 ? 'capital' : 'name'; // Mostly names for ID
+    currentQuestionType = Math.random() > 0.5 ? 'capital' : 'name'; // 50/50 chance
     showQuestionOverlay(stateId);
 }
 
@@ -129,14 +161,16 @@ function showQuestionOverlay(svgId) {
     hintBtn.style.display = 'flex';
 
     // Set Hint Text
-    // Try to find hint by 2-letter code (svgId)
-    // Map some disparate IDs if needed
     let hintKey = svgId.toLowerCase();
-    // Manual mapping for some complex SVG IDs if they exist in `india.svg`
-    // Based on standard map files: 'in-MH' -> 'mh' etc. 
-    // Our SVG seems to use 'mh', 'ap', 'up' etc. directly.
 
-    const specificHint = STATE_HINTS[hintKey] || DEFAULT_HINT;
+    let specificHint;
+    if (currentQuestionType === 'name') {
+        specificHint = STATE_HINTS[hintKey] || DEFAULT_HINT;
+    } else {
+        // Try to find capital hint
+        specificHint = CAPITAL_HINTS[hintKey] || `It is the capital city of ${currentStateTarget.name}`;
+    }
+
     hintText.textContent = specificHint;
 
 
