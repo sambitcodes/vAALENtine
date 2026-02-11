@@ -227,17 +227,35 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.95);
+    background: #000;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.blip-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+.blip-overlay.glitching {
+    animation: glitchBg 0.2s infinite;
 }
 
 .countdown-container {
     text-align: center;
+    z-index: 10;
 }
 
 #countdownDisplay {
@@ -246,6 +264,7 @@
     color: #fff;
     display: block;
     animation: pulseCount 1s infinite;
+    text-shadow: 2px 0 10px #ff3366, -2px 0 10px #00ccff;
 }
 
 .blip-message {
@@ -254,17 +273,72 @@
     text-transform: uppercase;
     letter-spacing: 5px;
     margin-top: 20px;
+    text-shadow: 0 0 15px rgba(255, 51, 102, 0.8);
 }
 
 .final-message {
-    font-size: 2rem;
-    font-weight: 300;
-    color: #eee;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
     font-style: italic;
     text-align: center;
     padding: 20px;
-    max-width: 800px;
-    animation: fadeIn 2s forwards;
+    max-width: 900px;
+    z-index: 20;
+    text-shadow: 3px 3px 0 #ff3366, -3px -3px 0 #00ccff;
+    animation: glitchText 0.15s infinite;
+}
+
+@keyframes glitchBg {
+    0% {
+        background-color: #000;
+    }
+
+    20% {
+        background-color: #1a0005;
+    }
+
+    40% {
+        background-color: #00051a;
+    }
+
+    60% {
+        background-color: #051a00;
+    }
+
+    80% {
+        background-color: #111;
+    }
+
+    100% {
+        background-color: #000;
+    }
+}
+
+@keyframes glitchText {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
 }
 
 /* Disintegration Effect (The Blip) */

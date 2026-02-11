@@ -69,10 +69,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (unmatchBtn) {
-        unmatchBtn.addEventListener('click', () => {
+        unmatchBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent bubbling to document which might start the music
+            // Stop background music immediately
+            if (bgMusic) {
+                bgMusic.pause();
+                bgMusic.currentTime = 0;
+            }
+
+            // Play crumbling sound effect with a 2s delay to match visuals
+            const crumblingSound = new Audio('/pictures/crumbling.mp3');
+            setTimeout(() => {
+                crumblingSound.play().catch(e => console.log("Crumbling sound failed to play:", e));
+            }, 2000);
+
             blipOverlay.classList.remove('hidden');
+            blipOverlay.classList.add('glitching'); // Start the glitch colors
             let count = 10;
-            document.body.classList.add('disintegrating');
+
+            // Disintegrate the content, but keep the overlay visible
+            const contentElements = document.querySelectorAll('.nav-bar, .section');
+            contentElements.forEach(el => el.classList.add('disintegrating'));
 
             const timer = setInterval(() => {
                 count--;
@@ -82,6 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearInterval(timer);
                     countdownDisplay.classList.add('hidden');
                     document.querySelector('.blip-message').classList.add('hidden');
+
+                    // Display the new farewell message
+                    finalMessage.textContent = "It's perfectly alright, maybe this is actually the end... Byeeee !";
                     finalMessage.classList.remove('hidden');
 
                     setTimeout(() => {
