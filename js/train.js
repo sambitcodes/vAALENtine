@@ -1,200 +1,206 @@
-// Global State
-let currentStop = -1;
-const totalStops = TRAIN_DATA.length;
-let travelSpeed = 1; // Multiplier: 0.5, 1, 2
-let isReturning = false;
-let trainSoundOscillators = [];
+// TRAIN JOURNEY LOGIC
+const STATION_WIDTH_VW = 300; // Distance between stations in VW
+let currentStop = -1; // -1 = Start, 0-9 = Memories, 10 = Terminus
+let travelSpeed = 1; // Multiplier
 let trainSoundGain = null;
-
-const STATION_WIDTH_VW = 300; // Increased distance for longer journey
+let trainSoundOscillators = [];
+let isReturning = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     initTrainWorld();
 
-    document.getElementById('startTrainBtn').addEventListener('click', () => startJourney(false));
-
     // Speed Controls
-    createSpeedControls();
-});
-
-function createSpeedControls() {
-    const controls = document.createElement('div');
-    controls.id = 'speedControls';
-    controls.innerHTML = `
-        <button class="speed-btn" onclick="setSpeed(0.5)">0.5x</button>
-        <button class="speed-btn active" onclick="setSpeed(1)">1x</button>
-        <button class="speed-btn" onclick="setSpeed(2)">2x</button>
-    `;
-    document.body.appendChild(controls);
-}
-
-function setSpeed(speed) {
-    travelSpeed = speed;
     document.querySelectorAll('.speed-btn').forEach(btn => {
-        btn.classList.toggle('active', parseFloat(btn.innerText) === speed);
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            travelSpeed = parseFloat(e.target.dataset.speed);
+        });
     });
-}
+
+    // Return Journey
+    document.getElementById('returnHomeBtn').addEventListener('click', () => {
+        isReturning = true;
+        document.getElementById('returnHomeBtn').classList.add('hidden');
+        document.getElementById('theTrain').style.transform = "scaleX(-1)"; // Reverse train
+        goToStation(9); // Go back to last memory
+    });
+});
 
 function initTrainWorld() {
     const world = document.getElementById('worldContainer');
-    world.innerHTML = '';
+    const trackLayer = document.querySelector('.track-layer');
+    const groundLayer = document.querySelector('.ground-layer');
+    const sceneryLayer = document.querySelector('.scenery-layer');
 
-    // Add Start Station
-    createStation(world, -1, { name: "Start Journey" });
+    // 10 Memories + Start + Terminus = 12 stops total
+    const totalStops = Object.keys(TRAIN_DATA).length;
+    const totalWidth = (totalStops + 2) * STATION_WIDTH_VW;
 
-    // Add Memory Stations
-    TRAIN_DATA.forEach((stop, index) => {
-        createStation(world, index, stop);
-    });
+    world.style.width = `${totalWidth}vw`;
 
-    // Add End Station
-    createStation(world, 999, { name: "Terminus" });
-
-    // Set world width (Distance based)
-    world.style.width = `${(totalStops + 2) * STATION_WIDTH_VW}vw`;
-
-    // Ensure Moon
-    if (!document.getElementById('theMoon')) {
-        const moon = document.createElement('div');
-        moon.id = 'theMoon';
-        moon.innerHTML = '🌙';
-        const moonStyle = document.createElement('style');
-        moonStyle.textContent = `@keyframes moonWink { 0%, 90% { transform: scale(1); } 95% { transform: scaleY(0.1); } 100% { transform: scale(1); } }`;
-        document.head.appendChild(moonStyle);
-        document.getElementById('trainContainer').appendChild(moon);
-    }
-
-    // Ensure Tracks
-    if (!document.getElementById('trainTracks')) {
-        const tracks = document.createElement('div');
-        tracks.id = 'trainTracks';
-        tracks.style.cssText = "position:fixed; bottom:0; left:0; width:100%; height:20px; background: repeating-linear-gradient(90deg, #333 0, #333 20px, transparent 20px, transparent 40px), linear-gradient(#555, #555); background-size: 40px 100%, 100% 50%; background-position: 0 0, 0 100%; z-index:40;";
-        document.getElementById('trainContainer').appendChild(tracks);
-    }
-}
-
-function createStation(container, index, data) {
-    const div = document.createElement('div');
-    div.className = 'station-section';
-    div.id = `station-${index}`;
-    div.style.width = `${STATION_WIDTH_VW}vw`; // Apply longer distance width
-
-    let groundHTML = '<div class="ground-line"></div>';
-    let trackHTML = '<div class="track-segment"></div>';
+    // Generate Ground & Tracks
+    let trackHTML = '';
+    let groundHTML = '';
     let sceneryHTML = '';
 
-    if (index === 5) {
-        groundHTML = `
-            <div class="water-area">
-                <div class="wave w1"></div>
-                <div class="wave w2"></div>
-                <div class="wave w3"></div>
-            </div>
-            <div class="bridge-structure"></div>
+    // We need track for the full width
+    // Each segment is 100vw, so we need totalWidth/100 segments
+    const segments = totalWidth / 100;
+
+    for (let i = 0; i < segments; i++) {
+        trackHTML += '<div class="track-segment"></div>';
+        groundHTML += '<div class="ground-segment"></div>';
+    }
+
+    trackLayer.innerHTML = trackHTML;
+    groundLayer.innerHTML = groundHTML;
+
+    // Generate Stations
+    // Start Station at 0 (visual index)
+    // Memory 1 at 1
+    // ...
+    // Memory 10 at 10
+    // Terminus at 11
+
+    const stations = ['START', ...Object.keys(TRAIN_DATA), 'TERMINUS'];
+
+    stations.forEach((name, index) => {
+        // Adjust index to match visual position (Start is 0, Memories 1..10, End 11)
+        // Check if we need offset? 
+        // Logic: Station 0 (Start) is at 0vw? No, let's put it at 50vw (center of first screen)
+        // Station 1 is at 350vw etc.
+
+        let leftPos = index * STATION_WIDTH_VW;
+
+        // Station Sign
+        const sign = document.createElement('div');
+        sign.className = 'station-sign';
+        sign.style.left = `${leftPos + 50}vw`; // Center in the 100vw viewport of that station
+        // Fixed: The actual css has left: 50vw and is relative to the station container? 
+        // No, world is absolute. So we need absolute positioning.
+        // Actually, let's just use the style.left we set here, creating elements dynamically.
+        // But wait, the CSS has .station-sign { left: 50vw }. 
+        // If we append to world, we need explicit left.
+
+        // Let's reset the CSS reliance and set inline styles for position in the big world
+        sign.style.left = `${leftPos + 50}vw`;
+
+        let label = name;
+        let subLabel = "";
+
+        if (index === 0) {
+            label = "JOURNEY BEGINS";
+            subLabel = "Platform 9¾";
+        } else if (index === stations.length - 1) {
+            label = "TERMINUS";
+            subLabel = "End of the Line";
+        } else {
+            label = TRAIN_DATA[name].displayTitle; // Use short title
+            subLabel = `Stop #${index}`;
+        }
+
+        sign.innerHTML = `
+            <div class="station-name">${label}</div>
+            <div class="station-sub">${subLabel}</div>
         `;
-    }
 
-    // Scenery Logic - Scatter across the full 300vw width to create "Journey" feel
-    const createTree = (leftVw, type) => `<div class="scenery-tree ${type}" style="left: ${leftVw}vw">🌲</div>`;
-    const createBush = (leftVw) => `<div class="scenery-tree t2" style="left: ${leftVw}vw; font-size: 5rem;">🌳</div>`;
+        if (index > 0 && index < stations.length - 1) {
+            sign.onclick = () => openStation(name);
+        }
 
-    if (index === -1) { // Start
-        sceneryHTML += createTree(20, 't1');
-        sceneryHTML += createBush(150);
-        sceneryHTML += createTree(260, 't1');
-    } else if (index === 999) { // End
-        sceneryHTML += createTree(80, 't2');
-    } else {
-        // Random distribution for the journey
-        // At Station (avoid 40-60vw)
-        if (index % 2 === 0) sceneryHTML += createTree(10, 't1');
-        if (index % 3 === 0) sceneryHTML += createBush(80);
+        // Pole
+        const pole = document.createElement('div');
+        pole.className = 'station-pole';
+        pole.style.left = `${leftPos + 50}vw`;
 
-        // In "Transit" (100vw - 300vw)
-        sceneryHTML += createTree(130 + Math.random() * 20, 't1');
-        sceneryHTML += createBush(180 + Math.random() * 20);
-        sceneryHTML += createTree(250 + Math.random() * 30, 't2');
+        world.appendChild(pole);
+        world.appendChild(sign);
 
-        if (index === 7) sceneryHTML += '<div class="scenery-rock" style="left: 45vw">🪨</div>';
-    }
+        // Scenery Logic - Scatter across the full 300vw width to create "Journey" feel
+        const createTree = (leftVw, type) => `<div class="scenery-tree ${type}" style="left: ${leftVw}vw">🌲</div>`;
+        const createBush = (leftVw) => `<div class="scenery-tree t2" style="left: ${leftVw}vw; font-size: 5rem;">🌳</div>`;
 
-    let signHTML = '';
-    if (index === -1) {
-        signHTML = `
-            <div class="station-sign start-sign">
-                <div class="station-name">JOURNEY BEGINS</div>
-                <div class="station-sub">All Aboard!</div>
-            </div>`;
-    } else if (index === 999) {
-        signHTML = `
-            <div class="station-sign end-sign">
-                <div class="station-name">TERMINUS</div>
-                <div class="station-sub" onclick="startJourney(true)">🔄 Click to Return Home</div>
-            </div>`;
-    } else {
-        signHTML = `
-            <div class="station-sign" onclick="openStation(${index})">
-                <div class="station-index">${index + 1}</div>
-                <div class="station-name">${data.name}</div>
-                <div class="station-sub">Click to View Memory 📸</div>
-            </div>`;
-    }
+        if (index === -1) { // Start
+            sceneryHTML += createTree(20, 't1');
+            sceneryHTML += createBush(150);
+            sceneryHTML += createTree(260, 't1');
+        } else if (index === 999) { // End
+            sceneryHTML += createTree(80, 't2');
+        } else {
+            // Random distribution for the journey
+            // At Station (avoid 40-60vw)
+            if (index % 2 === 0) sceneryHTML += createTree(10 + leftPos, 't1');
+            if (index % 3 === 0) sceneryHTML += createBush(80 + leftPos);
 
-    div.innerHTML = `
-        ${sceneryHTML}
-        ${groundHTML}
-        ${trackHTML}
-        <div class="station-pole"></div>
-        ${signHTML}
-    `;
+            // In "Transit" (100vw - 300vw)
+            sceneryHTML += createTree(leftPos + 130 + Math.random() * 20, 't1');
+            sceneryHTML += createBush(leftPos + 180 + Math.random() * 20);
+            sceneryHTML += createTree(leftPos + 250 + Math.random() * 30, 't2');
 
-    container.appendChild(div);
+            if (index === 7) sceneryHTML += `<div class="scenery-rock" style="left: ${leftPos + 45}vw">🪨</div>`;
+        }
+
+        // MANDARMANI SPECIAL BRIDGE (Index 3 and 8 in standard list, check name)
+        if (name.includes('mandarmani')) {
+            // Add Water under tracks
+            const water = document.createElement('div');
+            water.className = 'water-body';
+            water.style.left = `${leftPos}vw`;
+            groundLayer.appendChild(water);
+
+            // Add Bridge styling to track segment at this pos
+            // We can't easily target the track segment by index in string concat.
+            // Add a bridge element
+            const bridge = document.createElement('div');
+            bridge.className = 'bridge-structure';
+            bridge.style.left = `${leftPos}vw`;
+            world.appendChild(bridge);
+        }
+    });
+
+    sceneryLayer.innerHTML = sceneryHTML;
+
+    // Start Button Logic
+    document.getElementById('startTrainBtn').addEventListener('click', () => {
+        document.getElementById('startTrainBtn').classList.add('hidden');
+        startJourney();
+    });
 }
 
-function startJourney(returning) {
-    const btn = document.getElementById('startTrainBtn');
-    btn.classList.add('hidden');
-    isReturning = returning;
-
-    const train = document.getElementById('theTrain');
-    if (isReturning) {
-        train.style.transform = "scaleX(-1)"; // Face left
-        currentStop = totalStops; // Start from end
-        playWhistle().then(() => goToStation(totalStops - 1));
-    } else {
-        train.style.transform = "scaleX(1)"; // Face right
-        currentStop = -1;
-        playWhistle().then(() => goToStation(0));
-    }
+function startJourney() {
+    goToStation(0);
 }
 
 function goToStation(index) {
-    if ((!isReturning && index >= totalStops) || (isReturning && index < 0)) {
-        moveWorld(isReturning ? -1 : 999); // Move to final logic
+    if (index >= Object.keys(TRAIN_DATA).length && !isReturning) { // End
+        moveWorld(999);
+        return;
+    }
+    if (index < 0 && isReturning) { // Back at start
+        moveWorld(-1);
+        isReturning = false;
         return;
     }
 
     currentStop = index;
-    const train = document.getElementById('theTrain');
-    train.classList.add('train-shaking');
+    const stationName = Object.keys(TRAIN_DATA)[index];
 
+    // Calculate target visual index (Start=0, Mem1=1...)
+    const targetIndex = index; // The moveWorld logic handles offset
+
+    // Start Sound
     startTrainSound();
-
-    // Move World
-    // index -1 = Start (0vw)
-    // index 0 = Stop 1 (STATION_WIDTH_VW)
-    // index 999 = Terminus
-    let targetIndex = index;
-    if (index === 999) targetIndex = totalStops;
-    if (index === -1) targetIndex = -1; // Start
+    document.getElementById('theTrain').classList.add('train-shaking');
 
     moveWorld(targetIndex, () => {
         stopTrainSound();
         playCrumbleSound(); // Play braking/crumble sound on arrival
-        train.classList.remove('train-shaking');
+        document.getElementById('theTrain').classList.remove('train-shaking');
         // Arrived
         if (index === 999) {
             // Terminus logic
+            document.getElementById('returnHomeBtn').classList.remove('hidden');
         } else if (index === -1) {
             // Back to start logic
             const btn = document.getElementById('startTrainBtn');
@@ -217,8 +223,13 @@ function moveWorld(stationIndex, callback) {
     // ...
     // Terminus (999) -> (total + 1) * W
 
+    // Station Index 0 (first memory) is actually visual position 1
+    // Station Index -1 (Start) is visual 0
+    // Station Index 999 (Terminus) is visual 11
+
     let logicalIndex = stationIndex + 1;
-    if (stationIndex === 999) logicalIndex = totalStops + 1;
+    if (stationIndex === 999) logicalIndex = Object.keys(TRAIN_DATA).length + 1;
+    if (stationIndex === -1) logicalIndex = 0;
 
     const distance = logicalIndex * STATION_WIDTH_VW;
     let duration = 5 / travelSpeed; // Base time 5s adjusted by speed
@@ -284,45 +295,10 @@ function stopTrainSound() {
 }
 
 function playCrumbleSound() {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const bufferSize = ctx.sampleRate * 2; // 2 seconds
-    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-    const data = buffer.getChannelData(0);
-
-    for (let i = 0; i < bufferSize; i++) {
-        data[i] = Math.random() * 2 - 1;
-    }
-
-    const noise = ctx.createBufferSource();
-    noise.buffer = buffer;
-
-    const gain = ctx.createGain();
-
-    // Bandpass to simulate rock/earth crumbling
-    const filter = ctx.createBiquadFilter();
-    filter.type = 'lowpass'; // Lowpass for heavy crumble
-    filter.frequency.value = 100;
-
-    noise.connect(filter);
-    filter.connect(gain);
-    gain.connect(ctx.destination);
-
-    const now = ctx.currentTime;
-
-    // Envelope
-    gain.gain.setValueAtTime(0, now);
-    gain.gain.linearRampToValueAtTime(0.8, now + 0.1);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 1.5);
-
-    // Filter movement
-    filter.frequency.setValueAtTime(100, now);
-    filter.frequency.linearRampToValueAtTime(600, now + 0.3); // Crumble up
-    filter.frequency.linearRampToValueAtTime(50, now + 1.5); // Settle down
-
-    noise.start(now);
-    noise.stop(now + 2);
+    const audio = new Audio('/pictures/crumbling.mp3');
+    audio.volume = 0.8;
+    audio.play().catch(e => console.log("Audio play blocked/failed:", e));
 }
-
 
 function openStation(index) {
     const stopData = TRAIN_DATA[index];
