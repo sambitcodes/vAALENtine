@@ -67,23 +67,14 @@ function initTrainWorld() {
 
     stations.forEach((name, index) => {
         // Adjust index to match visual position (Start is 0, Memories 1..10, End 11)
-        // Check if we need offset? 
-        // Logic: Station 0 (Start) is at 0vw? No, let's put it at 50vw (center of first screen)
-        // Station 1 is at 350vw etc.
 
         let leftPos = index * STATION_WIDTH_VW;
 
         // Station Sign
         const sign = document.createElement('div');
         sign.className = 'station-sign';
-        sign.style.left = `${leftPos + 50}vw`; // Center in the 100vw viewport of that station
-        // Fixed: The actual css has left: 50vw and is relative to the station container? 
-        // No, world is absolute. So we need absolute positioning.
-        // Actually, let's just use the style.left we set here, creating elements dynamically.
-        // But wait, the CSS has .station-sign { left: 50vw }. 
-        // If we append to world, we need explicit left.
 
-        // Let's reset the CSS reliance and set inline styles for position in the big world
+        // Reset the CSS reliance and set inline styles for position in the big world
         sign.style.left = `${leftPos + 50}vw`;
 
         let label = name;
@@ -150,8 +141,6 @@ function initTrainWorld() {
             groundLayer.appendChild(water);
 
             // Add Bridge styling to track segment at this pos
-            // We can't easily target the track segment by index in string concat.
-            // Add a bridge element
             const bridge = document.createElement('div');
             bridge.className = 'bridge-structure';
             bridge.style.left = `${leftPos}vw`;
@@ -213,19 +202,6 @@ function goToStation(index) {
 
 function moveWorld(stationIndex, callback) {
     const world = document.getElementById('worldContainer');
-    // Calculate scroll position
-    // Start is at 0. Station 0 at 1 * WIDTH. 
-    // We want to center the station? Use translate X
-    // Station index logic: 
-    // -1 (Start) -> 0
-    // 0 -> 1 * W
-    // 1 -> 2 * W
-    // ...
-    // Terminus (999) -> (total + 1) * W
-
-    // Station Index 0 (first memory) is actually visual position 1
-    // Station Index -1 (Start) is visual 0
-    // Station Index 999 (Terminus) is visual 11
 
     let logicalIndex = stationIndex + 1;
     if (stationIndex === 999) logicalIndex = Object.keys(TRAIN_DATA).length + 1;
@@ -295,10 +271,45 @@ function stopTrainSound() {
 }
 
 function playCrumbleSound() {
-    const audio = new Audio('/pictures/crumbling.mp3');
-    audio.volume = 0.8;
-    audio.play().catch(e => console.log("Audio play blocked/failed:", e));
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const bufferSize = ctx.sampleRate * 2; // 2 seconds
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+
+    for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+    }
+
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+
+    const gain = ctx.createGain();
+
+    // Bandpass to simulate rock/earth crumbling
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass'; // Lowpass for heavy crumble
+    filter.frequency.value = 100;
+
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+
+    const now = ctx.currentTime;
+
+    // Envelope
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.8, now + 0.1);
+    gain.gain.exponentialRampToValueAtTime(0.01, now + 1.5);
+
+    // Filter movement
+    filter.frequency.setValueAtTime(100, now);
+    filter.frequency.linearRampToValueAtTime(600, now + 0.3); // Crumble up
+    filter.frequency.linearRampToValueAtTime(50, now + 1.5); // Settle down
+
+    noise.start(now);
+    noise.stop(now + 2);
 }
+
 
 function openStation(index) {
     const stopData = TRAIN_DATA[index];
