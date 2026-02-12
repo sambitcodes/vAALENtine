@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade of Our Errors</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/arcade.css">
+</head>
+
+<body>
+
+    <!-- Gatekeeper Modal -->
+    <div id="gatekeeperModal" class="modal-overlay hidden">
+        <div class="gatekeeper-box">
+            <div id="quizContent">
+                <!-- Quiz Injected Here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Arcade Cabinet -->
+    <div class="arcade-cabinet">
+        <div class="marquee">
+            <button class="shop-btn" onclick="openShop()">🎁 PRIZE SHOP</button>
+            <h1>ARCADE OF ERRORs</h1>
+            <div class="ticket-counter" id="ticketCount">
+                🎟️ 0
+            </div>
+        </div>
+
+        <div class="screen-area">
+            <!-- Game Lobby -->
+            <div id="gameLobby" class="game-lobby">
+                <!-- Posters Injected JS -->
+            </div>
+
+            <!-- Active Game Container -->
+            <div id="activeGameContainer" class="game-container hidden">
+                <!-- Game Canvas/DOM Injected Here -->
+            </div>
+        </div>
+
+        <button class="home-btn" onclick="window.location.href='index.html'">🏠 HOME</button>
+    </div>
+
+    <script src="js/arcade.js"></script>
+</body>
+
+</html>

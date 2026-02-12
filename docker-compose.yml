@@ -4,9 +4,16 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./assets:/usr/src/app/assets
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - arcade_data:/data
     environment:
       - PORT=3000
+      - DB_PATH=/data/arcade.db
+
     env_file:
       - .env
     restart: always
+
+volumes:
+  arcade_data:

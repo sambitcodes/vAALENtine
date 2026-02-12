@@ -1,5 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./arcade.db');
+const dbPath = process.env.DB_PATH || './arcade.db';
+const db = new sqlite3.Database(dbPath);
+console.log(`Seeding database at: ${dbPath}`);
 
 db.serialize(() => {
     // Create tables

@@ -239,123 +239,199 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const playPopSound = () => {
+        const audio = new Audio('assets/staple.mp3');
+        audio.volume = 0.4;
+        audio.play().catch(() => { });
+    };
+
     async function playWeddingSequence() {
+        let isAborted = false;
+
+        // Define wait first to avoid temporal dead zone
+        const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
         // Create Overlay
         const overlay = document.createElement('div');
         overlay.id = 'weddingOverlay';
         overlay.classList.add('wedding-overlay');
         overlay.innerHTML = `
             <div class="wedding-stage">
+                <button id="exitWeddingBtn" class="exit-btn">❌ Escape Reality</button>
                 <div class="scenario-indicator" id="scenarioIndicator">Scenario 1: usage</div>
                 <div class="thunder-flash"></div>
-                <div class="decor-curtain left"></div>
-                <div class="decor-curtain right"></div>
-                
-                <div class="character girl">
-                    <img src="pictures/prof-pics/aal_prof.jpg" alt="Her">
-                    <div class="character-body outfit-bride"></div>
-                    <div class="dialogue-box hidden" id="girlDialogue"></div>
-                </div>
-                
-                <div class="character guy">
-                    <img src="pictures/prof-pics/sam_prof.jpg" alt="Him">
+                <div class="character guy" id="guyChar">
+                    <img src="pictures/prof-pics/sam_prof.jpg" alt="Groom">
                     <div class="character-body outfit-groom"></div> 
-                    <div class="dialogue-box hidden" id="guyDialogue"></div>
+                    <div class="dialogue-box left hidden" id="guyText"></div>
                 </div>
-                
-                <div id="failStamp" class="fail-stamp hidden">FAILED ❌</div>
+                <div class="character girl" id="girlChar">
+                    <img src="pictures/prof-pics/aal_prof.jpg" alt="Bride">
+                    <div class="character-body outfit-bride"></div>
+                    <div class="dialogue-box right hidden" id="girlText"></div>
+                </div>
             </div>
-
-            <!-- Final Curtain -->
-            <div class="final-curtain">
-                <div class="curtain-texture"></div>
-                <div class="fin-text">FIN.</div>
-                <button id="backToRealityBtn" class="btn-choice hidden" style="margin-top: 50px; z-index: 10000; position: relative;">Back to Reality 🔄</button>
+            <div class="final-curtain" id="finalCurtain">
+                <h1 class="fin-text" id="finText">FIN.</h1>
+                <button id="backToRealityBtn" class="btn-choice hidden">Back to Virtuality</button>
             </div>
         `;
         document.body.appendChild(overlay);
 
-        const girlText = overlay.querySelector('#girlDialogue');
-        const guyText = overlay.querySelector('#guyDialogue');
-        const failStamp = overlay.querySelector('#failStamp');
-        const guyChar = overlay.querySelector('.character.guy');
-        const girlChar = overlay.querySelector('.character.girl');
-        const thunderFlash = overlay.querySelector('.thunder-flash');
-        const finalCurtain = overlay.querySelector('.final-curtain');
-        const finText = overlay.querySelector('.fin-text');
-        const backBtn = overlay.querySelector('#backToRealityBtn');
-        const indicator = overlay.querySelector('#scenarioIndicator');
+        // --- EXIT LOGIC ---
+        const exitBtn = document.getElementById('exitWeddingBtn');
+        const cleanupAndExit = () => {
+            if (isAborted) return;
+            isAborted = true;
+            stopBuzzer();
+            window.speechSynthesis.cancel();
+            overlay.classList.add('fade-out'); // Optional: add fade-out css if wanted, otherwise just remove
+            setTimeout(() => overlay.remove(), 200);
+            const mergedContainer = document.getElementById('mergedCardContainer');
+            if (mergedContainer) mergedContainer.classList.remove('hidden');
+        };
+        exitBtn.addEventListener('click', cleanupAndExit);
 
-        // Initial Voice Load
-        window.speechSynthesis.getVoices();
+        // --- WELCOME SOUND ---
+        await wait(500);
+        if (isAborted) return;
 
-        const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+        // Welcome Effect
+        const welcomeAudio = new Audio('assets/supernatural.mp3');
+        welcomeAudio.volume = 0.5;
+        welcomeAudio.play().catch(() => { });
+        speakText("Welcome... to the reality.", 'female');
+
+        await wait(2000);
+        if (isAborted) return;
+
+        // Elements
+        const guyChar = document.getElementById('guyChar');
+        const girlChar = document.getElementById('girlChar');
+        const guyText = document.getElementById('guyText');
+        const girlText = document.getElementById('girlText');
+        const scenarioIndicator = document.getElementById('scenarioIndicator');
+        const thunderFlash = document.querySelector('.thunder-flash');
+        const finalCurtain = document.getElementById('finalCurtain');
+        const finText = document.getElementById('finText');
+        const backBtn = document.getElementById('backToRealityBtn');
+
+        // Back Button Logic (Finale Screen)
+        backBtn.addEventListener('click', () => {
+            cleanupAndExit();
+            // Specifically for the finale button, we might want to trigger the "Us" card reveal logic again if needed,
+            // but cleanupAndExit does unhide the mergedContainer.
+            // We can also trigger confetti here if we want.
+            createRoseShower();
+        });
+
+
+
+        const updateScenario = (text) => {
+            if (isAborted) return;
+            scenarioIndicator.textContent = text;
+            scenarioIndicator.classList.add('pulse-update');
+            setTimeout(() => scenarioIndicator.classList.remove('pulse-update'), 500);
+        };
 
         const performLine = async (element, text, gender, duration) => {
-            stopBuzzer(); // Stop any previous fail sound
+            if (isAborted) return;
+            stopBuzzer();
+            playPopSound(); // Message appears sound
             element.textContent = text;
             element.classList.remove('hidden');
             speakText(text, gender);
             await wait(duration);
+            if (isAborted) return;
             element.classList.add('hidden');
         };
 
         const performFail = async () => {
+            if (isAborted) return;
             playBuzzer();
-            failStamp.classList.remove('hidden');
-            await wait(2500);
-            failStamp.classList.add('hidden');
-        };
-
-        const updateScenario = (text) => {
-            indicator.textContent = text;
-            indicator.classList.add('pulse');
-            setTimeout(() => indicator.classList.remove('pulse'), 500);
+            const failStamp = document.createElement('div');
+            failStamp.className = 'fail-stamp';
+            failStamp.textContent = 'FAILED ❌';
+            document.querySelector('.wedding-stage').appendChild(failStamp);
+            await wait(1500);
+            if (isAborted) return;
+            failStamp.remove();
         };
 
         // Enter Stage
         updateScenario("INTRO: The Setup");
         await wait(1000);
+        if (isAborted) return;
+
+        playPopSound();
         guyChar.classList.add('enter');
-        girlChar.classList.add('enter');
+
+        setTimeout(() => {
+            if (!isAborted) {
+                playPopSound();
+                girlChar.classList.add('enter');
+            }
+        }, 200);
+
         await wait(2000);
+        if (isAborted) return;
 
         // --- SCENARIO 1 ---
         updateScenario("SCENARIO 1/4: Aggression");
         await performLine(guyText, "I'm the boss here! *Aggressive*", 'male', 3000);
+        if (isAborted) return;
         await performLine(girlText, "Hey, can you be a bit softer?", 'female', 3000);
+        if (isAborted) return;
         await performLine(guyText, "I don't care.", 'male', 2500);
+        if (isAborted) return;
         await performFail();
+        if (isAborted) return;
         await wait(1000);
+        if (isAborted) return;
 
         // --- SCENARIO 2 ---
         updateScenario("SCENARIO 2/4: Commitment");
         await performLine(guyText, "I'll introduce you when the time is right.", 'male', 3500);
+        if (isAborted) return;
         await performLine(girlText, "I need time to get used to them. Let's meet early.", 'female', 4000);
+        if (isAborted) return;
         await performLine(guyText, "Do you wanna sleep with them ?", 'male', 3000);
+        if (isAborted) return;
         await performFail();
+        if (isAborted) return;
         await wait(1000);
+        if (isAborted) return;
 
         // --- SCENARIO 3 ---
         updateScenario("SCENARIO 3/4: Secrets");
         await performLine(guyText, "*Hides feelings* I'm hiding this so you don't get hurt.", 'male', 4000);
+        if (isAborted) return;
         await performLine(girlText, "If you can't share, what's the point of me being here?", 'female', 4000);
+        if (isAborted) return;
         await performLine(guyText, "I am  like this , I can't change myself.", 'male', 3000);
+        if (isAborted) return;
         await performFail();
+        if (isAborted) return;
         await wait(1000);
+        if (isAborted) return;
 
         // --- SCENARIO 4 ---
         updateScenario("SCENARIO 4/4: Prejudice");
         await performLine(guyText, "I won't get along with your friend. Period.", 'male', 3500);
+        if (isAborted) return;
         await performLine(girlText, "Please just give it a try?", 'female', 3000);
+        if (isAborted) return;
         await performLine(guyText, "No chance! I will be a hater.", 'male', 2500);
+        if (isAborted) return;
         await performFail();
+        if (isAborted) return;
 
 
         // --- GRAND FINALE ---
         updateScenario("THE END");
         stopBuzzer();
         await wait(500);
+        if (isAborted) return;
 
         // 1. Thunder & Lightning
         const thunderSound = new Audio('assets/thunder.mp3');
@@ -365,18 +441,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 2. Magnetic Repulsion
         await wait(200);
+        if (isAborted) return;
         guyChar.classList.add('repel-right');
         girlChar.classList.add('repel-left');
 
-        await wait(4000); // Wait for bodies to fly off (Slower animation)
+        await wait(4000);
+        if (isAborted) return;
 
         // 3. Curtains Fall
         finalCurtain.classList.add('curtain-dropped');
 
         await wait(1500);
+        if (isAborted) return;
         finText.classList.add('show-fin');
 
         await wait(1000);
+        if (isAborted) return;
         backBtn.classList.remove('hidden');
 
         // Back Button Logic
@@ -387,7 +467,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             mergedContainer.innerHTML = `
                 <div class="profile-card united-card taped-paper-look">
-                    <div class="tape-seam"></div>
+                    <!-- Horizontal Tapes -->
+                    <div class="tape-strip top"></div>
+                    <div class="tape-strip center"></div>
+                    <div class="tape-strip bottom"></div>
+                    
+                    <!-- Crack Effect -->
+                    <div class="crack-effect"></div>
+
                     <div class="profile-pic-container heart-frame">
                         <img src="pictures/prof-pics/together_prof.jpg" alt="Us" class="profile-pic">
                     </div>

@@ -6,8 +6,9 @@ const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const dbPath = path.resolve(__dirname, 'arcade.db');
+const dbPath = process.env.DB_PATH || path.resolve(__dirname, 'arcade.db');
 const db = new sqlite3.Database(dbPath);
+console.log(`Using database at: ${dbPath}`);
 
 app.use(cors());
 app.use(express.json());
