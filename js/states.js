@@ -114,6 +114,9 @@ function initMapGame() {
     const states = document.querySelectorAll('#india-map-container path');
     states.forEach(state => {
         state.classList.add('state');
+        state.addEventListener('mouseenter', () => {
+            if (!state.classList.contains('correct')) SoundFX.playHover();
+        });
         state.addEventListener('click', (e) => {
             if (state.classList.contains('correct')) return;
             SoundFX.playClick();
@@ -198,6 +201,7 @@ function showQuestionOverlay(svgId) {
     options.forEach(opt => {
         const btn = document.createElement('button');
         btn.className = 'option-btn';
+        btn.onmouseenter = () => SoundFX.playHover();
         btn.innerText = opt;
         btn.onclick = () => {
             SoundFX.playChoice();

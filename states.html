@@ -19,16 +19,26 @@
                 <span>vAALENtine</span>
             </a>
             <div class="nav-links">
-                <a href="home.html" class="nav-link">Home</a>
-                <a href="us.html" class="nav-link">Us</a>
-                <a href="memories.html" class="nav-link">Memories</a>
-                <a href="music.html" class="nav-link">Music</a>
-                <a href="trivia.html" class="nav-link">Trivia</a>
-                <a href="states.html" class="nav-link active">Map</a>
-                <a href="arcade.html" class="nav-link">Arcade</a>
-                <a href="escape.html" class="nav-link">Escape</a>
-                <a href="finale.html" class="nav-link">Finale</a>
-                <button onclick="logout()" class="nav-logout-btn">Logout</button>
+                <a href="home.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Home</a>
+                <a href="us.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Us</a>
+                <a href="memories.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Memories</a>
+                <a href="music.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Music</a>
+                <a href="trivia.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Trivia</a>
+                <a href="states.html" class="nav-link active" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Map</a>
+                <a href="arcade.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Arcade</a>
+                <a href="escape.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Escape</a>
+                <a href="finale.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Finale</a>
+                <button onclick="SoundFX.playClick(); logout()" onmouseenter="SoundFX.playHover()"
+                    class="nav-logout-btn">Logout</button>
             </div>
         </div>
     </nav>
@@ -53,7 +63,8 @@
                     <h3 id="questionText">What is the capital of this state?</h3>
 
                     <div class="hint-container">
-                        <button id="hintBtn" class="hint-btn" onclick="toggleHint()">💡 Show Hint</button>
+                        <button id="hintBtn" class="hint-btn" onmouseenter="SoundFX.playHover()"
+                            onclick="toggleHint()">💡 Show Hint</button>
                         <div id="hintText" class="hint-text hidden"></div>
                     </div>
 
@@ -80,7 +91,7 @@
         </div>
 
         <div class="action-buttons">
-            <button id="endGameBtn" class="btn primary-btn">End Game</button>
+            <button id="endGameBtn" class="btn primary-btn" onmouseenter="SoundFX.playHover()">End Game</button>
         </div>
     </main>
 
@@ -93,7 +104,8 @@
                 <p>Correct: <span id="finalCorrect">0</span></p>
             </div>
             <p id="resultMessage" class="result-message"></p>
-            <button onclick="closeResultModal()" class="btn primary-btn">Play Again</button>
+            <button onclick="closeResultModal()" class="btn primary-btn" onmouseenter="SoundFX.playHover()">Play
+                Again</button>
         </div>
     </div>
 

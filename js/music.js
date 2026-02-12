@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadPlaylist();
 
     document.querySelectorAll('.mood-btn').forEach(btn => {
+        btn.onmouseenter = () => SoundFX.playHover();
         btn.addEventListener('click', () => {
             document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -50,7 +51,7 @@ function loadPlaylist(mood = 'all') {
             <h3>${song.title}</h3>
             <p style="color: var(--text-secondary); margin-bottom: 1rem;">${song.artist}</p>
             <span class="mood-tag">${song.moodTag}</span>
-            <button class="play-btn" onclick="window.open('${song.link}', '_blank')">▶ Play</button>
+            <button class="play-btn" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); window.open('${song.link}', '_blank')">▶ Play</button>
         `;
         container.appendChild(card);
     });

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vAALENtine - Login</title>
     <link rel="stylesheet" href="css/login.css">
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
 </head>
 
 <body>
@@ -33,7 +35,8 @@
                 <span>Password hint: Agar number pata hai toh bas ulta likho.</span>
             </div>
 
-            <button id="loginBtn" class="login-btn">LOGIN</button>
+            <button id="loginBtn" class="login-btn" onmouseenter="SoundFX.playHover()"
+                onclick="SoundFX.playClick()">LOGIN</button>
         </div>
     </div>
 
@@ -52,8 +55,9 @@
         <div class="popup-content">
             <h1 class="popup-title fail-title">AAP un khusnaseebon mein se nahin hai.</h1>
             <img src="/pictures/naw.gif" alt="Access Denied" class="popup-media">
-            <button onclick="document.getElementById('failPopup').style.display='none'" class="login-btn"
-                style="width: auto; padding: 10px 30px;">TRY AGAIN</button>
+            <button onclick="SoundFX.playClick(); document.getElementById('failPopup').style.display='none'"
+                class="login-btn" onmouseenter="SoundFX.playHover()" style="width: auto; padding: 10px 30px;">TRY
+                AGAIN</button>
         </div>
     </div>
 

@@ -19,16 +19,26 @@
                 <span>vAALENtine</span>
             </a>
             <div class="nav-links">
-                <a href="home.html" class="nav-link">Home</a>
-                <a href="us.html" class="nav-link">Us</a>
-                <a href="memories.html" class="nav-link">Memories</a>
-                <a href="music.html" class="nav-link">Music</a>
-                <a href="trivia.html" class="nav-link">Trivia</a>
-                <a href="states.html" class="nav-link">Map</a>
-                <a href="arcade.html" class="nav-link">Arcade</a>
-                <a href="escape.html" class="nav-link active">Escape</a>
-                <a href="finale.html" class="nav-link">Finale</a>
-                <button onclick="logout()" class="nav-logout-btn">Logout</button>
+                <a href="home.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Home</a>
+                <a href="us.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Us</a>
+                <a href="memories.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Memories</a>
+                <a href="music.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Music</a>
+                <a href="trivia.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Trivia</a>
+                <a href="states.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Map</a>
+                <a href="arcade.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Arcade</a>
+                <a href="escape.html" class="nav-link active" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Escape</a>
+                <a href="finale.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Finale</a>
+                <button onclick="SoundFX.playClick(); logout()" onmouseenter="SoundFX.playHover()"
+                    class="nav-logout-btn">Logout</button>
             </div>
         </div>
     </nav>
@@ -41,7 +51,8 @@
                 <p>You've been locked out of the Valentine's Vault! To break in and claim your prize, you must solve 3
                     puzzles.</p>
                 <div class="lock-icon">🔒</div>
-                <button onclick="startGame()" class="btn-escape">Start the Heist</button>
+                <button onclick="SoundFX.playClick(); startGame()" onmouseenter="SoundFX.playHover()"
+                    class="btn-escape">Start the Heist</button>
             </div>
         </div>
 
@@ -69,9 +80,11 @@
                     <p id="cipher-question">Question Loading...</p>
                 </div>
                 <input type="text" id="cipher-input" placeholder="Enter the code word" autocomplete="off">
-                <button onclick="checkCipher()" class="btn-escape">Unlock</button>
+                <button onclick="SoundFX.playClick(); checkCipher()" onmouseenter="SoundFX.playHover()"
+                    class="btn-escape">Unlock</button>
                 <p id="cipher-feedback" class="feedback-text"></p>
-                <button onclick="showHint(2)" class="hint-btn">Need a Hint?</button>
+                <button onclick="SoundFX.playClick(); showHint(2)" onmouseenter="SoundFX.playHover()"
+                    class="hint-btn">Need a Hint?</button>
                 <p id="hint-2" class="hint-text hidden"></p>
             </div>
         </div>
@@ -85,7 +98,8 @@
                     <h3 id="scrambled-text">L V O E O Y U</h3>
                 </div>
                 <input type="text" id="final-input" placeholder="What does it say?" autocomplete="off">
-                <button onclick="checkFinal()" class="btn-escape">Open Vault</button>
+                <button onclick="SoundFX.playClick(); checkFinal()" onmouseenter="SoundFX.playHover()"
+                    class="btn-escape">Open Vault</button>
                 <p id="final-feedback" class="feedback-text"></p>
             </div>
         </div>
@@ -99,7 +113,8 @@
                     <p>Your Reward:</p>
                     <h3>A Lifetime Supply of My Annoying Jokes</h3>
                 </div>
-                <a href="music.html" class="btn-escape">Claim Reward (Next Level)</a>
+                <a href="music.html" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick()"
+                    class="btn-escape">Claim Reward (Next Level)</a>
             </div>
         </div>
     </main>

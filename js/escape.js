@@ -60,7 +60,11 @@ function initPatternGrid() {
         const btn = document.createElement('button');
         btn.className = 'pattern-btn';
         btn.textContent = num;
-        btn.onclick = () => handlePatternClick(btn, num);
+        btn.onmouseenter = () => SoundFX.playHover();
+        btn.onclick = () => {
+            SoundFX.playClick();
+            handlePatternClick(btn, num);
+        };
         grid.appendChild(btn);
     });
 }
@@ -77,12 +81,14 @@ function handlePatternClick(btn, num) {
         playerPattern.push(num);
 
         if (playerPattern.length === 9) {
+            SoundFX.playCorrect();
             document.getElementById('pattern-feedback').textContent = "SYSTEM UNLOCKED";
             document.getElementById('pattern-feedback').className = "feedback-text success";
             setTimeout(() => switchStage(1, 2), 1000);
         }
     } else {
         // Incorrect - Reset
+        SoundFX.playWrong();
         document.getElementById('pattern-feedback').textContent = "INVALID SEQUENCE. RESETTING...";
         document.getElementById('pattern-feedback').className = "feedback-text error";
 
@@ -107,10 +113,12 @@ function checkCipher() {
     const feedback = document.getElementById('cipher-feedback');
 
     if (input === CIPHER_ANSWER) {
+        SoundFX.playCorrect();
         feedback.textContent = "ACCESS GRANTED";
         feedback.className = "feedback-text success";
         setTimeout(() => switchStage(2, 3), 1000);
     } else {
+        SoundFX.playWrong();
         feedback.textContent = "ACCESS DENIED";
         feedback.className = "feedback-text error";
         document.getElementById('stage-2').querySelector('.glass-panel').classList.add('shake');
@@ -133,11 +141,13 @@ function checkFinal() {
 
     // Allow variations
     if (input === FINAL_PHRASE || input === "I LOVE YOU!" || input === "I LUV U") {
+        SoundFX.playCorrect();
         triggerConfetti();
         feedback.textContent = "VAULT OPENING...";
         feedback.className = "feedback-text success";
         setTimeout(() => switchStage(3, 'success'), 1500);
     } else {
+        SoundFX.playWrong();
         feedback.textContent = "INCORRECT PASSPHRASE";
         feedback.className = "feedback-text error";
     }

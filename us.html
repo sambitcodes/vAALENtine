@@ -19,16 +19,26 @@
                 <span>vAALENtine</span>
             </a>
             <div class="nav-links">
-                <a href="home.html" class="nav-link">Home</a>
-                <a href="us.html" class="nav-link active">Us</a>
-                <a href="memories.html" class="nav-link">Memories</a>
-                <a href="music.html" class="nav-link">Music</a>
-                <a href="trivia.html" class="nav-link">Trivia</a>
-                <a href="states.html" class="nav-link">Map</a>
-                <a href="arcade.html" class="nav-link">Arcade</a>
-                <a href="escape.html" class="nav-link">Escape</a>
-                <a href="finale.html" class="nav-link">Finale</a>
-                <button onclick="logout()" class="nav-logout-btn">Logout</button>
+                <a href="home.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Home</a>
+                <a href="us.html" class="nav-link active" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Us</a>
+                <a href="memories.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Memories</a>
+                <a href="music.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Music</a>
+                <a href="trivia.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Trivia</a>
+                <a href="states.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Map</a>
+                <a href="arcade.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Arcade</a>
+                <a href="escape.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Escape</a>
+                <a href="finale.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Finale</a>
+                <button onclick="SoundFX.playClick(); logout()" onmouseenter="SoundFX.playHover()"
+                    class="nav-logout-btn">Logout</button>
             </div>
         </div>
     </nav>
@@ -42,7 +52,7 @@
 
             <div class="profiles-wrapper">
                 <!-- Aalen's Card -->
-                <div class="profile-card aalen">
+                <div class="profile-card aalen" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick()">
                     <div class="profile-pic-container">
                         <img src="/pictures/prof-pics/aal_prof.jpg" alt="Aalen" class="profile-pic" loading="lazy">
                     </div>
@@ -73,12 +83,14 @@
 
                 <!-- Choice Buttons (Centered) -->
                 <div class="choice-container centered-buttons">
-                    <button id="matchBtn" class="btn-choice match">Match</button>
-                    <button id="unmatchBtn" class="btn-choice unmatch">Unmatch</button>
+                    <button id="matchBtn" class="btn-choice match" onmouseenter="SoundFX.playHover()"
+                        onclick="SoundFX.playClick()">Match</button>
+                    <button id="unmatchBtn" class="btn-choice unmatch" onmouseenter="SoundFX.playHover()"
+                        onclick="SoundFX.playClick()">Unmatch</button>
                 </div>
 
                 <!-- Sambit's Card -->
-                <div class="profile-card sambit">
+                <div class="profile-card sambit" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick()">
                     <div class="profile-pic-container">
                         <img src="/pictures/prof-pics/sam_prof.jpg" alt="Sambit" class="profile-pic" loading="lazy">
                     </div>

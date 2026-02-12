@@ -19,16 +19,26 @@
                 <span>vAALENtine</span>
             </a>
             <div class="nav-links">
-                <a href="home.html" class="nav-link">Home</a>
-                <a href="us.html" class="nav-link">Us</a>
-                <a href="memories.html" class="nav-link">Memories</a>
-                <a href="music.html" class="nav-link active">Music</a>
-                <a href="trivia.html" class="nav-link">Trivia</a>
-                <a href="states.html" class="nav-link">Map</a>
-                <a href="arcade.html" class="nav-link">Arcade</a>
-                <a href="escape.html" class="nav-link">Escape</a>
-                <a href="finale.html" class="nav-link">Finale</a>
-                <button onclick="logout()" class="nav-logout-btn">Logout</button>
+                <a href="home.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Home</a>
+                <a href="us.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Us</a>
+                <a href="memories.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Memories</a>
+                <a href="music.html" class="nav-link active" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Music</a>
+                <a href="trivia.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Trivia</a>
+                <a href="states.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Map</a>
+                <a href="arcade.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Arcade</a>
+                <a href="escape.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Escape</a>
+                <a href="finale.html" class="nav-link" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Finale</a>
+                <button onclick="SoundFX.playClick(); logout()" onmouseenter="SoundFX.playHover()"
+                    class="nav-logout-btn">Logout</button>
             </div>
         </div>
     </nav>
@@ -43,10 +53,14 @@
             <div class="mood-selector">
                 <span>What mood are you in?</span>
                 <div class="mood-buttons">
-                    <button class="mood-btn active" data-mood="all">All</button>
-                    <button class="mood-btn" data-mood="happy">Happy</button>
-                    <button class="mood-btn" data-mood="chill">Chill</button>
-                    <button class="mood-btn" data-mood="nostalgic">Nostalgic</button>
+                    <button class="mood-btn active" data-mood="all" onmouseenter="SoundFX.playHover()"
+                        onclick="SoundFX.playClick()">All</button>
+                    <button class="mood-btn" data-mood="happy" onmouseenter="SoundFX.playHover()"
+                        onclick="SoundFX.playClick()">Happy</button>
+                    <button class="mood-btn" data-mood="chill" onmouseenter="SoundFX.playHover()"
+                        onclick="SoundFX.playClick()">Chill</button>
+                    <button class="mood-btn" data-mood="nostalgic" onmouseenter="SoundFX.playHover()"
+                        onclick="SoundFX.playClick()">Nostalgic</button>
                 </div>
             </div>
 
@@ -56,13 +70,15 @@
                 <audio id="bgMusic" loop>
                     <source src="assets/background-music.mp3" type="audio/mpeg">
                 </audio>
-                <button id="musicToggle" class="btn btn-secondary">
+                <button id="musicToggle" class="btn btn-secondary" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">
                     <span id="musicIcon">🔇</span> Background Music
                 </button>
             </div>
 
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="index.html" class="btn btn-primary">Back to Home</a>
+                <a href="home.html" class="btn btn-primary" onmouseenter="SoundFX.playHover()"
+                    onclick="SoundFX.playClick()">Back to Home</a>
             </div>
         </div>
     </section>

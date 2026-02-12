@@ -24,7 +24,8 @@
     <!-- Arcade Cabinet -->
     <div class="arcade-cabinet">
         <div class="marquee">
-            <button class="shop-btn" onclick="openShop()">🎁 PRIZE SHOP</button>
+            <button class="shop-btn" onclick="SoundFX.playClick(); openShop()" onmouseenter="SoundFX.playHover()">🎁
+                PRIZE SHOP</button>
             <h1>ARCADE OF ERRORs</h1>
             <div class="ticket-counter" id="ticketCount">
                 🎟️ 0
@@ -44,11 +45,15 @@
         </div>
 
         <div style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
-            <button class="home-btn" onclick="window.location.href='home.html'">🏠 HOME</button>
-            <button class="home-btn" style="background:#333;" onclick="logout()">🚪 LOGOUT</button>
+            <button class="home-btn" onclick="SoundFX.playClick(); window.location.href='home.html'"
+                onmouseenter="SoundFX.playHover()">🏠 HOME</button>
+            <button class="home-btn" style="background:#333;" onclick="SoundFX.playClick(); logout()"
+                onmouseenter="SoundFX.playHover()">🚪 LOGOUT</button>
         </div>
     </div>
 
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/arcade.js"></script>
 </body>
 

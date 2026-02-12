@@ -77,13 +77,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         <div style="background:#222; border:4px solid #ff0055; padding:40px; text-align:center; color:white; max-width:90%; box-shadow: 0 0 20px #ff0055;">
             <h1 style="color:#ff0055; margin-bottom:30px; line-height:1.5; font-size:1.5rem;">WELCOME TO THE<br>ARCADE OF ERRORS</h1>
             <p style="font-size:1rem; margin-bottom:40px; line-height:1.8; color:#fff;">"Because I could never<br>take you to one!" 💔</p>
-            <button id="closeIntroBtn" style="padding:15px 30px; font-family:inherit; font-size:1rem; cursor:pointer; background:#ff0055; border:none; color:white; text-transform:uppercase; font-weight:bold; box-shadow: 0 5px 0 #990033;">ENTER ARCADE</button>
+            <button id="closeIntroBtn" onmouseenter="SoundFX.playHover()" style="padding:15px 30px; font-family:inherit; font-size:1rem; cursor:pointer; background:#ff0055; border:none; color:white; text-transform:uppercase; font-weight:bold; box-shadow: 0 5px 0 #990033;">ENTER ARCADE</button>
         </div>
     `;
 
     document.body.appendChild(introModal);
+    SoundFX.playHover(); // Play a sound when the modal appears
 
     document.getElementById('closeIntroBtn').onclick = () => {
+        SoundFX.playClick();
         introModal.style.transition = 'opacity 0.5s';
         introModal.style.opacity = '0';
         setTimeout(() => introModal.remove(), 500);
@@ -119,7 +121,7 @@ function renderQuestion() {
         <p style="margin-bottom: 20px;">${q.q}</p>
         <div class="options-grid">
             ${q.options.map((opt, i) => `
-                <button class="quiz-option" onclick="handleAnswer(${i})">${opt}</button>
+                <button class="quiz-option" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); handleAnswer(${i})">${opt}</button>
             `).join('')}
         </div>
         <p id="quizFeedback" class="quiz-feedback"></p>
@@ -131,10 +133,12 @@ window.handleAnswer = (index) => {
     const correct = quizData[currentQIndex].correct;
 
     if (index === correct) {
+        SoundFX.playCorrect();
         feedback.textContent = "Correct! ✅";
         feedback.className = "quiz-feedback success";
         score++;
     } else {
+        SoundFX.playWrong();
         feedback.textContent = "Wrong! ❌ (But I'll let it slide because I love you ... maybe)";
         feedback.className = "quiz-feedback error";
         // score++; // Uncomment to force win for testing
@@ -164,7 +168,7 @@ function finishQuiz() {
             <h2 class="success">ACCESS GRANTED</h2>
             <p>Welcome to the Arcade of Our Errors.</p>
             <p>+5 Tickets added!</p>
-            <button class="quiz-option" onclick="enterLobby()">ENTER</button>
+            <button class="quiz-option" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); enterLobby()">ENTER</button>
         `;
     } else {
         currentQIndex = 0;
@@ -172,7 +176,7 @@ function finishQuiz() {
         document.getElementById('quizContent').innerHTML = `
             <h2 class="error">ACCESS DENIED</h2>
             <p>You don't know me well enough yet!</p>
-            <button class="quiz-option" onclick="renderQuestion()">TRY AGAIN</button>
+            <button class="quiz-option" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); renderQuestion()">TRY AGAIN</button>
         `;
     }
 }
@@ -231,27 +235,27 @@ function updateTicketDisplay() {
 // --- LOBBY ---
 function renderLobby() {
     lobby.innerHTML = `
-        <div class="game-poster" onclick="launchGame('buzzwire')">
+        <div class="game-poster" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); launchGame('buzzwire')">
             <div class="game-icon">⚡</div>
             <h3>The Spark That Failed</h3>
             <p>(Avoid the Wire)</p>
         </div>
-        <div class="game-poster" onclick="launchGame('breakout')">
+        <div class="game-poster" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); launchGame('breakout')">
             <div class="game-icon">💔</div>
             <h3>Heartbreak Breakout</h3>
             <p>(Destroy Baggage)</p>
         </div>
-        <div class="game-poster" onclick="launchGame('frogger')">
+        <div class="game-poster" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); launchGame('frogger')">
             <div class="game-icon">🚩</div>
             <h3>Red Flag Dodger</h3>
             <p>(Survival)</p>
         </div>
-        <div class="game-poster" onclick="launchGame('whack')">
+        <div class="game-poster" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); launchGame('whack')">
             <div class="game-icon">🔨</div>
             <h3>Whack-A-Regret</h3>
             <p>(Hit the Ex)</p>
         </div>
-        <div class="game-poster" onclick="launchGame('claw')">
+        <div class="game-poster" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); launchGame('claw')">
             <div class="game-icon">🕹️</div>
             <h3>Clumsy Claw</h3>
             <p>(Catch the Dream)</p>
@@ -341,7 +345,7 @@ window.launchGame = async (gameId) => {
                 <div style="text-align:center; padding: 50px;">
                     <h2>${gameId.toUpperCase()} Coming Soon!</h2>
                     <p>Under Construction 🚧</p>
-                    <button class="exit-btn-small" onclick="addTickets(1); exitGame()">EXIT (Refund)</button>
+                    <button class="exit-btn-small" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); addTickets(1); exitGame()">EXIT (Refund)</button>
                 </div>
             `;
         }
@@ -353,7 +357,7 @@ window.launchGame = async (gameId) => {
             <div style="text-align:center; color:red;">
                 <h2>Error Loading Game</h2>
                 <p>${e.message}</p>
-                 <button class="exit-btn-small" onclick="exitGame()">EXIT</button>
+                 <button class="exit-btn-small" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); exitGame()">EXIT</button>
             </div>
         `;
     }
@@ -399,12 +403,12 @@ window.openShop = async () => {
 
     shopModal.innerHTML = `
         <div style="background:#1a1a1a; width: 600px; max-height:80vh; overflow-y:auto; border: 2px solid #00f2ff; border-radius: 20px; padding: 40px; position:relative; box-shadow: 0 0 30px rgba(0,242,255,0.2);">
-            <button onclick="document.getElementById('shopModal').remove()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">&times;</button>
+            <button onclick="SoundFX.playClick(); document.getElementById('shopModal').remove()" onmouseenter="SoundFX.playHover()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">&times;</button>
             <h2 style="color:#00f2ff; text-align:center; margin-bottom:30px;">🎁 PRIZE SHOP</h2>
             
             <div style="display:flex; justify-content:center; gap:20px; margin-bottom:30px;">
-                <button id="shopTabBtn" onclick="toggleShopView('items')" style="background:#00f2ff; color:black; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">STORE</button>
-                <button id="historyTabBtn" onclick="toggleShopView('history')" style="background:#333; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">HISTORY</button>
+                <button id="shopTabBtn" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); toggleShopView('items')" style="background:#00f2ff; color:black; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">STORE</button>
+                <button id="historyTabBtn" onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); toggleShopView('history')" style="background:#333; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">HISTORY</button>
             </div>
 
             <div id="shopItems">
@@ -414,7 +418,7 @@ window.openShop = async () => {
                             <div style="font-size:1.5rem; margin-bottom:5px;">${item.icon} ${item.name}</div>
                             <div style="color:#888; font-size:0.85rem;">${item.desc}</div>
                         </div>
-                        <button onclick="buyItem('${item.name}', ${item.cost})" style="background:#ff0055; color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:bold;">🎟️ ${item.cost}</button>
+                        <button onmouseenter="SoundFX.playHover()" onclick="SoundFX.playClick(); buyItem('${item.name}', ${item.cost})" style="background:#ff0055; color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:bold;">🎟️ ${item.cost}</button>
                     </div>
                 `).join('')}
             </div>
