@@ -116,101 +116,366 @@
     text-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
 }
 
-/* Merged "Us" Card */
-.profile-card.heart-shape {
-    width: 600px;
+/* TAPE & PAPER EFFECTS */
+.tape-strip {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg);
+    width: 300px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.8);
+    opacity: 0.9;
+    z-index: 2000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    /* Masking Tape Texture */
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(200, 200, 200, 0.2) 10px, rgba(200, 200, 200, 0.2) 20px);
+    border-left: 2px dashed rgba(0, 0, 0, 0.1);
+    border-right: 2px dashed rgba(0, 0, 0, 0.1);
+    animation: tapeSnap 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tape-strip.top {
+    top: 20%;
+    transform: translateX(-50%) rotate(-3deg);
+}
+
+.tape-strip.center {
+    top: 50%;
+    transform: translateX(-50%) rotate(2deg);
+}
+
+.tape-strip.bottom {
+    top: 80%;
+    transform: translateX(-50%) rotate(-4deg);
+}
+
+@keyframes tapeSnap {
+    0% {
+        transform: translateX(-50%) scale(2) rotate(10deg);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.9;
+    }
+}
+
+/* Taped Paper Look for United Card */
+.profile-card.united-card.taped-paper-look {
+    background: linear-gradient(90deg, #1a1a1a 50%, #222 50%);
+    /* Split background */
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.tape-seam {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 40px;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    z-index: 10;
+    /* Zigzag edges for tape look */
+    /* masking tape transparency */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glitch-active {
+    animation: glitchWrapper 0.4s steps(5) forwards;
+}
+
+@keyframes glitchWrapper {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-5px, 5px);
+        filter: hue-rotate(90deg);
+    }
+
+    40% {
+        transform: translate(5px, -5px);
+        filter: invert(1);
+    }
+
+    60% {
+        transform: translate(-5px, 0);
+        filter: hue-rotate(-90deg);
+    }
+
+    80% {
+        transform: translate(5px, 5px);
+    }
+
+    100% {
+        transform: translate(0);
+        filter: none;
+    }
+}
+
+/* Merged "Us" Card (The United Card) */
+.profile-card.united-card {
+    width: 900px;
     height: auto;
-    background: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
-    /* Standard Card Shape */
-    clip-path: none;
+    background: rgba(10, 0, 5, 0.85);
+    /* Dark elegant background */
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 51, 102, 0.5);
+    box-shadow: 0 0 50px rgba(255, 51, 102, 0.3);
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 3rem;
-    text-align: center;
     color: white;
-    box-shadow: 0 20px 50px rgba(255, 117, 140, 0.6);
-    animation: fadeIn 2s forwards;
-    /* Smoother fade in */
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.3);
     margin: 50px auto;
+    animation: fadeIn 2s forwards;
+    clip-path: none;
+    /* No blob shape */
 }
 
-.profile-card.heart-shape .profile-pic-container {
-    width: 250px;
-    height: 250px;
-    border: none;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    margin-bottom: 2rem;
-    /* Heart Shape for Image Container */
-    clip-path: path('M125,250 C50,200 0,150 0,75 C0,25 50,-25 125,50 C200,-25 250,25 250,75 C250,150 200,200 125,250 Z');
-    background: white;
-    /* Fallback */
-    overflow: hidden;
-    position: relative;
+/* Image Container - Keep Heart Shape Here */
+.profile-pic-container.heart-frame {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ff0055, #ffcc00);
+    padding: 3px;
+    clip-path: path('M100,200 C40,160 0,120 0,60 C0,20 40,-20 100,40 C160,-20 200,20 200,60 C200,120 160,160 100,200 Z');
+    box-shadow: 0 0 30px rgba(255, 0, 85, 0.6);
     animation: heartbeat 3s infinite ease-in-out;
 }
 
-.profile-card.heart-shape .profile-pic {
+.profile-card.united-card .profile-pic {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Slightly scale up to fill heart better */
     transform: scale(1.1);
 }
 
-.profile-card.heart-shape .card-title {
-    font-size: 2.8rem;
-    font-family: 'Dancing Script', cursive;
+.profile-card.united-card .card-title {
+    font-size: 3rem;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ff3366, #ffcc00, #00ccff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
     margin-bottom: 0.5rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 800;
 }
 
-.profile-card.heart-shape .card-alias {
-    color: rgba(255, 255, 255, 0.95);
+.profile-card.united-card .card-alias {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
     font-style: italic;
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
 }
 
-@keyframes heartbeat {
-    0% {
-        transform: scale(1);
-    }
+/* Roast Grid System */
+.roast-section {
+    width: 100%;
+}
 
-    15% {
-        transform: scale(1.05);
-    }
+.roast-section h3 {
+    text-align: center;
+    color: #ff3366;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
+}
 
-    30% {
-        transform: scale(1);
-    }
+.roast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 15px;
+    width: 100%;
+}
 
-    45% {
-        transform: scale(1.05);
-    }
+.roast-item {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #ff3366;
+    /* Accent styling */
+    border-radius: 12px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    /* Vertical center */
+    gap: 15px;
+    transition: transform 0.3s, background 0.3s;
+}
 
-    60% {
-        transform: scale(1);
-    }
+.roast-item:nth-child(even) {
+    border-left-color: #00ccff;
+    /* Alternating colors */
+}
 
-    100% {
-        transform: scale(1);
-    }
+.roast-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.roast-item .icon {
+    font-size: 2rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.roast-item p {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 500;
+    text-shadow: none !important;
+    /* Force remove blur */
 }
 
 /* Fragment Particles */
 .fragment {
+    color: white;
+}
+
+/* Placeholder to keep valid CSS */
+
+
+/* Character Styles Consolidated Below */
+
+/* Scenario Indicator */
+.scenario-indicator {
     position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffcc00;
+    /* Gold text */
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 1px solid #ffcc00;
+    z-index: 50;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Thunder Flash */
+.thunder-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background: white;
-    /* or inherit from card */
+    z-index: 10000;
+    opacity: 0;
     pointer-events: none;
-    z-index: 100;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.flash-now {
+    animation: flashAnim 0.2s ease-out;
+}
+
+@keyframes flashAnim {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Repulsion Animation */
+.repel-left {
+    animation: flyLeft 1s forwards ease-in;
+}
+
+.repel-right {
+    animation: flyRight 1s forwards ease-in;
+}
+
+@keyframes flyLeft {
+    0% {
+        transform: translateX(0) rotate(0);
+    }
+
+    100% {
+        transform: translateX(-150vw) rotate(-720deg);
+    }
+}
+
+@keyframes flyRight {
+    0% {
+        transform: translateX(0) rotate(0);
+    }
+
+    100% {
+        transform: translateX(150vw) rotate(720deg);
+    }
+}
+
+/* Curtain Drop */
+.final-curtain {
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #590d22;
+    /* Deep theater red */
+    z-index: 9998;
+    /* Below thunder */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: top 1s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.curtain-dropped {
+    top: 0;
+}
+
+.fin-text {
+    font-family: 'Cinzel', serif;
+    font-size: 8rem;
+    color: gold;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 1s ease-out 1s;
+    /* Delay after curtain drop */
+}
+
+.show-fin {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.curtain-texture {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 0, 0, 0.2) 50px, transparent 60px);
 }
 
 /* Rose Petals */
@@ -244,6 +509,246 @@
         transform: translate(100px, 100vh) rotate(720deg) scale(1.2);
         opacity: 0;
     }
+}
+
+/* WEDDING SCENARIO ANIMATION */
+.wedding-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #111;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wedding-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/pictures/bg_pattern.jpg');
+    /* Optional bg */
+    display: flex;
+    justify-content: center;
+    /* Changed from space-between */
+    gap: 50px;
+    /* Bring them closer */
+    align-items: center;
+    padding: 0 5%;
+}
+
+.decor-curtain {
+    position: absolute;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff0055, #800020);
+    z-index: 1;
+}
+
+.decor-curtain.left {
+    left: 0;
+    transform: skewX(5deg);
+}
+
+.decor-curtain.right {
+    right: 0;
+    transform: skewX(-5deg);
+}
+
+/* Updated Flash Animation */
+.flash-now {
+    animation: flashAnim 2s ease-out;
+    /* Slower */
+}
+
+@keyframes flashAnim {
+    0% {
+        opacity: 1;
+    }
+
+    10% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    /* Strobe */
+    30% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Slower Repulsion */
+.repel-left {
+    animation: flyLeft 4s forwards cubic-bezier(0.22, 1, 0.36, 1);
+    /* Slower & Smoother */
+}
+
+.repel-right {
+    animation: flyRight 4s forwards cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Consolidated Character Styles */
+.character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    /* Fixed width container */
+    position: relative;
+    z-index: 10;
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+}
+
+.character img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    object-fit: cover;
+}
+
+.character-body {
+    width: 100px;
+    height: 140px;
+    margin-top: -15px;
+    /* Connect to head */
+    position: relative;
+    z-index: 5;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Groom Outfit (Sherwani - Golden) */
+.outfit-groom {
+    background: linear-gradient(to bottom, #fceecb, #d4af37);
+    border: 2px solid #b8860b;
+}
+
+.outfit-groom::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15px;
+    width: 4px;
+    height: 80px;
+    background-color: #8b4513;
+    box-shadow: 0 15px 0 #8b4513, 0 30px 0 #8b4513, 0 45px 0 #8b4513;
+}
+
+/* Bride Outfit (Saree - Red) */
+.outfit-bride {
+    background: linear-gradient(45deg, #d90429, #ef233c);
+    border: 2px solid #8d0801;
+}
+
+.outfit-bride::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 30%, gold 30%, gold 40%, transparent 40%);
+    border-radius: inherit;
+    opacity: 0.7;
+}
+
+.character.girl {
+    transform: translateX(-200%);
+}
+
+.character.guy {
+    transform: translateX(200%);
+}
+
+.character.girl.enter {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.character.guy.enter {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.dialogue-box {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: black;
+    padding: 15px;
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 20;
+}
+
+.dialogue-box::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: white transparent;
+}
+
+.fail-stamp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    font-size: 8rem;
+    font-weight: 900;
+    color: red;
+    border: 10px solid red;
+    padding: 20px 40px;
+    text-transform: uppercase;
+    opacity: 1;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    animation: stampIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes stampIn {
+    0% {
+        transform: translate(-50%, -50%) scale(3) rotate(-15deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1) rotate(-15deg);
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s;
 }
 
 .sambit .card-alias {
@@ -493,97 +998,64 @@
 
 /* Cosmic Collision Effects */
 /* Cosmic Collision Effects */
+/* Cosmic Collision Effects */
 .cosmic-glow.aalen {
-    animation: energySurgeAalen 0.8s infinite alternate !important;
+    animation: energySurgeAalen 0.3s infinite alternate !important;
     /* Fast Flickering Surge */
     z-index: 1000;
 }
 
 .cosmic-glow.sambit {
-    animation: energySurgeSambit 0.8s infinite alternate !important;
+    animation: energySurgeSambit 0.3s infinite alternate !important;
     /* Fast Flickering Surge */
     z-index: 1000;
 }
 
-@keyframes energySurgeAalen {
-    0% {
-        box-shadow: 0 0 30px 10px rgba(255, 51, 102, 0.6);
-        transform: scale(1);
-    }
-
-    25% {
-        box-shadow: 0 0 60px 30px rgba(255, 51, 102, 0.9);
-        transform: scale(1.02);
-    }
-
-    50% {
-        box-shadow: 0 0 40px 15px rgba(255, 51, 102, 0.7);
-        transform: scale(1.01);
-    }
-
-    75% {
-        box-shadow: 0 0 80px 40px rgba(255, 51, 102, 1);
-        transform: scale(1.03);
-    }
-
-    100% {
-        box-shadow: 0 0 50px 20px rgba(255, 51, 102, 0.8);
-        transform: scale(1.01);
-    }
-}
-
-@keyframes energySurgeSambit {
-    0% {
-        box-shadow: 0 0 30px 10px rgba(0, 204, 255, 0.6);
-        transform: scale(1);
-    }
-
-    25% {
-        box-shadow: 0 0 60px 30px rgba(0, 204, 255, 0.9);
-        transform: scale(1.02);
-    }
-
-    50% {
-        box-shadow: 0 0 40px 15px rgba(0, 204, 255, 0.7);
-        transform: scale(1.01);
-    }
-
-    75% {
-        box-shadow: 0 0 80px 40px rgba(0, 204, 255, 1);
-        transform: scale(1.03);
-    }
-
-    100% {
-        box-shadow: 0 0 50px 20px rgba(0, 204, 255, 0.8);
-        transform: scale(1.01);
-    }
-}
-
-
+/* ... (keyframes remain same, just speed changed in class) ... */
 
 .accelerate-center {
-    transition: all 3s cubic-bezier(0.55, 0.085, 0.68, 0.53) !important;
-    /* 3s Acceleration */
+    transition: all 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) !important;
+    /* 2s Acceleration */
     transform: scale(0.1) !important;
     /* Shrink more for dramatic effect */
     opacity: 0 !important;
 }
 
-.flash-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: white;
-    z-index: 9999;
-    opacity: 0;
-    pointer-events: none;
+.flash-active {
+    animation: flashBang 2s forwards;
+    /* Shorter Flash (2s) */
 }
 
-.flash-active {
-    animation: flashBang 3s forwards;
-    /* Longer Flash (3s) */
+/* Roast Section Styles */
+.roast-section h3 {
+    text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+    letter-spacing: 1px;
+}
+
+.roast-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.roast-list li {
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.roast-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: #ff3366;
+    font-size: 1.2rem;
+    top: -2px;
 }
 
 @keyframes flashBang {

@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const matchBtn = document.getElementById('matchBtn');
     const unmatchBtn = document.getElementById('unmatchBtn');
     const profilesWrapper = document.querySelector('.profiles-wrapper');
-    const choiceContainer = document.querySelector('.choice-container');
     const mergedContainer = document.getElementById('mergedCardContainer');
     const blipOverlay = document.getElementById('blipOverlay');
     const countdownDisplay = document.getElementById('countdownDisplay');
@@ -64,96 +63,383 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 100);
             }
 
-            // PHASE 1: PULSING (0s - 5s)
-            const cards = document.querySelectorAll('.profile-card');
-            cards.forEach(card => {
-                if (card.classList.contains('aalen')) card.classList.add('cosmic-glow', 'aalen');
-                if (card.classList.contains('sambit')) card.classList.add('cosmic-glow', 'sambit');
-            });
+            // PHASE 1: SLIDE TOGETHER (0s - 1.5s)
+            profilesWrapper.style.transition = 'gap 1.5s ease-in-out';
+            profilesWrapper.style.gap = '0px';
 
-            // Play Slow Heartbeat
-            const heartSlow = new Audio('https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3'); // Fallback or use specific URL if found
-            // Using a generic heartbeat placeholder from search results if possible, or a known one.
-            // Let's use a standard heartbeat sound.
-            const heartbeat = new Audio('https://assets.mixkit.co/active_storage/sfx/2069/2069-preview.mp3'); // Heartbeat slow
-            heartbeat.volume = 1.0;
-            heartbeat.loop = true;
-            heartbeat.play().catch(e => console.log("Heartbeat sound failed:", e));
+            const choiceBtnContainer = document.querySelector('.choice-container');
+            if (choiceBtnContainer) {
+                choiceBtnContainer.style.transition = 'opacity 0.5s';
+                choiceBtnContainer.style.opacity = '0';
+            }
 
-
-            // PHASE 2: RUSH (5s - 8s)
-            setTimeout(() => {
-                // Stop slow heartbeat
-                heartbeat.pause();
-
-                // Play Fast Heartbeat
-                const heartFast = new Audio('https://assets.mixkit.co/active_storage/sfx/2072/2072-preview.mp3'); // Fast heartbeat
-                heartFast.volume = 1.0;
-                heartFast.play().catch(e => console.log("Fast heartbeat failed:", e));
-
-                // Start Acceleration
-                cards.forEach(card => card.classList.add('accelerate-center'));
-
-                // PHASE 3: IMPACT (8s)
+            // PHASE 2: TAPE SEQUENCE (Starts at 1.5s)
+            // Function to add tape with sound
+            const addTape = (position, delay) => {
                 setTimeout(() => {
-                    // Stop fast heartbeat
-                    heartFast.pause();
+                    const stapleSound = new Audio('assets/staple.mp3');
+                    stapleSound.volume = 0.8;
+                    stapleSound.play().catch(e => console.log("Staple sound failed:", e));
 
-                    // Flash Overlay
-                    let flash = document.querySelector('.flash-overlay');
-                    if (!flash) {
-                        flash = document.createElement('div');
-                        flash.classList.add('flash-overlay');
-                        document.body.appendChild(flash);
-                    }
-                    flash.classList.add('flash-active');
+                    const tape = document.createElement('div');
+                    tape.classList.add('tape-strip', position);
+                    profilesWrapper.appendChild(tape);
+                }, delay);
+            };
 
-                    // Play Magic Boom Sound
-                    const boomSound = new Audio('https://assets.mixkit.co/active_storage/sfx/1444/1444-preview.mp3');
-                    boomSound.volume = 1.0;
-                    boomSound.play().catch(e => console.log("Boom sound failed:", e));
+            // Sequence: Top -> Bottom -> Center
+            addTape('top', 1500);
+            addTape('bottom', 2000); // +500ms
+            addTape('center', 2500); // +500ms
 
-                    // Hide Old Cards
+            // PHASE 3: REVEAL (Starts after last tape)
+            setTimeout(() => {
+                // Add Glitch Effect
+                profilesWrapper.classList.add('glitch-active');
+
+                setTimeout(() => {
+                    // Hide Initial Cards
                     profilesWrapper.classList.add('hidden');
-                    // Hide Choice Buttons specifically since they are now inside wrapper or separate
-                    const choiceBtnContainer = document.querySelector('.choice-container');
+                    profilesWrapper.classList.remove('glitch-active');
                     if (choiceBtnContainer) choiceBtnContainer.classList.add('hidden');
+                    // Remove tapes from wrapper (cleanup)
+                    document.querySelectorAll('.tape-strip').forEach(t => t.remove());
 
-                    // REVEAL PHASE (Wait 1.5s inside flash)
-                    setTimeout(() => {
-                        // Play Cheering
-                        const cheering = new Audio('https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3');
-                        cheering.volume = 1.0;
-                        cheering.play().catch(e => console.log("Cheering sound failed:", e));
-
-                        mergedContainer.classList.remove('hidden');
-                        mergedContainer.innerHTML = `
-                            <div class="profile-card heart-shape">
-                                <div class="profile-pic-container">
-                                    <img src="pictures/prof-pics/together_prof.jpg" alt="Us" class="profile-pic">
-                                </div>
-                                <h2 class="card-title">Sambit & Aalen</h2>
-                                <div class="card-alias">"The Reality"</div>
-                                <p style="font-size: 1.1rem; margin-top: 1rem; font-weight: 500;">
-                                    Two chaos agents, one beautiful mess.<br>
-                                    Partners in Crime forever.
-                                </p>
+                    // Show Merged Card (The "Assumption" / Opposite Card)
+                    mergedContainer.classList.remove('hidden');
+                    mergedContainer.innerHTML = `
+                        <div class="profile-card united-card taped-paper-look">
+                            <div class="tape-seam"></div>
+                            <div class="profile-pic-container heart-frame">
+                                <img src="pictures/prof-pics/together_prof.jpg" alt="Us" class="profile-pic">
                             </div>
-                        `;
+                            <h2 class="card-title">Sambit & Aalen</h2>
+                            <div class="card-alias">"The Dream Team"</div>
+                            
+                            <div class="roast-section">
+                                <h3>What we assume we are...</h3>
+                                <div class="roast-grid">
+                                    <div class="roast-item">
+                                        <span class="icon">📏</span>
+                                        <p>5'8" of me + 2'11" of you = A violent ankle-biting duo.</p>
+                                    </div>
+                                    <div class="roast-item">
+                                        <span class="icon">💥</span>
+                                        <p>My witty brain + Your strong punches = Unstoppable chaos.</p>
+                                    </div>
+                                    <div class="roast-item">
+                                        <span class="icon">⚖️</span>
+                                        <p>Your total lack of empathy + My perfect emotional availability = A perfectly balanced disaster.</p>
+                                    </div>
+                                    <div class="roast-item">
+                                        <span class="icon">🥀</span>
+                                        <p>You acting like a 'Touch Me Not' + Me opening up like a lotus = The ultimate gardening challenge.</p>
+                                    </div>
+                                    <div class="roast-item">
+                                        <span class="icon">🎭</span>
+                                        <p>My heroic protagonist energy + Your boring normalcy = A movie nobody would watch.</p>
+                                    </div>
+                                    <div class="roast-item">
+                                        <span class="icon">📝</span>
+                                        <p>Me being a chaotic mess + You planning every single second = A schedule made of nightmares.</p>
+                                    </div>
+                                    <div class="roast-item">
+                                        <span class="icon">🎢</span>
+                                        <p>Me seeking every adrenaline rush + You too scared to leave the house = A solo trip for me.</p>
+                                    </div>
+                                    <div class="roast-item">
+                                        <span class="icon">💭</span>
+                                        <p>Me remembering every tiny detail + You forgetting who I am = Infinite arguments.</p>
+                                    </div>
+                                    <div class="roast-item">
+                                        <span class="icon">🍽️</span>
+                                        <p>Me saying "I don't know" + You knowing exactly what restaurant you want = A miracle.</p>
+                                    </div>
+                                </div>
 
-                        // Rose Petal Shower
-                        createRoseShower();
+                                <div style="margin-top: 30px; text-align: center;">
+                                    <button id="realityBtn" class="btn-choice match" style="font-size: 1rem; padding: 10px 20px;">What Actually Happened 🎬</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
 
-                        // Cleanup Flash
-                        setTimeout(() => {
-                            flash.classList.remove('flash-active');
-                            flash.remove();
-                        }, 3000);
+                    // Attach Listener to New Button
+                    setTimeout(() => {
+                        const realityBtn = document.getElementById('realityBtn');
+                        if (realityBtn) {
+                            realityBtn.addEventListener('click', () => {
+                                // Hide Merged Card
+                                mergedContainer.classList.add('hidden');
+                                // Play Wedding Sequence (The Failure Reality)
+                                playWeddingSequence();
+                            });
+                        }
+                    }, 100);
 
-                    }, 1500); // Reveal starts after flash settles
+                }, 500); // Glitch duration
+            }, 3000); // 1.5s slide + 1.5s for 3 tapes
+        });
+    }
 
-                }, 3000); // Acceleration duration (matches CSS 3s)
-            }, 5000); // Glow duration (5s)
+    // AUDIO MANAGER
+    let currentBuzzer = null;
+
+    const playBuzzer = () => {
+        if (currentBuzzer) {
+            currentBuzzer.pause();
+            currentBuzzer.currentTime = 0;
+        }
+        currentBuzzer = new Audio('assets/fail_buzzer.mp3');
+        currentBuzzer.volume = 1.0;
+        currentBuzzer.play().catch(e => console.log("Buzzer failed:", e));
+    };
+
+    const stopBuzzer = () => {
+        if (currentBuzzer) {
+            currentBuzzer.pause();
+            currentBuzzer.currentTime = 0;
+        }
+    };
+
+    // ROBUST TEXT TO SPEECH
+    const speakText = (text, gender) => {
+        return new Promise((resolve) => {
+            const utterance = new SpeechSynthesisUtterance(text);
+            const voices = window.speechSynthesis.getVoices();
+
+            // Priority 1: Exact "en-IN" (Indian English)
+            let voice = voices.find(v => v.lang === 'en-IN' && v.name.toLowerCase().includes(gender));
+
+            // Priority 2: Any "India" or "Hindi" in name
+            if (!voice) voice = voices.find(v => (v.name.includes('India') || v.name.includes('Hindi')) && v.name.toLowerCase().includes(gender));
+
+            // Priority 3: Google voices (common in Chrome)
+            if (!voice) {
+                if (gender === 'male') {
+                    // Try to find a male Indian voice specifically if possible, else generic male
+                    voice = voices.find(v => v.lang === 'en-IN') || voices.find(v => v.name.includes('Male'));
+                } else {
+                    voice = voices.find(v => v.lang === 'en-IN') || voices.find(v => v.name.includes('Female'));
+                }
+            }
+
+            if (voice) {
+                console.log(`Selected Voice for ${gender}:`, voice.name);
+                utterance.voice = voice;
+            }
+
+            utterance.rate = 0.9;
+            utterance.pitch = gender === 'male' ? 0.8 : 1.1;
+
+            utterance.onend = () => resolve();
+            utterance.onerror = () => resolve();
+
+            window.speechSynthesis.speak(utterance);
+        });
+    };
+
+    async function playWeddingSequence() {
+        // Create Overlay
+        const overlay = document.createElement('div');
+        overlay.id = 'weddingOverlay';
+        overlay.classList.add('wedding-overlay');
+        overlay.innerHTML = `
+            <div class="wedding-stage">
+                <div class="scenario-indicator" id="scenarioIndicator">Scenario 1: usage</div>
+                <div class="thunder-flash"></div>
+                <div class="decor-curtain left"></div>
+                <div class="decor-curtain right"></div>
+                
+                <div class="character girl">
+                    <img src="pictures/prof-pics/aal_prof.jpg" alt="Her">
+                    <div class="character-body outfit-bride"></div>
+                    <div class="dialogue-box hidden" id="girlDialogue"></div>
+                </div>
+                
+                <div class="character guy">
+                    <img src="pictures/prof-pics/sam_prof.jpg" alt="Him">
+                    <div class="character-body outfit-groom"></div> 
+                    <div class="dialogue-box hidden" id="guyDialogue"></div>
+                </div>
+                
+                <div id="failStamp" class="fail-stamp hidden">FAILED ❌</div>
+            </div>
+
+            <!-- Final Curtain -->
+            <div class="final-curtain">
+                <div class="curtain-texture"></div>
+                <div class="fin-text">FIN.</div>
+                <button id="backToRealityBtn" class="btn-choice hidden" style="margin-top: 50px; z-index: 10000; position: relative;">Back to Reality 🔄</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const girlText = overlay.querySelector('#girlDialogue');
+        const guyText = overlay.querySelector('#guyDialogue');
+        const failStamp = overlay.querySelector('#failStamp');
+        const guyChar = overlay.querySelector('.character.guy');
+        const girlChar = overlay.querySelector('.character.girl');
+        const thunderFlash = overlay.querySelector('.thunder-flash');
+        const finalCurtain = overlay.querySelector('.final-curtain');
+        const finText = overlay.querySelector('.fin-text');
+        const backBtn = overlay.querySelector('#backToRealityBtn');
+        const indicator = overlay.querySelector('#scenarioIndicator');
+
+        // Initial Voice Load
+        window.speechSynthesis.getVoices();
+
+        const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        const performLine = async (element, text, gender, duration) => {
+            stopBuzzer(); // Stop any previous fail sound
+            element.textContent = text;
+            element.classList.remove('hidden');
+            speakText(text, gender);
+            await wait(duration);
+            element.classList.add('hidden');
+        };
+
+        const performFail = async () => {
+            playBuzzer();
+            failStamp.classList.remove('hidden');
+            await wait(2500);
+            failStamp.classList.add('hidden');
+        };
+
+        const updateScenario = (text) => {
+            indicator.textContent = text;
+            indicator.classList.add('pulse');
+            setTimeout(() => indicator.classList.remove('pulse'), 500);
+        };
+
+        // Enter Stage
+        updateScenario("INTRO: The Setup");
+        await wait(1000);
+        guyChar.classList.add('enter');
+        girlChar.classList.add('enter');
+        await wait(2000);
+
+        // --- SCENARIO 1 ---
+        updateScenario("SCENARIO 1/4: Aggression");
+        await performLine(guyText, "I'm the boss here! *Aggressive*", 'male', 3000);
+        await performLine(girlText, "Hey, can you be a bit softer?", 'female', 3000);
+        await performLine(guyText, "I don't care.", 'male', 2500);
+        await performFail();
+        await wait(1000);
+
+        // --- SCENARIO 2 ---
+        updateScenario("SCENARIO 2/4: Commitment");
+        await performLine(guyText, "I'll introduce you when the time is right.", 'male', 3500);
+        await performLine(girlText, "I need time to get used to them. Let's meet early.", 'female', 4000);
+        await performLine(guyText, "Do you wanna sleep with them ?", 'male', 3000);
+        await performFail();
+        await wait(1000);
+
+        // --- SCENARIO 3 ---
+        updateScenario("SCENARIO 3/4: Secrets");
+        await performLine(guyText, "*Hides feelings* I'm hiding this so you don't get hurt.", 'male', 4000);
+        await performLine(girlText, "If you can't share, what's the point of me being here?", 'female', 4000);
+        await performLine(guyText, "I am  like this , I can't change myself.", 'male', 3000);
+        await performFail();
+        await wait(1000);
+
+        // --- SCENARIO 4 ---
+        updateScenario("SCENARIO 4/4: Prejudice");
+        await performLine(guyText, "I won't get along with your friend. Period.", 'male', 3500);
+        await performLine(girlText, "Please just give it a try?", 'female', 3000);
+        await performLine(guyText, "No chance! I will be a hater.", 'male', 2500);
+        await performFail();
+
+
+        // --- GRAND FINALE ---
+        updateScenario("THE END");
+        stopBuzzer();
+        await wait(500);
+
+        // 1. Thunder & Lightning
+        const thunderSound = new Audio('assets/thunder.mp3');
+        thunderSound.volume = 1.0;
+        thunderSound.play().catch(e => console.log("Thunder failed:", e));
+        thunderFlash.classList.add('flash-now');
+
+        // 2. Magnetic Repulsion
+        await wait(200);
+        guyChar.classList.add('repel-right');
+        girlChar.classList.add('repel-left');
+
+        await wait(4000); // Wait for bodies to fly off (Slower animation)
+
+        // 3. Curtains Fall
+        finalCurtain.classList.add('curtain-dropped');
+
+        await wait(1500);
+        finText.classList.add('show-fin');
+
+        await wait(1000);
+        backBtn.classList.remove('hidden');
+
+        // Back Button Logic
+        backBtn.addEventListener('click', () => {
+            // Show Final Card
+            mergedContainer.classList.remove('hidden');
+            overlay.remove();
+
+            mergedContainer.innerHTML = `
+                <div class="profile-card united-card taped-paper-look">
+                    <div class="tape-seam"></div>
+                    <div class="profile-pic-container heart-frame">
+                        <img src="pictures/prof-pics/together_prof.jpg" alt="Us" class="profile-pic">
+                    </div>
+                    <h2 class="card-title">Sambit & Aalen</h2>
+                    <div class="card-alias">"If reality didn't hit hard."</div>
+                    
+                    <div class="roast-section">
+                        <h3>What we could have been together...</h3>
+                        <div class="roast-grid">
+                            <div class="roast-item">
+                                <span class="icon">📏</span>
+                                <p>5'8" of me + 2'11" of you = A violent ankle-biting duo.</p>
+                            </div>
+                            <div class="roast-item">
+                                <span class="icon">💥</span>
+                                <p>My witty brain + Your strong punches = Unstoppable chaos.</p>
+                            </div>
+                            <div class="roast-item">
+                                <span class="icon">⚖️</span>
+                                <p>Your sharp empathy + My emotional unavailability = A perfectly balanced disaster.</p>
+                            </div>
+                            <div class="roast-item">
+                                <span class="icon">🥀</span>
+                                <p>You opening like a fresh flower + Me acting like a 'Touch Me Not' = The ultimate gardening challenge.</p>
+                            </div>
+                            <div class="roast-item">
+                                <span class="icon">🎭</span>
+                                <p>My antagonistic villain energy + Your dramatic protagonistic flair = A movie waiting to be directed.</p>
+                            </div>
+                            <div class="roast-item">
+                                <span class="icon">📝</span>
+                                <p>Me being tip toe organized + You saying "you do it for me" = A schedule made of dreams.</p>
+                            </div>
+                            <div class="roast-item">
+                                <span class="icon">🎢</span>
+                                <p>Me being afraid of every adventure + You trying to convince me into it = A late night session on drame.</p>
+                            </div>
+                            <div class="roast-item">
+                                <span class="icon">💭</span>
+                                <p>Me forgetting every conversation we had + You remembering when I breathed on a random day.= Infinite arguments.</p>
+                            </div>
+                            <div class="roast-item">
+                                <span class="icon">🍽️</span>
+                                <p>Me knowing what to eat + You saying "I don't know" = Starving together in the car.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Rose Petal Shower for Finale
+            createRoseShower();
         });
     }
 
