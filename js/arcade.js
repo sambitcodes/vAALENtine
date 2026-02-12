@@ -14,29 +14,29 @@ const gameContainer = document.getElementById('activeGameContainer');
 // --- QUESTIONS ---
 const quizData = [
     {
-        q: "What is Sambit's favorite food?",
-        options: ["Pizza", "Biryani", "Burgers", "Tacos"],
-        correct: 1 // Example index
+        q: "What does Sambit's suffer with?",
+        options: ["Amnesia", "Diabetes", "Night Blindness", "Popularity"],
+        correct: 3 // Example index
     },
     {
-        q: "Which fictional character does he relate to most?",
-        options: ["Iron Man", "Batman", "Joker", "Deadpool"],
+        q: "Where does Sambit want to settle later in his life?",
+        options: ["Manali", "London", "In your heart", "Kerala"],
+        correct: 4
+    },
+    {
+        q: "What is Sambit's biggest pet peeve?",
+        options: ["Cluttered Wardrobe", "Slow walkers", "Loud chewing", "Being late"],
         correct: 1
     },
     {
-        q: "What is his biggest pet peeve?",
-        options: ["Slow walkers", "Loud chewing", "Being late", "Bad WiFi"],
-        correct: 0
-    },
-    {
-        q: "What's his go-to comfort movie?",
-        options: ["The Dark Knight", "Inception", "3 Idiots", "Hera Pheri"],
-        correct: 3
-    },
-    {
-        q: "If he could have one superpower, what would it be?",
-        options: ["Flight", "Invisibility", "Time Travel", "Mind Reading"],
+        q: "What is Sambit strictly against when it comes to his future child.",
+        options: ["Playing sports", "Use of Gadgets", "Eating Junk", "Having a girlfriend"],
         correct: 2
+    },
+    {
+        q: "Which of these will Sambit order when ordering from Burger King?",
+        options: ["Whopper", "Hashbrown", "Chicken Wrap", "Chicken Nuggets"],
+        correct: 4
     }
 ];
 
