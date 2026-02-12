@@ -1,180 +1,131 @@
 // ========================================
-// ESCAPE ROOM LOGIC
+// 7 DAYS OF LOW-BUDGET LOVE LOGIC
 // ========================================
 
-let currentStage = 0;
-
-// LEVEL 1: PATTERN DATA
-// Player must click buttons in specific order (1->9)
-const patternSequence = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let playerPattern = [];
-
-// LEVEL 2: CIPHER DATA
-const CIPHER_ANSWER = "FEBRUARY"; // Simple for demo, can be dynamic
-const CIPHER_HINT = "It's the month of love...";
-
-// LEVEL 3: SCRAMBLE DATA
-const FINAL_PHRASE = "I LOVE YOU";
-const SCRAMBLED_PHRASE = "L O V E   I   O Y U"; // Deliberately easy-ish
+const DAYS_CONTENT = {
+    1: {
+        title: "Day 1: Rose Day",
+        visual: `
+            <div class="gift-visual-container">
+                <img src="pictures/rose.gif" alt="Rose" class="gift-gif">
+                <div class="gift-visual rotating-rose">🌹</div>
+            </div>
+        `,
+        caption: "A rose that will never wither, mostly because it’s a .gif and I can’t afford the real ones that die in three days anyway. It's 'Eternal Love' on a budget."
+    },
+    2: {
+        title: "Day 2: Propose Day",
+        visual: `
+            <div class="gift-visual-container">
+                <img src="pictures/prop.gif" alt="Propose" class="gift-gif">
+                <div class="gift-visual">💍</div>
+            </div>
+            <button class="btn-tc" onclick="acceptTC()">ACCEPT TERMS & CONDITIONS</button>
+        `,
+        caption: "Don't panic—I’m not proposing that. I'm proposing a 'Mutual Non-Aggression Pact' for the rest of 2026. Do you accept the terms and conditions of my friendship?"
+    },
+    3: {
+        title: "Day 3: Chocolate Day",
+        visual: `
+            <div class="gift-visual-container">
+                <img src="pictures/choc.gif" alt="Chocolate" class="gift-gif">
+                <div class="gift-visual error-overlay">
+                    🍫
+                    <div class="error-text">404 ERROR</div>
+                </div>
+            </div>
+        `,
+        caption: "Actual footage of me trying to handle my responsibilities right now. Since my bank account says 'No' to Ferrero Rocher, please enjoy this child having a better time with chocolate than I will ever be able to give you."
+    },
+    4: {
+        title: "Day 4: Teddy Day",
+        visual: `
+            <div class="gift-visual-container">
+                <img src="pictures/tedd.gif" alt="Teddy" class="gift-gif">
+                <div class="gift-visual">🤦‍♂️🧸</div>
+            </div>
+        `,
+        caption: "I was going to buy you a real teddy, but this guy has better moves than me and—more importantly—he doesn't require any shelf space in your new life."
+    },
+    5: {
+        title: "Day 5: Promise Day",
+        visual: `
+            <div class="gift-visual-container">
+                <img src="pictures/prom.gif" alt="Promise" class="gift-gif">
+                <div class="gift-visual">📜</div>
+            </div>
+        `,
+        caption: "I promise to stay in my lane. I also promise that this website is officially the most effort anyone has ever put into being 'just friends.' Case closed."
+    },
+    6: {
+        title: "Day 6: Hug Day",
+        visual: `
+            <div class="gift-visual-container">
+                <img src="pictures/hug.gif" alt="Hug" class="gift-gif">
+                <div class="hug-container">
+                    <div class="hug-circle circle-left"></div>
+                    <div class="hug-circle circle-right"></div>
+                </div>
+            </div>
+        `,
+        caption: "A visual representation of our next 'accidental' run-in at the mall. Let’s keep it this awkward—it builds character and makes for a great story later."
+    },
+    7: {
+        title: "Day 7: Kiss Day 💋",
+        visual: `
+            <div class="gift-visual-container">
+                <img src="pictures/kiss.gif" alt="Kiss" class="gift-gif">
+                <div class="gift-visual">✖️</div>
+            </div>
+        `,
+        caption: "The world's first 100% wireless, high-speed, and platonic kiss. It’s low-latency, germs-free, and most importantly, it won't ruin your makeup. X marks the 'Ex' spot."
+    }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
-    initPatternGrid();
-
-    // Allow 'Enter' key to submit inputs
-    document.getElementById('cipher-input').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') checkCipher();
-    });
-    document.getElementById('final-input').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') checkFinal();
+    const icons = document.querySelectorAll('.day-icon');
+    icons.forEach(icon => {
+        icon.addEventListener('click', () => {
+            const day = icon.dataset.day;
+            unlockDay(day, icon);
+        });
     });
 });
 
-function startGame() {
-    switchStage(0, 1);
-}
+function unlockDay(day, iconElement) {
+    const display = document.getElementById('contentDisplay');
+    const content = DAYS_CONTENT[day];
 
-function switchStage(from, to) {
-    const current = document.getElementById(`stage-${from === 0 ? 'intro' : from}`);
-    const next = document.getElementById(`stage-${to}`);
+    if (!content) return;
 
-    if (current) current.classList.add('hidden');
-    if (next) {
-        next.classList.remove('hidden');
-        next.classList.add('active');
+    // Remove active class from all icons
+    document.querySelectorAll('.day-icon').forEach(i => i.classList.remove('active'));
+    iconElement.classList.add('active');
+
+    // Play sound based on day
+    if (day == 7) {
+        SoundFX.playGlitchyKiss();
+    } else {
+        SoundFX.playCoin();
     }
 
-    currentStage = to;
-}
+    // Update Display
+    display.innerHTML = `
+        <h2 style="color: var(--pixel-accent); margin-bottom: 1rem;">${content.title}</h2>
+        ${content.visual}
+        <p class="cheeky-caption">${content.caption}</p>
+    `;
 
-// ========================================
-// STAGE 1: PATTERN LOCK
-// ========================================
-function initPatternGrid() {
-    const grid = document.getElementById('pattern-grid');
-    // Randomize the numbers 1-9 on the grid content, but logic checks pure order
-    // Actually, let's make it a memory game: Click 1 to 9 in order
-    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5);
-
-    grid.innerHTML = '';
-    numbers.forEach(num => {
-        const btn = document.createElement('button');
-        btn.className = 'pattern-btn';
-        btn.textContent = num;
-        btn.onmouseenter = () => SoundFX.playHover();
-        btn.onclick = () => {
-            SoundFX.playClick();
-            handlePatternClick(btn, num);
-        };
-        grid.appendChild(btn);
-    });
-}
-
-function handlePatternClick(btn, num) {
-    // If button already selected, ignore
-    if (btn.classList.contains('selected')) return;
-
-    const expectedNum = playerPattern.length + 1;
-
-    if (num === expectedNum) {
-        // Correct
-        btn.classList.add('selected');
-        playerPattern.push(num);
-
-        if (playerPattern.length === 9) {
-            SoundFX.playCorrect();
-            document.getElementById('pattern-feedback').textContent = "SYSTEM UNLOCKED";
-            document.getElementById('pattern-feedback').className = "feedback-text success";
-            setTimeout(() => switchStage(1, 2), 1000);
-        }
-    } else {
-        // Incorrect - Reset
-        SoundFX.playWrong();
-        document.getElementById('pattern-feedback').textContent = "INVALID SEQUENCE. RESETTING...";
-        document.getElementById('pattern-feedback').className = "feedback-text error";
-
-        // Shake animation
-        const grid = document.getElementById('pattern-grid');
-        grid.classList.add('shake');
-
+    // Day 6 specific logic: stop animation after 1.5s as per caption
+    if (day == 6) {
         setTimeout(() => {
-            grid.classList.remove('shake');
-            document.querySelectorAll('.pattern-btn').forEach(b => b.classList.remove('selected'));
-            playerPattern = [];
-            document.getElementById('pattern-feedback').textContent = "";
-        }, 1000);
+            const circles = document.querySelectorAll('.hug-circle');
+            circles.forEach(c => c.style.animation = 'none');
+        }, 1500);
     }
 }
 
-// ========================================
-// STAGE 2: CIPHER
-// ========================================
-function checkCipher() {
-    const input = document.getElementById('cipher-input').value.toUpperCase().trim();
-    const feedback = document.getElementById('cipher-feedback');
-
-    if (input === CIPHER_ANSWER) {
-        SoundFX.playCorrect();
-        feedback.textContent = "ACCESS GRANTED";
-        feedback.className = "feedback-text success";
-        setTimeout(() => switchStage(2, 3), 1000);
-    } else {
-        SoundFX.playWrong();
-        feedback.textContent = "ACCESS DENIED";
-        feedback.className = "feedback-text error";
-        document.getElementById('stage-2').querySelector('.glass-panel').classList.add('shake');
-        setTimeout(() => document.getElementById('stage-2').querySelector('.glass-panel').classList.remove('shake'), 500);
-    }
-}
-
-function showHint(stage) {
-    const hintEl = document.getElementById(`hint-${stage}`);
-    hintEl.classList.remove('hidden');
-    hintEl.textContent = stage === 2 ? CIPHER_HINT : "Look at the letters carefully...";
-}
-
-// ========================================
-// STAGE 3: FINAL KEY
-// ========================================
-function checkFinal() {
-    const input = document.getElementById('final-input').value.toUpperCase().trim();
-    const feedback = document.getElementById('final-feedback');
-
-    // Allow variations
-    if (input === FINAL_PHRASE || input === "I LOVE YOU!" || input === "I LUV U") {
-        SoundFX.playCorrect();
-        triggerConfetti();
-        feedback.textContent = "VAULT OPENING...";
-        feedback.className = "feedback-text success";
-        setTimeout(() => switchStage(3, 'success'), 1500);
-    } else {
-        SoundFX.playWrong();
-        feedback.textContent = "INCORRECT PASSPHRASE";
-        feedback.className = "feedback-text error";
-    }
-}
-
-function triggerConfetti() {
-    const end = Date.now() + 3 * 1000;
-    const colors = ['#00f260', '#0575E6', '#ffffff'];
-
-    (function frame() {
-        confetti({
-            particleCount: 3,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors: colors
-        });
-        confetti({
-            particleCount: 3,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors: colors
-        });
-
-        if (Date.now() < end) {
-            requestAnimationFrame(frame);
-        }
-    }());
+function acceptTC() {
+    SoundFX.playCorrect();
+    alert("Pact Accepted! No passive-aggressive stories/status for 1 year.");
 }

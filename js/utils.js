@@ -205,6 +205,23 @@ const SoundFX = {
         this.playTone(400, 'square', 0.05);
     },
 
+    playCoin: function () {
+        // Classic Mario-style coin sound
+        this.playTone(987, 'sine', 0.1);
+        this.playTone(1318, 'sine', 0.4, 0.1);
+    },
+
+    playGlitchyKiss: function () {
+        this.init();
+        const now = this.ctx.currentTime;
+        // Glitchy "SMACK" sound
+        for (let i = 0; i < 5; i++) {
+            this.playTone(800 + Math.random() * 1000, 'square', 0.02, i * 0.01);
+        }
+        // Followed by a softer tone
+        this.playTone(600, 'sine', 0.1, 0.06);
+    },
+
     playMillionaireCorrect: function () {
         this.init();
         const now = this.ctx.currentTime;
