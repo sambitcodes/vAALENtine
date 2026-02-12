@@ -67,6 +67,23 @@
     color: white;
 }
 
+.nav-logout-btn {
+    background: #333;
+    color: white !important;
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.nav-logout-btn:hover {
+    background: #555;
+}
+
 @media (max-width: 1200px) {
     .nav-link {
         padding: 0.3rem 0.5rem;

@@ -1,9 +1,9 @@
 // Arcade Logic
 
 // --- STATE ---
-let tickets = 5; // Default reset for testing/fairness
-localStorage.setItem('arcadeTickets', '5');
+let tickets = 0;
 let isUnlocked = localStorage.getItem('arcadeUnlocked') === 'true';
+const userPhone = getUser();
 
 // --- DOM ELEMENTS ---
 const modal = document.getElementById('gatekeeperModal');
@@ -44,9 +44,19 @@ let currentQIndex = 0;
 let score = 0;
 
 // --- INIT ---
-// --- INIT ---
-document.addEventListener('DOMContentLoaded', () => {
-    updateTicketDisplay();
+document.addEventListener('DOMContentLoaded', async () => {
+    if (userPhone) {
+        try {
+            const response = await fetch(`/api/user/${userPhone}`);
+            const data = await response.json();
+            tickets = data.tickets || 0;
+            updateTicketDisplay();
+        } catch (e) {
+            console.error("Failed to fetch tickets:", e);
+        }
+    } else {
+        updateTicketDisplay();
+    }
 
     // SHOW INTRO POPUP (Every Visit)
     const introModal = document.createElement('div');
@@ -173,19 +183,42 @@ window.enterLobby = () => {
 };
 
 // --- TICKET SYSTEM ---
-function addTickets(amount) {
+async function addTickets(amount) {
     if (!amount) return;
     tickets += Math.floor(amount);
-    localStorage.setItem('arcadeTickets', tickets.toString());
     updateTicketDisplay();
-    // Animation/Sound could be added here
+
+    // Sync to backend
+    if (userPhone) {
+        try {
+            await fetch(`/api/user/${userPhone}/tickets`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ tickets })
+            });
+        } catch (e) {
+            console.error("Failed to sync tickets to backend:", e);
+        }
+    }
 }
 
-function deductTicket() {
-    if (tickets > 0) {
-        tickets--;
-        localStorage.setItem('arcadeTickets', tickets.toString());
+async function deductTicket(amount = 1) {
+    if (tickets >= amount) {
+        tickets -= amount;
         updateTicketDisplay();
+
+        // Sync to backend
+        if (userPhone) {
+            try {
+                await fetch(`/api/user/${userPhone}/tickets`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tickets })
+                });
+            } catch (e) {
+                console.error("Failed to sync tickets to backend:", e);
+            }
+        }
         return true;
     }
     return false;
@@ -336,8 +369,118 @@ window.exitGame = () => {
     gameContainer.innerHTML = ''; // Cleanup DOM
 };
 
-window.openShop = () => {
-    alert("🎁 PRIZE SHOP COMING SOON! 🎁\n\nSpend your hard-earned tickets on... nothing yet!");
+window.openShop = async () => {
+    // 1. Fetch latest history
+    let history = [];
+    if (userPhone) {
+        try {
+            const res = await fetch(`/api/user/${userPhone}`);
+            const data = await res.json();
+            history = data.purchases || [];
+        } catch (e) { console.error(e); }
+    }
+
+    const shopModal = document.createElement('div');
+    shopModal.id = 'shopModal';
+    shopModal.style.cssText = `
+        position: fixed; top:0; left:0; width:100%; height:100%;
+        background: rgba(0,0,0,0.9); z-index: 2000;
+        display: flex; justify-content: center; align-items: center;
+        font-family: 'Outfit', sans-serif;
+    `;
+
+    const inventory = [
+        { name: "A Sweet Text", cost: 50, icon: "📱", desc: "I'll text you something nice right away." },
+        { name: "A 5-min Phone Call", cost: 100, icon: "📞", desc: "Redeem for a quick catchup session." },
+        { name: "Digital Letter", cost: 150, icon: "✉️", desc: "A personal hand-written note in PNG." },
+        { name: "Personal Masterclass", cost: 300, icon: "🎓", desc: "Pick a topic, I'll teach it to you." },
+        { name: "Virtual Date Night", cost: 500, icon: "🍷", desc: "Dinner over video call with activities." }
+    ];
+
+    shopModal.innerHTML = `
+        <div style="background:#1a1a1a; width: 600px; max-height:80vh; overflow-y:auto; border: 2px solid #00f2ff; border-radius: 20px; padding: 40px; position:relative; box-shadow: 0 0 30px rgba(0,242,255,0.2);">
+            <button onclick="document.getElementById('shopModal').remove()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">&times;</button>
+            <h2 style="color:#00f2ff; text-align:center; margin-bottom:30px;">🎁 PRIZE SHOP</h2>
+            
+            <div style="display:flex; justify-content:center; gap:20px; margin-bottom:30px;">
+                <button id="shopTabBtn" onclick="toggleShopView('items')" style="background:#00f2ff; color:black; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">STORE</button>
+                <button id="historyTabBtn" onclick="toggleShopView('history')" style="background:#333; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">HISTORY</button>
+            </div>
+
+            <div id="shopItems">
+                ${inventory.map(item => `
+                    <div style="background:rgba(255,255,255,0.05); border-radius:12px; padding:20px; margin-bottom:15px; display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <div style="font-size:1.5rem; margin-bottom:5px;">${item.icon} ${item.name}</div>
+                            <div style="color:#888; font-size:0.85rem;">${item.desc}</div>
+                        </div>
+                        <button onclick="buyItem('${item.name}', ${item.cost})" style="background:#ff0055; color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:bold;">🎟️ ${item.cost}</button>
+                    </div>
+                `).join('')}
+            </div>
+
+            <div id="shopHistory" class="hidden">
+                ${history.length === 0 ? '<p style="text-align:center; color:#666;">No purchases yet.</p>' :
+            history.map(p => `
+                        <div style="border-bottom:1px solid #333; padding:10px 0;">
+                            <div style="display:flex; justify-content:space-between;">
+                                <span>${p.item_name}</span>
+                                <span style="color:#888; font-size:0.8rem;">${new Date(p.timestamp).toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    `).join('')
+        }
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(shopModal);
+
+    window.toggleShopView = (view) => {
+        const items = document.getElementById('shopItems');
+        const historyDiv = document.getElementById('shopHistory');
+        const shopBtn = document.getElementById('shopTabBtn');
+        const histBtn = document.getElementById('historyTabBtn');
+
+        if (view === 'items') {
+            items.classList.remove('hidden');
+            historyDiv.classList.add('hidden');
+            shopBtn.style.background = '#00f2ff'; shopBtn.style.color = 'black';
+            histBtn.style.background = '#333'; histBtn.style.color = 'white';
+        } else {
+            items.classList.add('hidden');
+            historyDiv.classList.remove('hidden');
+            shopBtn.style.background = '#333'; shopBtn.style.color = 'white';
+            histBtn.style.background = '#00f2ff'; histBtn.style.color = 'black';
+        }
+    };
+
+    window.buyItem = async (name, cost) => {
+        if (tickets < cost) {
+            alert("Not enough tickets! Go win some more!");
+            return;
+        }
+
+        if (confirm(`Buy "${name}" for ${cost} tickets?`)) {
+            try {
+                const res = await fetch(`/api/user/${userPhone}/purchase`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ itemName: name, cost: cost })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    tickets = data.newBalance;
+                    updateTicketDisplay();
+                    alert(`Purchased! 🎉 ${name} has been added to your history.`);
+                    document.getElementById('shopModal').remove();
+                }
+            } catch (e) {
+                alert("Purchase failed: " + e.message);
+            }
+        }
+    };
 };
 
 // --- ANIMATION ---

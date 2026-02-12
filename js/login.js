@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (validCredentials[phone] && validCredentials[phone] === password) {
             // SUCCESS
             localStorage.setItem('vAALENtine_session', 'authenticated');
+            localStorage.setItem('vAALENtine_user', phone);
             successPopup.style.display = 'flex';
 
             // Play success video
