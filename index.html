@@ -4,104 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vAALENtine</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/navigation.css">
-    <link rel="stylesheet" href="css/home.css">
+    <title>vAALENtine - Login</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
-    <nav class="nav-bar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="/pictures/aal/aal-logo.jpg" alt="Logo" class="app-logo" loading="lazy">
-                <span>vAALENtine</span>
-            </a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="us.html" class="nav-link">Us</a>
-                <a href="memories.html" class="nav-link">Memories</a>
-                <a href="music.html" class="nav-link">Music</a>
-                <a href="trivia.html" class="nav-link">Trivia</a>
-                <a href="states.html" class="nav-link">Map</a>
-                <a href="arcade.html" class="nav-link">Arcade</a>
-                <a href="escape.html" class="nav-link">Escape</a>
-                <a href="finale.html" class="nav-link">Finale</a>
-            </div>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="/pictures/aal/aal-logo.jpg" alt="Logo" class="login-logo">
+            <h1 class="login-title">vAALENtine</h1>
+            <p class="login-subtitle">A Tiny Arcade for a Not-So-Tiny Crush</p>
         </div>
-    </nav>
 
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <!-- Photo Stack Container -->
-                <div id="photoStackContainer" class="photo-stack-container"></div>
-
-                <h1 class="hero-title">A Tiny Arcade for a Not-So-Tiny Crush</h1>
-                <p class="hero-subtitle">100% drama-free, 100% silly, built just for you.</p>
-                <p class="hero-note">P.S. Debugging myself is work in progress.</p>
-
-                <div class="personal-note-section">
-                    <div class="profile-pic-wrapper">
-                        <img src="/pictures/aal/aal1.jpeg" alt="Aalen" class="profile-pic" loading="lazy">
-                    </div>
-                    <div class="note-content">
-                        <h2>Hey AALEN,</h2>
-                        <p class="funny-note">"Yes, I know, I'm still the clingy ex who makes elaborate websites instead
-                            of moving on. But hey, at least this one has games?"</p>
-                        <p class="love-note">Enjoy your personal arcade. No bugs guaranteed (unlike me). 💝</p>
-                    </div>
-                </div>
-
-                <div class="progress-tracker" id="progressTracker"></div>
-
-                <div class="game-menu">
-                    <a href="us.html" class="game-card">
-                        <div class="game-icon">👫</div>
-                        <h3>Us</h3>
-                        <p>What were we?</p>
-                    </a>
-                    <a href="memories.html" class="game-card">
-                        <div class="game-icon">🚂</div>
-                        <h3>The memory train</h3>
-                        <p>Get aboard for the journey</p>
-                    </a>
-                    <a href="music.html" class="game-card">
-                        <div class="game-icon">🎵</div>
-                        <h3>Music Box</h3>
-                        <p>Your special playlist</p>
-                    </a>
-                    <a href="trivia.html" class="game-card">
-                        <div class="game-icon">🎯</div>
-                        <h3>Trivia Challenge</h3>
-                        <p>Test your knowledge!</p>
-                    </a>
-                    <a href="states.html" class="game-card">
-                        <div class="game-icon">🇮🇳</div>
-                        <h3>Map Challenge</h3>
-                        <p>Think you know India?</p>
-                    </a>
-                    <a href="arcade.html" class="game-card">
-                        <div class="game-icon">🕹️</div>
-                        <h3>Arcade</h3>
-                        <p>Play games & win tickets!</p>
-                    </a>
-                    <a href="escape.html" class="game-card">
-                        <div class="game-icon">🔐</div>
-                        <h3>The Heart Heist</h3>
-                        <p>Unlock the vault!</p>
-                    </a>
-                </div>
+        <div id="loginForm">
+            <div class="input-group">
+                <label class="input-label" for="phone">Phone Number</label>
+                <input type="text" id="phone" class="input-field" placeholder="Enter number..." autocomplete="off">
             </div>
+
+            <div class="input-group">
+                <label class="input-label" for="password">Password</label>
+                <input type="password" id="password" class="input-field" placeholder="Enter password..."
+                    autocomplete="off">
+            </div>
+
+            <div class="hint-section">
+                <span class="bulb-icon">💡</span>
+                <span>Password hint: Agar number pata hai toh bas ulta likho.</span>
+            </div>
+
+            <button id="loginBtn" class="login-btn">LOGIN</button>
         </div>
-    </section>
+    </div>
 
-    <div id="bulb-container"></div>
-    <canvas id="confettiCanvas"></canvas>
+    <!-- Success Popup -->
+    <div id="successPopup" class="popup-overlay">
+        <div class="popup-content">
+            <h1 class="popup-title success-title">Swagat hai aapka!</h1>
+            <video id="successVideo" class="popup-media" muted playsinline>
+                <source src="/pictures/aay.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
-    <script src="js/config.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/home.js"></script>
+    <!-- Fail Popup -->
+    <div id="failPopup" class="popup-overlay">
+        <div class="popup-content">
+            <h1 class="popup-title fail-title">AAP un khusnaseebon mein se nahin hai.</h1>
+            <img src="/pictures/naw.gif" alt="Access Denied" class="popup-media">
+            <button onclick="document.getElementById('failPopup').style.display='none'" class="login-btn"
+                style="width: auto; padding: 10px 30px;">TRY AGAIN</button>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
 </body>
 
 </html>
