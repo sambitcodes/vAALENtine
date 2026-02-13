@@ -662,3 +662,50 @@
     background: rgba(255, 255, 255, 0.4);
     box-shadow: 0 10px 25px rgba(255, 64, 129, 0.4);
 }
+
+/* Final Actions Layout */
+.finale-final-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-secondary.signing-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff !important;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-secondary.signing-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+}
+
+@media (max-width: 600px) {
+    .finale-final-actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .signing-btn,
+    .celebration-btn,
+    .reveal-btn {
+        width: 80%;
+    }
+}
