@@ -203,12 +203,26 @@ app.post('/api/trivia/generate', async (req, res) => {
 const nodemailer = require('nodemailer');
 const ExcelJS = require('exceljs');
 
-// Email Transporter (Configure with your credentials in .env)
+// Email Transporter (Explicit config for better cloud compatibility)
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // or your provider
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // Use SSL/TLS
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
+    },
+    tls: {
+        rejectUnauthorized: false // Helps avoid issues with self-signed certs in some environments
+    }
+});
+
+// Verify Email Connection on Startup
+transporter.verify((error, success) => {
+    if (error) {
+        console.error("❌ Email SMTP Connection Error:", error);
+    } else {
+        console.log("✅ Email SMTP Server is ready to take messages.");
     }
 });
 
@@ -397,11 +411,23 @@ app.post('/api/analytics/logout', async (req, res) => {
         };
 
         if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-            await transporter.sendMail(mailOptions);
-            console.log("Email sent successfully.");
-            res.json({ success: true, message: "Report generated and emailed." });
+            console.log(`Attempting to send email to ${process.env.EMAIL_USER}...`);
+            try {
+                const info = await transporter.sendMail(mailOptions);
+                console.log("✅ Email sent successfully:", info.messageId);
+                res.json({ success: true, message: "Report generated and emailed." });
+            } catch (mailErr) {
+                console.error("❌ SMTP sendMail failed:", mailErr);
+                // Still return success metadata to user UI, but log failure for admin debugging
+                res.json({
+                    success: false,
+                    error: "SMTP_FAILURE",
+                    message: "Report captured but email failed. Check server logs.",
+                    details: mailErr.message
+                });
+            }
         } else {
-            console.warn("Email credentials missing in .env. Saving file locally instead (optional).");
+            console.warn("⚠️ Email credentials missing in .env.");
             res.json({ success: true, message: "Report generated but email skipped (no credentials)." });
         }
 
