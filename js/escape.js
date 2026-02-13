@@ -153,6 +153,4 @@ function initHeartbeatMusic() {
 }
 
 // Initialize on load
-document.addEventListener('DOMContentLoaded', () => {
-    initHeartbeatMusic();
-});
+// Handled by the listener at the top of the file

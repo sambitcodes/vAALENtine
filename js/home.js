@@ -213,8 +213,4 @@ function createLightBulbs() {
 }
 
 // Initialize on load
-document.addEventListener('DOMContentLoaded', () => {
-    initBackgroundMusic();
-    initFloatingVibe();
-    createLightBulbs();
-});
+// Handled by the listener at the top of the file

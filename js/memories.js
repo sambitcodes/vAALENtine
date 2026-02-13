@@ -408,6 +408,4 @@ function initMemoriesMusic() {
 }
 
 // Initialize on load
-document.addEventListener('DOMContentLoaded', () => {
-    initMemoriesMusic();
-});
+// Handled by the listener at the top of the file
