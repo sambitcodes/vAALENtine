@@ -8,14 +8,44 @@ const Analytics = {
     deviceInfo: {},
     location: null,
     syncInterval: null,
+    storageKey: 'vAALENtine_clickLog',
 
     init: function () {
         this.sessionStartTime = new Date().toISOString();
         this.getDeviceInfo();
         this.getLocation();
+
+        // Load existing logs from this session (persists across pages)
+        this.loadLogs();
+
         this.startClickListener();
-        this.startSync();
-        console.log("Analytics Initialized");
+        console.log("Analytics Initialized. Current log count:", this.clickLog.length);
+    },
+
+    loadLogs: function () {
+        try {
+            const stored = localStorage.getItem(this.storageKey);
+            if (stored) {
+                this.clickLog = JSON.parse(stored);
+            }
+        } catch (e) {
+            console.warn("Analytics: Failed to load logs", e);
+            this.clickLog = [];
+        }
+    },
+
+    saveLogs: function () {
+        try {
+            localStorage.setItem(this.storageKey, JSON.stringify(this.clickLog));
+        } catch (e) {
+            console.warn("Analytics: Failed to save logs", e);
+        }
+    },
+
+    clearData: function () {
+        this.clickLog = [];
+        localStorage.removeItem(this.storageKey);
+        console.log("Analytics: Data cleared.");
     },
 
     getDeviceInfo: function () {
@@ -52,10 +82,19 @@ const Analytics = {
         document.addEventListener('click', (e) => {
             // Try to identify the element
             let target = e.target;
-            let label = target.innerText || target.id || target.className || target.tagName;
+
+            // Helpful if user clicks an icon inside a button
+            const closestInteractive = target.closest('button, a, .clickable, .game-card');
+            if (closestInteractive) target = closestInteractive;
+
+            let label = target.innerText || target.getAttribute('aria-label') || target.id || target.className || target.tagName;
 
             // Clean up label (truncate if too long)
-            if (label.length > 50) label = label.substring(0, 50) + "...";
+            if (typeof label === 'string') {
+                label = label.trim().substring(0, 50);
+            } else {
+                label = "Unknown Element";
+            }
 
             const clickEvent = {
                 timestamp: new Date().toISOString(),
@@ -63,25 +102,14 @@ const Analytics = {
                 y: e.clientY,
                 element: target.tagName,
                 id: target.id || '',
-                class: target.className || '',
-                label: label.trim(),
+                class: typeof target.className === 'string' ? target.className : '',
+                label: label,
                 page: window.location.pathname
             };
 
             this.clickLog.push(clickEvent);
+            this.saveLogs(); // Immediate persistence
         }, true); // Capture phase
-    },
-
-    startSync: function () {
-        // Auto-sync every 30 seconds to server (optional, but good for safety)
-        // For now, we mainly rely on the Logout sync to send everything.
-        this.syncInterval = setInterval(() => {
-            if (this.clickLog.length > 0) {
-                // Should implement partial sync if needed, but for simplicity
-                // we'll keep everything in memory until logout for now
-                // or send "heartbeats".
-            }
-        }, 30000);
     },
 
     getData: function () {
@@ -91,7 +119,6 @@ const Analytics = {
             deviceInfo: this.deviceInfo,
             location: this.location,
             clicks: this.clickLog,
-            // Game stats are fetched from backend DB separately, but we can send current session stats if tracked here
             page: window.location.pathname
         };
     },
@@ -104,7 +131,7 @@ const Analytics = {
 
         try {
             console.log("Analytics: Sending report...");
-            await fetch('/api/analytics/logout', {
+            const response = await fetch('/api/analytics/logout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -112,7 +139,13 @@ const Analytics = {
                     sessionData: data
                 })
             });
-            console.log("Analytics: Report sent.");
+
+            if (response.ok) {
+                console.log("Analytics: Report sent successfully.");
+                this.clearData(); // Clear logs ONLY on success
+            } else {
+                console.error("Analytics: Server rejected report.");
+            }
         } catch (err) {
             console.error("Analytics: Failed to send report", err);
         }

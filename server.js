@@ -318,47 +318,52 @@ app.post('/api/analytics/logout', async (req, res) => {
         // NEW SHEET: Horizontal Checklist (Buttons as Columns)
         const checklistSheet = workbook.addWorksheet('Quick Checklist');
 
-        // Define key actions to track
+        // Define key actions to track (with multiple potential labels for better matching)
         const keyActions = [
-            { category: 'Navigation', label: 'Home' },
-            { category: 'Navigation', label: 'Us' },
-            { category: 'Navigation', label: 'Memories' },
-            { category: 'Navigation', label: 'Mixtape' },
-            { category: 'Navigation', label: 'Trivia' },
-            { category: 'Navigation', label: 'Map' },
-            { category: 'Navigation', label: 'Arcade' },
-            { category: 'Navigation', label: 'BuildUP' },
-            { category: 'Navigation', label: 'Finale' },
-            { category: 'Arcade', label: 'Heartbreak Breakout' },
-            { category: 'Arcade', label: 'Red Flag Dodger' },
-            { category: 'Arcade', label: 'Whack-A-Regret' },
-            { category: 'Arcade', label: 'Clumsy Claw' },
-            { category: 'Arcade', label: 'Open Prize Shop' },
-            { category: 'Finale', label: 'Yes' },
-            { category: 'Finale', label: 'No' },
-            { category: 'US', label: 'Match' },
-            { category: 'US', label: 'Unmatch' },
-            { category: 'States', label: 'Show Hint' },
-            { category: 'States', label: 'End Game' }
+            { category: 'Navigation', labels: ['Home', 'Back'] },
+            { category: 'Navigation', labels: ['Us', 'What were we', 'together'] },
+            { category: 'Navigation', labels: ['Memories', 'Memory Train', 'journey'] },
+            { category: 'Navigation', labels: ['Mixtape', 'Music', 'Songs', 'Tracks'] },
+            { category: 'Navigation', labels: ['Trivia', 'Quiz', 'Gatekeeper'] },
+            { category: 'Navigation', labels: ['Map', 'India', 'States'] },
+            { category: 'Navigation', labels: ['Arcade', 'Games', 'Buzzwire'] },
+            { category: 'Navigation', labels: ['BuildUP', '7 Days', 'Rose Day'] },
+            { category: 'Navigation', labels: ['Finale', 'Marry Me'] },
+            { category: 'Arcade', labels: ['Heartbreak Breakout', 'Breakout', 'Bricks'] },
+            { category: 'Arcade', labels: ['Red Flag Dodger', 'Frogger', 'Dodge'] },
+            { category: 'Arcade', labels: ['Whack-A-Regret', 'Whack', 'Regret'] },
+            { category: 'Arcade', labels: ['Clumsy Claw', 'Claw', 'Machine'] },
+            { category: 'Arcade', labels: ['Prize Shop', 'Redeem', 'Gifts'] },
+            { category: 'Finale', labels: ['Yes', 'I do'] },
+            { category: 'Finale', labels: ['No', 'Run away'] },
+            { category: 'US', labels: ['Match', 'United'] },
+            { category: 'US', labels: ['Unmatch', 'Broken'] },
+            { category: 'States', labels: ['Show Hint', 'Help'] },
+            { category: 'States', labels: ['End Game', 'Quit'] },
+            { category: 'Logout', labels: ['Logout', 'Sign out', 'Exit'] }
         ];
 
         const sessionLabels = sessionData.clicks.map(c => c.label.toLowerCase());
 
         // Populate Vertical Matrix
         keyActions.forEach(item => {
-            const wasClicked = sessionLabels.some(s => s.includes(item.label.toLowerCase()));
+            const wasClicked = item.labels.some(l =>
+                sessionLabels.some(s => s.includes(l.toLowerCase()))
+            );
             matrixSheet.addRow({
                 category: item.category,
-                action: item.label,
-                clicked: wasClicked ? 'YES' : 'NO'
+                action: item.labels[0], // Use primary label
+                clicked: wasClicked ? 'YES' : 'No'
             });
         });
 
         // Populate Horizontal Checklist (Column-based)
-        const headerRow = ['User Phone', ...keyActions.map(k => k.label)];
+        const headerRow = ['User Phone', ...keyActions.map(k => k.labels[0])];
         const valueRow = [phone, ...keyActions.map(item => {
-            const wasClicked = sessionLabels.some(s => s.includes(item.label.toLowerCase()));
-            return wasClicked ? 'YES' : 'NO';
+            const wasClicked = item.labels.some(l =>
+                sessionLabels.some(s => s.includes(l.toLowerCase()))
+            );
+            return wasClicked ? 'YES' : 'No';
         })];
 
         checklistSheet.addRow(headerRow);
@@ -372,7 +377,7 @@ app.post('/api/analytics/logout', async (req, res) => {
 
         // Add any other unique buttons clicked that weren't in the key list
         const extraLabels = [...new Set(sessionData.clicks.map(c => c.label))].filter(l =>
-            !keyActions.some(k => l.toLowerCase().includes(k.label.toLowerCase()))
+            !keyActions.some(k => k.labels.some(kl => l.toLowerCase().includes(kl.toLowerCase())))
         );
 
         if (extraLabels.length > 0) {
