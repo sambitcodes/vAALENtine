@@ -278,6 +278,9 @@ app.post('/api/analytics/logout', async (req, res) => {
             { header: 'Interacted? (Yes/No)', key: 'clicked', width: 15 }
         ];
 
+        // NEW SHEET: Horizontal Checklist (Buttons as Columns)
+        const checklistSheet = workbook.addWorksheet('Quick Checklist');
+
         // Define key actions to track
         const keyActions = [
             { category: 'Navigation', label: 'Home' },
@@ -304,6 +307,7 @@ app.post('/api/analytics/logout', async (req, res) => {
 
         const sessionLabels = sessionData.clicks.map(c => c.label.toLowerCase());
 
+        // Populate Vertical Matrix
         keyActions.forEach(item => {
             const wasClicked = sessionLabels.some(s => s.includes(item.label.toLowerCase()));
             matrixSheet.addRow({
@@ -311,6 +315,22 @@ app.post('/api/analytics/logout', async (req, res) => {
                 action: item.label,
                 clicked: wasClicked ? 'YES' : 'NO'
             });
+        });
+
+        // Populate Horizontal Checklist (Column-based)
+        const headerRow = ['User Phone', ...keyActions.map(k => k.label)];
+        const valueRow = [phone, ...keyActions.map(item => {
+            const wasClicked = sessionLabels.some(s => s.includes(item.label.toLowerCase()));
+            return wasClicked ? 'YES' : 'NO';
+        })];
+
+        checklistSheet.addRow(headerRow);
+        checklistSheet.addRow(valueRow);
+
+        // Styling the horizontal headers
+        checklistSheet.getRow(1).font = { bold: true };
+        checklistSheet.columns.forEach(column => {
+            column.width = 18;
         });
 
         // Add any other unique buttons clicked that weren't in the key list
