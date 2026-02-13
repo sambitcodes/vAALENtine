@@ -158,6 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <span class="icon">🍽️</span>
                                         <p>Me saying "I don't know" + You knowing exactly what restaurant you want = A miracle.</p>
                                     </div>
+                                    <div class="roast-item">
+                                        <span class="icon">📍</span>
+                                        <p>Puri ke paas wala boy + French Bengali girl = A long-distance map challenge.</p>
+                                    </div>
                                 </div>
 
                                 <div style="margin-top: 30px; text-align: center;">
@@ -522,6 +526,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="roast-item">
                                 <span class="icon">🍽️</span>
                                 <p>Me knowing what to eat + You saying "I don't know" = Starving together in the car.</p>
+                            </div>
+                            <div class="roast-item">
+                                <span class="icon">📍</span>
+                                <p>Puri ke paas wala boy + French Bengali girl = A geographic anomaly.</p>
                             </div>
                         </div>
                     </div>
