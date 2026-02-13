@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const successPopup = document.getElementById('successPopup');
     const failPopup = document.getElementById('failPopup');
     const successVideo = document.getElementById('successVideo');
+    const tryAgainBtn = document.getElementById('tryAgainBtn');
+
+    // Audio Assets
+    const successAudio = new Audio('pictures/aay_sound.mp3');
+    const failAudio = new Audio('pictures/naw_sound.mp3');
 
     // Valid credentials reverse mapping
     const validCredentials = {
@@ -22,20 +27,34 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('vAALENtine_user', phone);
             successPopup.style.display = 'flex';
 
-            // Play success video
+            // Play success video and audio
             successVideo.play().catch(e => console.warn("Video auto-play failed:", e));
+            successAudio.play().catch(err => console.log("Success audio blocked:", err));
 
-            // Redirect after 3 seconds
+            // Redirect after 3.5 seconds
             setTimeout(() => {
                 window.location.href = 'home.html';
             }, 3500);
         } else {
             // FAILURE
             failPopup.style.display = 'flex';
+            failAudio.currentTime = 0;
+            failAudio.play().catch(err => console.log("Fail audio blocked:", err));
         }
     }
 
     loginBtn.addEventListener('click', handleLogin);
+
+    // Try Again Handler
+    if (tryAgainBtn) {
+        tryAgainBtn.addEventListener('click', () => {
+            if (window.SoundFX) window.SoundFX.playClick();
+            failPopup.style.display = 'none';
+            // Stop failure audio
+            failAudio.pause();
+            failAudio.currentTime = 0;
+        });
+    }
 
     // Enter key support
     [phoneInput, passwordInput].forEach(input => {
