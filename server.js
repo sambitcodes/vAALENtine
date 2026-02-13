@@ -200,31 +200,54 @@ app.post('/api/trivia/generate', async (req, res) => {
 });
 
 // Email & Excel Dependencies
-const nodemailer = require('nodemailer');
 const ExcelJS = require('exceljs');
 
-// Email Transporter (Explicit config for better cloud compatibility)
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // Use STARTTLS
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-    tls: {
-        rejectUnauthorized: false // Helps avoid issues with self-signed certs in some environments
-    }
-});
+// Brevo API Configuration
+const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email';
 
-// Verify Email Connection on Startup
-transporter.verify((error, success) => {
-    if (error) {
-        console.error("❌ Email SMTP Connection Error:", error);
-    } else {
-        console.log("✅ Email SMTP Server is ready to take messages.");
+async function sendBrevoEmail(to, subject, text, attachmentBuffer, attachmentName) {
+    if (!process.env.BREVO_API_KEY) {
+        console.warn("⚠️ BREVO_API_KEY missing. Skipping email.");
+        return { success: false, error: "Missing API Key" };
     }
-});
+
+    const payload = {
+        sender: { name: "vAALENtine System", email: "mailforvalentine69@gmail.com" },
+        to: [{ email: to }],
+        subject: subject,
+        textContent: text,
+        attachment: [
+            {
+                name: attachmentName,
+                content: attachmentBuffer.toString('base64')
+            }
+        ]
+    };
+
+    try {
+        const response = await fetch(BREVO_API_URL, {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'api-key': process.env.BREVO_API_KEY,
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            console.log("✅ Brevo Email sent successfully:", data.messageId);
+            return { success: true, messageId: data.messageId };
+        } else {
+            console.error("❌ Brevo API Error:", data);
+            return { success: false, error: data };
+        }
+    } catch (err) {
+        console.error("❌ Brevo Fetch Error:", err);
+        return { success: false, error: err.message };
+    }
+}
 
 app.post('/api/analytics/logout', async (req, res) => {
     const { phone, sessionData } = req.body;
@@ -395,40 +418,33 @@ app.post('/api/analytics/logout', async (req, res) => {
         // 2. Generate Buffer
         const buffer = await workbook.xlsx.writeBuffer();
 
-        // 3. Send Email
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER, // Send to yourself
-            subject: `📊 Session Report: ${phone} - ${new Date().toLocaleString()}`,
-            text: `User ${phone} has logged out.\n\nAttached is the session activity report containing:\n- Device & Location Info\n- Clickstream Data\n- Game Stats & Purchases\n\n- vAALENtine System`,
-            attachments: [
-                {
-                    filename: `Session_${phone}_${Date.now()}.xlsx`,
-                    content: buffer,
-                    contentType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-                }
-            ]
-        };
+        // 3. Send Email via Brevo API
+        if (process.env.BREVO_API_KEY) {
+            const subject = `📊 Session Report: ${phone} - ${new Date().toLocaleString()}`;
+            const text = `User ${phone} has logged out.\n\nAttached is the session activity report containing:\n- Device & Location Info\n- Clickstream Data\n- Game Stats & Purchases\n\n- vAALENtine System`;
+            const attachmentName = `Session_${phone}_${Date.now()}.xlsx`;
 
-        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-            console.log(`Attempting to send email to ${process.env.EMAIL_USER}...`);
-            try {
-                const info = await transporter.sendMail(mailOptions);
-                console.log("✅ Email sent successfully:", info.messageId);
-                res.json({ success: true, message: "Report generated and emailed." });
-            } catch (mailErr) {
-                console.error("❌ SMTP sendMail failed:", mailErr);
-                // Still return success metadata to user UI, but log failure for admin debugging
+            const emailResult = await sendBrevoEmail(
+                process.env.EMAIL_USER,
+                subject,
+                text,
+                buffer,
+                attachmentName
+            );
+
+            if (emailResult.success) {
+                res.json({ success: true, message: "Report generated and emailed via Brevo." });
+            } else {
                 res.json({
                     success: false,
-                    error: "SMTP_FAILURE",
-                    message: "Report captured but email failed. Check server logs.",
-                    details: mailErr.message
+                    error: "BREVO_FAILURE",
+                    message: "Report captured but email failed.",
+                    details: emailResult.error
                 });
             }
         } else {
-            console.warn("⚠️ Email credentials missing in .env.");
-            res.json({ success: true, message: "Report generated but email skipped (no credentials)." });
+            console.warn("⚠️ BREVO_API_KEY missing in .env.");
+            res.json({ success: true, message: "Report generated but email skipped (no API key)." });
         }
 
     } catch (error) {

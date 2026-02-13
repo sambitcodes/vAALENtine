@@ -18,3 +18,5 @@ services:
         sync: false # Set this manually in Render Dashboard
       - key: EMAIL_PASS
         sync: false # Set this manually in Render Dashboard
+      - key: BREVO_API_KEY
+        sync: false # Set this manually in Render Dashboard
