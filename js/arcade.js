@@ -509,6 +509,9 @@ window.openShop = async () => {
                 const data = await res.json();
 
                 if (data.success) {
+                    const sfxPurchase = new Audio('https://assets.mixkit.co/active_storage/sfx/2252/2252-preview.mp3');
+                    sfxPurchase.play().catch(e => console.warn("Purchase sound failed:", e));
+
                     tickets = data.newBalance;
                     updateTicketDisplay();
                     alert(`Purchased! 🎉 ${name} has been added to your history.`);
