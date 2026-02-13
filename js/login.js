@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Valid credentials reverse mapping
     const validCredentials = {
         "8335891019": "9101985338",
-        "8777566959": "9596657778"
+        "8777566959": "9596657778",
+        "7008014842": "2484108007"
     };
 
     function handleLogin() {
