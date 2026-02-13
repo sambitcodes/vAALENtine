@@ -1,4 +1,4 @@
-// Arcade Logic
+﻿// Arcade Logic
 
 // --- STATE ---
 let tickets = 0;
@@ -27,27 +27,27 @@ const quizData = [
     {
         q: "What does Sambit's suffer with?",
         options: ["Amnesia", "Diabetes", "Night Blindness", "Popularity"],
-        correct: 3 // Example index
+        correct: 2 // 0-based index for "Night Blindness"
     },
     {
         q: "Where does Sambit want to settle later in his life?",
         options: ["Manali", "London", "In your heart", "Kerala"],
-        correct: 4
+        correct: 3 // 0-based index for "Kerala"
     },
     {
         q: "What is Sambit's biggest pet peeve?",
         options: ["Cluttered Wardrobe", "Slow walkers", "Loud chewing", "Being late"],
-        correct: 1
+        correct: 0 // 0-based index for "Cluttered Wardrobe"
     },
     {
         q: "What is Sambit strictly against when it comes to his future child.",
         options: ["Playing sports", "Use of Gadgets", "Eating Junk", "Having a girlfriend"],
-        correct: 2
+        correct: 1 // 0-based index for "Use of Gadgets"
     },
     {
         q: "Which of these will Sambit order when ordering from Burger King?",
         options: ["Whopper", "Hashbrown", "Chicken Wrap", "Chicken Nuggets"],
-        correct: 4
+        correct: 3 // 0-based index for "Chicken Nuggets"
     }
 ];
 
@@ -173,11 +173,7 @@ window.handleAnswer = (index) => {
         SoundFX.playWrong();
         feedback.textContent = "Wrong! ❌ (But I'll let it slide because I love you ... maybe)";
         feedback.className = "quiz-feedback error";
-        // score++; // Uncomment to force win for testing
-        // Strictly enforcing 5/5? Or just pass?
-        // Let's be lenient or reset.
-        // For now, let's just proceed.
-        score++; // Be nice for now, user can change logic.
+        // score++; // Be nice logic removed to enforce correctness
     }
 
     setTimeout(() => {
@@ -466,7 +462,7 @@ window.openShop = async () => {
             history.map(p => `
                         <div style="border-bottom:1px solid #333; padding:10px 0;">
                             <div style="display:flex; justify-content:space-between;">
-                                <span>${p.item_name}</span>
+                                 <span>${p.item_name}</span>
                                 <span style="color:#888; font-size:0.8rem;">${new Date(p.timestamp).toLocaleDateString()}</span>
                             </div>
                         </div>

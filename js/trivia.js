@@ -170,7 +170,7 @@ function showWelcomeScreen() {
     container.innerHTML = `
         <div class="trivia-question-card" style="text-align: center;">
             <h2>${currentCategory}</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">You have 10 seconds per question.<br>Good luck!</p>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">You have 20 seconds per question.<br>Good luck!</p>
             <button class="option-btn" onclick="startGame()" style="margin: 0 auto; display: inline-block; background: var(--primary); color: white; border: none;">Start Game</button>
         </div>
     `;
@@ -181,7 +181,7 @@ function startGame() {
 }
 
 let timerInterval;
-const TIME_LIMIT = 10;
+const TIME_LIMIT = 20;
 
 function startTimer() {
     let timeLeft = TIME_LIMIT;
