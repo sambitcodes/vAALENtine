@@ -92,20 +92,27 @@ function initBackgroundMusic() {
     music.loop = true;
     music.volume = 0.5; // Set to 50% volume so it's not too loud
 
+    // Register with Global Audio Controller
+    if (window.AudioController) {
+        window.AudioController.register(music);
+    }
+
     // Background music usually requires a user interaction to start
     const startMusic = () => {
         music.play().then(() => {
             console.log("Background music started!");
+            document.removeEventListener('click', startMusic);
+            document.removeEventListener('touchstart', startMusic);
         }).catch(err => {
             console.warn("Autoplay was blocked, or file missing:", err);
         });
-        // Remove listeners after first interaction
-        document.removeEventListener('click', startMusic);
-        document.removeEventListener('touchstart', startMusic);
     };
 
     document.addEventListener('click', startMusic);
     document.addEventListener('touchstart', startMusic);
+
+    // Attempt to play immediately (Works if user has interacted with domain previously)
+    music.play().catch(() => { });
 }
 
 function initFloatingVibe() {
@@ -204,3 +211,10 @@ function createLightBulbs() {
         container.appendChild(assembly);
     }
 }
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+    initBackgroundMusic();
+    initFloatingVibe();
+    createLightBulbs();
+});

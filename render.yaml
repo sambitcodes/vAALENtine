@@ -14,3 +14,7 @@ services:
         value: production
       - key: GROQ_API_KEY
         sync: false # Set this manually in Render Dashboard
+      - key: EMAIL_USER
+        sync: false # Set this manually in Render Dashboard
+      - key: EMAIL_PASS
+        sync: false # Set this manually in Render Dashboard

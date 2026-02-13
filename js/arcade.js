@@ -11,6 +11,17 @@ const ticketDisplay = document.getElementById('ticketCount');
 const lobby = document.getElementById('gameLobby');
 const gameContainer = document.getElementById('activeGameContainer');
 
+// --- AUDIO ---
+let arcadeMusic = new Audio('assets/mario-theme.mp3');
+arcadeMusic.loop = true;
+arcadeMusic.volume = 0.3; // Low volume as requested
+let isMusicPlaying = false;
+
+// Register with Global Controller
+if (window.AudioController) {
+    window.AudioController.register(arcadeMusic);
+}
+
 // --- QUESTIONS ---
 const quizData = [
     {
@@ -104,7 +115,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Add logic to handle returning from a game if needed
     // (e.g. check URL params or state)
+
+    // Attempt autoplay
+    playArcadeMusic();
+
+    // Fallback for autoplay policy
+    document.addEventListener('click', playArcadeMusic, { once: true });
 });
+
+function playArcadeMusic() {
+    if (isMusicPlaying) return;
+    arcadeMusic.play().then(() => {
+        isMusicPlaying = true;
+        console.log("Arcade music started");
+    }).catch(e => {
+        console.warn("Autoplay blocked or file missing", e);
+    });
+}
+
+function stopArcadeMusic() {
+    arcadeMusic.pause();
+    isMusicPlaying = false;
+}
 
 // --- GATEKEEPER QUIZ ---
 function startGatekeeperQuiz() {
@@ -277,6 +309,9 @@ window.launchGame = async (gameId) => {
     if (!confirm(`Play ${gameId.toUpperCase()} for 1 Ticket?`)) return;
     deductTicket();
 
+    // Stop Music
+    stopArcadeMusic();
+
     // Hide Lobby, Show Game Container
     lobby.classList.add('hidden');
     gameContainer.classList.remove('hidden');
@@ -371,6 +406,9 @@ window.exitGame = () => {
     gameContainer.classList.add('hidden');
     lobby.classList.remove('hidden');
     gameContainer.innerHTML = ''; // Cleanup DOM
+
+    // Resume Music
+    playArcadeMusic();
 };
 
 window.openShop = async () => {

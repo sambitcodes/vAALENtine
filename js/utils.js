@@ -282,3 +282,119 @@ const SoundFX = {
         }
     }
 };
+
+/**
+ * GLOBAL AUDIO CONTROLLER
+ * Manages background music mute state across sessions.
+ */
+window.AudioController = {
+    isMuted: localStorage.getItem('vArcade_globalMute') === 'true',
+    trackedAudio: [],
+
+    init: function () {
+        // Create UI Button
+        const btn = document.createElement('button');
+        btn.id = 'globalMuteBtn';
+        btn.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        `;
+
+        btn.innerHTML = this.isMuted ? '🔇' : '🔊';
+        btn.title = "Toggle Background Music";
+
+        btn.onmouseenter = () => {
+            btn.style.transform = 'scale(1.1)';
+            btn.style.background = 'rgba(255, 0, 85, 0.8)';
+            btn.style.border = '2px solid #ff0055';
+        };
+
+        btn.onmouseleave = () => {
+            btn.style.transform = 'scale(1)';
+            btn.style.background = 'rgba(0, 0, 0, 0.6)';
+            btn.style.border = '2px solid rgba(255, 255, 255, 0.2)';
+        };
+
+        btn.onclick = () => {
+            this.toggleMute();
+            // Small click sound (always plays unless we want to mute interaction sounds too, but user said BG music)
+            // But let's keep interactions audible for feedback
+            if (window.SoundFX && window.SoundFX.playClick) window.SoundFX.playClick();
+        };
+
+        document.body.appendChild(btn);
+
+        // Apply initial state to any early registered tracks
+        this.applyState();
+    },
+
+    register: function (audioElement) {
+        if (!audioElement) return;
+
+        // Store original volume for restoring later
+        if (!audioElement._originalVolume) {
+            audioElement._originalVolume = audioElement.volume || 0.5;
+        }
+
+        // Add to list if not already there
+        if (!this.trackedAudio.includes(audioElement)) {
+            this.trackedAudio.push(audioElement);
+        }
+
+        // Apply current state immediately
+        if (this.isMuted) {
+            audioElement.muted = true;
+            audioElement.volume = 0;
+        }
+    },
+
+    toggleMute: function () {
+        this.isMuted = !this.isMuted;
+        localStorage.setItem('vArcade_globalMute', this.isMuted);
+
+        // Update UI
+        const btn = document.getElementById('globalMuteBtn');
+        if (btn) btn.innerHTML = this.isMuted ? '🔇' : '🔊';
+
+        // Update all tracks
+        this.applyState();
+    },
+
+    applyState: function () {
+        this.trackedAudio.forEach(audio => {
+            if (audio) {
+                if (this.isMuted) {
+                    audio.muted = true;
+                    audio.volume = 0; // Force silence
+                } else {
+                    audio.muted = false;
+                    // Restore original volume or default to 0.5
+                    audio.volume = audio._originalVolume || 0.5;
+                }
+            }
+        });
+    }
+};
+
+// Auto-init on load
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.AudioController) {
+        window.AudioController.init();
+    }
+});

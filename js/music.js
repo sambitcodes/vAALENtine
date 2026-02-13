@@ -10,36 +10,18 @@ window.MusicPlayer = {
 
     // The Tapes (Songs)
     tracks: [
-        {
-            title: "Home / Welcome",
-            artist: "CDR",
-            file: "pictures/cdr-home.mp3",
-            color: "#f1c40f" // Yellow
-        },
-        {
-            title: "Us / Together",
-            artist: "Arad",
-            file: "pictures/arad-us.mp3",
-            color: "#e74c3c" // Red
-        },
-        {
-            title: "The Memory Train",
-            artist: "TDN",
-            file: "pictures/tdn-memories.mp3",
-            color: "#3498db" // Blue
-        },
-        {
-            title: "Map of Our World",
-            artist: "Anand",
-            file: "pictures/anand-map.mp3",
-            color: "#2ecc71" // Green
-        },
-        {
-            title: "Grand Finale",
-            artist: "vAALENtine",
-            file: "pictures/finale.mp3",
-            color: "#9b59b6" // Purple
-        }
+        { title: "Aise Kyun (Ghazal Version)", artist: "Mixtape", file: "pictures/mixtape/Aise Kyun (Ghazal Version).mp3", color: "#f1c40f" },
+        { title: "Dekha Hi Nahi", artist: "Mixtape", file: "pictures/mixtape/Dekha Hi Nahi.mp3", color: "#e74c3c" },
+        { title: "Lovely", artist: "Mixtape", file: "pictures/mixtape/Lovely.mp3", color: "#3498db" },
+        { title: "Mujhe Tum Nazar Se", artist: "Mixtape", file: "pictures/mixtape/Mujhe Tum Nazar Se.mp3", color: "#2ecc71" },
+        { title: "Nee Kavithaigala", artist: "Mixtape", file: "pictures/mixtape/Nee Kavithaigala.mp3", color: "#9b59b6" },
+        { title: "O Doyal Bichar Koro", artist: "Mixtape", file: "pictures/mixtape/O Doyal Bichar Koro.mp3", color: "#e67e22" },
+        { title: "Ronay Na Diyaa", artist: "Mixtape", file: "pictures/mixtape/Ronay Na Diyaa.mp3", color: "#1abc9c" },
+        { title: "Tere Bina Na Guzara E", artist: "Mixtape", file: "pictures/mixtape/Tere Bina Na Guzara E.mp3", color: "#e91e63" },
+        { title: "Tu Hain Toh", artist: "Mixtape", file: "pictures/mixtape/Tu Hain Toh.mp3", color: "#34495e" },
+        { title: "Virah Full Song", artist: "Mixtape", file: "pictures/mixtape/Virah Full Song.mp3", color: "#d35400" },
+        { title: "Woh Humsafar Tha", artist: "Mixtape", file: "pictures/mixtape/Woh Humsafar Tha.mp3", color: "#7f8c8d" },
+        { title: "기억이란 사랑보다", artist: "Kevin Oh", file: "pictures/mixtape/케빈오 - 기억이란 사랑보다.mp3", color: "#c0392b" }
     ],
 
     init() {

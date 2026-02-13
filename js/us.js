@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgMusic = document.getElementById('bgMusic');
     if (bgMusic) {
         bgMusic.volume = 0.4;
+        if (window.AudioController) {
+            window.AudioController.register(bgMusic);
+        }
         const playMusic = () => {
             bgMusic.play().catch(e => console.log("Autoplay blocked"));
             document.removeEventListener('click', playMusic);

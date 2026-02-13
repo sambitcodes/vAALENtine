@@ -396,9 +396,18 @@ function initMemoriesMusic() {
     music.loop = true;
     music.volume = 0.15; // Lighter volume as requested
 
+    if (window.AudioController) {
+        window.AudioController.register(music);
+    }
+
     const startMusic = () => {
         music.play().catch(err => console.log("Music blocked:", err));
         document.removeEventListener('click', startMusic);
     };
     document.addEventListener('click', startMusic);
 }
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+    initMemoriesMusic();
+});

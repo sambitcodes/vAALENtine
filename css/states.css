@@ -2,20 +2,54 @@
    INDIAN MAP GAME STYLES
    ======================================== */
 
+/* Page Background - Indian Flag Gradient */
+body {
+    /* Indian Flag Gradient Background - Saffron, White (with blue hint), Green */
+    background: linear-gradient(180deg,
+            rgba(255, 153, 51, 1) 0%,
+            /* Saffron */
+            rgba(255, 255, 255, 1) 45%,
+            /* White */
+            rgba(240, 248, 255, 1) 50%,
+            /* Hint of blue */
+            rgba(255, 255, 255, 1) 55%,
+            rgba(19, 136, 8, 1) 100%
+            /* India Green */
+        ) !important;
+    background-size: 100% 300%;
+    background-attachment: fixed;
+    animation: flagWave 10s ease-in-out infinite alternate;
+    min-height: 100vh;
+}
+
+@keyframes flagWave {
+    0% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 50% 100%;
+    }
+}
+
 .map-container {
     max-width: 900px;
     margin: 2rem auto;
     padding: 1.5rem;
-    /* Bright Background with Neon Cyan/Blue Theme */
-    background: rgba(240, 255, 255, 0.9);
+
+    /* Glassmorphism Card */
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 20px;
+
     /* Neon Blue Glow */
-    border: 3px solid #00d2ff;
+    border: 3px solid #7b00ff;
+    /* Matches indigo theme */
     box-shadow:
-        0 0 15px #00d2ff,
-        0 0 30px rgba(0, 210, 255, 0.5),
-        inset 0 0 20px rgba(0, 210, 255, 0.2);
+        0 0 15px #7b00ff,
+        0 0 30px rgba(123, 0, 255, 0.5),
+        inset 0 0 20px rgba(123, 0, 255, 0.2);
     position: relative;
     min-height: 650px;
     display: flex;
@@ -39,22 +73,27 @@
 }
 
 .state {
-    fill: #e6fffa;
-    /* Very light teal */
+    fill: rgba(255, 255, 255, 0.3);
+    /* Translucent fill to show flag */
     fill-opacity: 0.9;
-    stroke: #ffea00;
-    /* Neon Yellow Border */
+
+    /* Neon Indigo Outline */
+    stroke: #7b00ff;
+    /* Neon Indigo */
     stroke-width: 1.5;
+    filter: drop-shadow(0 0 2px rgba(123, 0, 255, 0.8));
+    /* Neon Glow */
+
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
 }
 
 .state:hover {
     fill: #b2f5ea;
-    stroke: #ffd700;
-    /* Gold on hover */
+    stroke: #ff00cc;
+    /* Magenta pop on hover */
     stroke-width: 2.5;
-    filter: drop-shadow(0 0 8px rgba(255, 234, 0, 0.6));
+    filter: drop-shadow(0 0 8px rgba(255, 0, 204, 0.8));
     transform: translateY(-3px) scale(1.01);
     z-index: 10;
 }

@@ -293,14 +293,26 @@ function initMapMusic() {
     music.loop = true;
     music.volume = 0.4; // Subtle volume
 
+    if (window.AudioController) {
+        window.AudioController.register(music);
+    }
+
     const startMusic = () => {
         music.play().then(() => {
             console.log("Map music started!");
+            document.removeEventListener('click', startMusic);
         }).catch(err => {
             console.warn("Autoplay blocked:", err);
         });
-        document.removeEventListener('click', startMusic);
     };
 
     document.addEventListener('click', startMusic);
+
+    // Attempt to play immediately
+    music.play().catch(() => { });
 }
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+    initMapMusic();
+});

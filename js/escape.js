@@ -129,3 +129,30 @@ function acceptTC() {
     SoundFX.playCorrect();
     alert("Pact Accepted! No passive-aggressive stories/status for 1 year.");
 }
+
+// Background Music for BuildUp Page
+function initHeartbeatMusic() {
+    const music = new Audio('pictures/heartbeat.mp3');
+    music.loop = true;
+    music.volume = 0.4; // Mid-low volume
+
+    // Register with Global Audio Controller
+    if (window.AudioController) {
+        window.AudioController.register(music);
+    }
+
+    // Auto-play attempt
+    music.play().catch(e => console.log("Autoplay blocked:", e));
+
+    // Fallback interaction
+    const startMusic = () => {
+        music.play().catch(() => { });
+        document.removeEventListener('click', startMusic);
+    };
+    document.addEventListener('click', startMusic);
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+    initHeartbeatMusic();
+});

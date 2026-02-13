@@ -548,22 +548,70 @@
     }
 }
 
+/* Pink Neon / Hands Background */
+.pink-neon-bg {
+    background: url('/pictures/hands.jpeg') no-repeat center center/cover;
+    position: relative;
+    /* Remove flicker animation or adapt it? Let's add a pink overlay */
+}
+
+.pink-neon-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 127, 0.3);
+    /* Pink tint */
+    pointer-events: none;
+    z-index: -1;
+    animation: neonPulseOverlay 3s infinite alternate;
+}
+
+@keyframes neonPulseOverlay {
+    0% {
+        background: rgba(255, 0, 127, 0.2);
+    }
+
+    100% {
+        background: rgba(255, 0, 127, 0.5);
+    }
+}
+
 .celebration-content {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.15);
+    /* Translucent glass */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     padding: 3rem;
     border-radius: 30px;
-    box-shadow: 0 0 50px rgba(255, 64, 129, 0.4);
-    backdrop-filter: blur(10px);
-    border: 2px solid #fff;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     animation: popInCard 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    /* Ensure text is readable on dark/busy bg */
+}
+
+/* Remove old overlay */
+.celebration-content::before {
+    display: none;
+}
+
+.celebration-content>* {
+    position: relative;
+    z-index: 2;
 }
 
 .celebration-title {
     font-size: 4rem;
-    color: #e91e63;
+    color: #fff;
+    /* White for contrast */
     font-family: 'Playfair Display', serif;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 0px #fff, 0 0 20px #ff80ab;
+    text-shadow: 0 0 10px #ff4081, 0 0 20px #e91e63;
     animation: bounceTitle 2s infinite;
 }
 
@@ -581,29 +629,36 @@
 
 .celebration-text {
     font-size: 1.5rem;
-    color: #333;
+    color: #fce4ec;
+    /* Light pinkish white */
     margin-bottom: 1rem;
     font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .celebration-subtext {
     font-size: 2rem;
-    color: #c2185b;
+    color: #ff80ab;
+    /* Bright pink */
     font-weight: bold;
     margin-bottom: 2rem;
     font-family: 'Poppins', sans-serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .celebration-btn {
-    background: linear-gradient(45deg, #ff4081, #f50057);
-    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
     padding: 1rem 3rem;
     font-size: 1.2rem;
-    box-shadow: 0 5px 15px rgba(245, 0, 87, 0.4);
-    transition: transform 0.2s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
 }
 
 .celebration-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(245, 0, 87, 0.6);
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 25px rgba(255, 64, 129, 0.4);
 }

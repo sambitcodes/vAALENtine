@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const bgMusic = document.getElementById('bgMusic');
     if (bgMusic) {
         bgMusic.volume = 0.4; // Reduced volume
+        if (window.AudioController) {
+            window.AudioController.register(bgMusic);
+        }
         const playMusic = () => {
             bgMusic.play().catch(e => console.log("Audio play failed (waiting for interaction):", e));
             document.removeEventListener('click', playMusic);
@@ -188,6 +191,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Show Celebration Overlay
         const celebrationOverlay = document.getElementById('celebrationOverlay');
         celebrationOverlay.classList.remove('hidden');
+        celebrationOverlay.classList.add('pink-neon-bg');
 
         // Trigger Massive Confetti / Fireworks
         const duration = 15 * 1000;

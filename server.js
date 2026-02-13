@@ -199,6 +199,198 @@ app.post('/api/trivia/generate', async (req, res) => {
     }
 });
 
+// Email & Excel Dependencies
+const nodemailer = require('nodemailer');
+const ExcelJS = require('exceljs');
+
+// Email Transporter (Configure with your credentials in .env)
+const transporter = nodemailer.createTransport({
+    service: 'gmail', // or your provider
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
+
+app.post('/api/analytics/logout', async (req, res) => {
+    const { phone, sessionData } = req.body;
+
+    console.log(`Received logout report for user: ${phone}`);
+
+    try {
+        // 1. Create Excel Workbook
+        const workbook = new ExcelJS.Workbook();
+        workbook.creator = 'vAALENtine Arcade SYSTEM';
+        workbook.created = new Date();
+
+        // SHEET 1: Summary
+        const summarySheet = workbook.addWorksheet('Session Summary');
+        summarySheet.columns = [
+            { header: 'Metric', key: 'metric', width: 20 },
+            { header: 'Value', key: 'value', width: 50 }
+        ];
+
+        summarySheet.addRows([
+            { metric: 'User Phone', value: phone },
+            { metric: 'Login Time', value: sessionData.startTime },
+            { metric: 'Logout Time', value: sessionData.endTime },
+            { metric: 'Browser/Agent', value: sessionData.deviceInfo.userAgent },
+            { metric: 'Platform', value: sessionData.deviceInfo.platform },
+            { metric: 'Screen Res', value: sessionData.deviceInfo.screenResolution },
+            {
+                metric: 'Location (Lat, Long)', value: sessionData.location && !sessionData.location.error
+                    ? `${sessionData.location.latitude}, ${sessionData.location.longitude}`
+                    : (sessionData.location?.error || 'Unknown')
+            }
+        ]);
+
+        // SHEET 2: Click Log
+        const clickSheet = workbook.addWorksheet('Click Activity');
+        clickSheet.columns = [
+            { header: 'Time', key: 'timestamp', width: 25 },
+            { header: 'Page', key: 'page', width: 20 },
+            { header: 'Element', key: 'element', width: 15 },
+            { header: 'Label/Text', key: 'label', width: 30 },
+            { header: 'ID', key: 'id', width: 15 },
+            { header: 'Class', key: 'class', width: 20 },
+            { header: 'X, Y', key: 'coords', width: 15 }
+        ];
+
+        if (sessionData.clicks && sessionData.clicks.length > 0) {
+            sessionData.clicks.forEach(click => {
+                clickSheet.addRow({
+                    timestamp: click.timestamp,
+                    page: click.page,
+                    element: click.element,
+                    label: click.label,
+                    id: click.id,
+                    class: click.class,
+                    coords: `${click.x}, ${click.y}`
+                });
+            });
+        }
+
+        // SHEET 2.5: Participation Matrix (Key Actions Check)
+        const matrixSheet = workbook.addWorksheet('Participation Matrix');
+        matrixSheet.columns = [
+            { header: 'Action Category', key: 'category', width: 20 },
+            { header: 'Specific Action / Button', key: 'action', width: 30 },
+            { header: 'Interacted? (Yes/No)', key: 'clicked', width: 15 }
+        ];
+
+        // Define key actions to track
+        const keyActions = [
+            { category: 'Navigation', label: 'Home' },
+            { category: 'Navigation', label: 'Us' },
+            { category: 'Navigation', label: 'Memories' },
+            { category: 'Navigation', label: 'Mixtape' },
+            { category: 'Navigation', label: 'Trivia' },
+            { category: 'Navigation', label: 'Map' },
+            { category: 'Navigation', label: 'Arcade' },
+            { category: 'Navigation', label: 'BuildUP' },
+            { category: 'Navigation', label: 'Finale' },
+            { category: 'Arcade', label: 'Heartbreak Breakout' },
+            { category: 'Arcade', label: 'Red Flag Dodger' },
+            { category: 'Arcade', label: 'Whack-A-Regret' },
+            { category: 'Arcade', label: 'Clumsy Claw' },
+            { category: 'Arcade', label: 'Open Prize Shop' },
+            { category: 'Finale', label: 'Yes' },
+            { category: 'Finale', label: 'No' },
+            { category: 'US', label: 'Match' },
+            { category: 'US', label: 'Unmatch' },
+            { category: 'States', label: 'Show Hint' },
+            { category: 'States', label: 'End Game' }
+        ];
+
+        const sessionLabels = sessionData.clicks.map(c => c.label.toLowerCase());
+
+        keyActions.forEach(item => {
+            const wasClicked = sessionLabels.some(s => s.includes(item.label.toLowerCase()));
+            matrixSheet.addRow({
+                category: item.category,
+                action: item.label,
+                clicked: wasClicked ? 'YES' : 'NO'
+            });
+        });
+
+        // Add any other unique buttons clicked that weren't in the key list
+        const extraLabels = [...new Set(sessionData.clicks.map(c => c.label))].filter(l =>
+            !keyActions.some(k => l.toLowerCase().includes(k.label.toLowerCase()))
+        );
+
+        if (extraLabels.length > 0) {
+            extraLabels.forEach(l => {
+                if (l && l.length > 0) {
+                    matrixSheet.addRow({
+                        category: 'Other Interaction',
+                        action: l,
+                        clicked: 'YES'
+                    });
+                }
+            });
+        }
+
+        // SHEET 3: User Game Stats (Fetch from DB)
+        const statsSheet = workbook.addWorksheet('Overall Stats');
+        statsSheet.columns = [
+            { header: 'Tickets', key: 'tickets', width: 15 },
+            { header: 'Purchases', key: 'purchases', width: 50 }
+        ];
+
+        // Fetch user data synchronously-ish
+        const userRow = await new Promise((resolve, reject) => {
+            db.get("SELECT tickets FROM users WHERE phone = ?", [phone], (err, row) => {
+                if (err) reject(err);
+                else resolve(row);
+            });
+        });
+
+        const purchases = await new Promise((resolve, reject) => {
+            db.all("SELECT item_name, cost, timestamp FROM purchases WHERE phone = ?", [phone], (err, rows) => {
+                if (err) reject(err);
+                else resolve(rows);
+            });
+        });
+
+        statsSheet.addRow({
+            tickets: userRow ? userRow.tickets : 'N/A',
+            purchases: purchases.map(p => `${p.item_name} (${p.cost})`).join(', ')
+        });
+
+
+        // 2. Generate Buffer
+        const buffer = await workbook.xlsx.writeBuffer();
+
+        // 3. Send Email
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_USER, // Send to yourself
+            subject: `📊 Session Report: ${phone} - ${new Date().toLocaleString()}`,
+            text: `User ${phone} has logged out.\n\nAttached is the session activity report containing:\n- Device & Location Info\n- Clickstream Data\n- Game Stats & Purchases\n\n- vAALENtine System`,
+            attachments: [
+                {
+                    filename: `Session_${phone}_${Date.now()}.xlsx`,
+                    content: buffer,
+                    contentType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                }
+            ]
+        };
+
+        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+            await transporter.sendMail(mailOptions);
+            console.log("Email sent successfully.");
+            res.json({ success: true, message: "Report generated and emailed." });
+        } else {
+            console.warn("Email credentials missing in .env. Saving file locally instead (optional).");
+            res.json({ success: true, message: "Report generated but email skipped (no credentials)." });
+        }
+
+    } catch (error) {
+        console.error("Analytics Error:", error);
+        res.status(500).json({ error: "Failed to generate report." });
+    }
+});
+
 app.listen(port, '0.0.0.0', () => {
     console.log(`Server running at http://localhost:${port}`);
 });
