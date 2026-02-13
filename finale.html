@@ -44,17 +44,46 @@
     </nav>
 
     <section class="finale-section">
+        <div class="bouquet-overlay"></div>
+        <div id="backgroundLanterns" class="background-lanterns"></div>
         <div class="container">
-            <div class="finale-content">
-                <h2 class="finale-question" id="finaleQuestion">Will you be my Valentine this year, just for one silly
-                    day?</h2>
+            <div class="finale-content glass-morphism">
+                <h2 class="finale-preheader">So ! Miss AALEN TALUKDAR</h2>
+                <h1 class="finale-title">Will you be my valentine?</h1>
+                <p class="finale-subheader">for one silly day.</p>
 
                 <div class="finale-buttons" id="finaleButtons">
                     <button id="yesBtn" class="btn btn-yes" onmouseenter="SoundFX.playHover()">Yes</button>
                     <button id="noBtn" class="btn btn-no" onmouseenter="SoundFX.playHover()">No</button>
                 </div>
 
-                <p class="finale-note">Jokes apart, answer honestly. I'll respect it.</p>
+                <!-- Floating Lantern Fallback Container -->
+                <div id="fallbackLanternContainer" class="fallback-lantern-container hidden">
+                    <div class="lantern-thread"></div>
+                    <div class="lantern-body">
+                        <button id="droppedNoBtn" class="btn btn-no lantern-btn"
+                            onmouseenter="SoundFX.playHover()">No</button>
+                    </div>
+                </div>
+
+                <audio id="bgMusic" loop>
+                    <source src="pictures/finale.mp3" type="audio/mpeg">
+                </audio>
+                <audio id="glitchSound" loop>
+                    <source src="pictures/glitch.mp3" type="audio/mpeg">
+                </audio>
+                <audio id="sirenSound" loop>
+                    <source src="pictures/siren.mp3" type="audio/mpeg">
+                </audio>
+                <audio id="fireworksSound">
+                    <source src="pictures/fireworks.mp3" type="audio/mpeg">
+                </audio>
+
+                <div class="finale-visual">
+                    <img src="pictures/val.gif" alt="Valentine" class="finale-gif">
+                </div>
+
+                <p class="finale-note hidden" id="finaleNote">Jokes apart, answer honestly. I'll respect it.</p>
                 <button id="reallyNoBtn" class="btn-really-no hidden" onmouseenter="SoundFX.playHover()">Really,
                     No</button>
 
@@ -68,10 +97,41 @@
                 </div>
             </div>
         </div>
+
+        <!-- Self Destruct Overlay -->
+        <div id="selfDestructOverlay" class="self-destruct-overlay hidden">
+            <canvas id="matrixCanvas"></canvas>
+            <div class="siren-overlay"></div>
+            <div class="destruct-message-container">
+                <h1 id="destructTitle" class="destruct-title glitch" data-text="CRITICAL ERROR">CRITICAL ERROR</h1>
+                <p id="destructText" class="destruct-text">INITIATING SYSTEM PURGE...</p>
+                <p id="destructCountdown" class="destruct-countdown"></p>
+            </div>
+
+            <div id="destructReveal" class="destruct-reveal hidden">
+                <p class="reveal-text">I am not that intelligent a developer...</p>
+                <p class="reveal-subtext">But I tried! Thank you for playing! ❤️</p>
+                <a href="home.html" class="btn btn-primary reveal-btn">Escape to Home</a>
+            </div>
+        </div>
+        <!-- Celebration Overlay -->
+        <div id="celebrationOverlay" class="celebration-overlay hidden">
+            <div class="celebration-content">
+                <h1 class="celebration-title">Unbelievable! 💖</h1>
+                <p class="celebration-text">wow ! that was unbelieable<br>thank you so much for being my valentine</p>
+                <p class="celebration-subtext">Happy Valentine's Day!</p>
+                <a href="home.html" class="btn btn-primary celebration-btn">Go to our Home</a>
+            </div>
+        </div>
     </section>
+
+    <audio id="cheeringSound">
+        <source src="pictures/cheering.mp3" type="audio/mpeg">
+    </audio>
 
     <canvas id="confettiCanvas"></canvas>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="js/config.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/finale.js"></script>

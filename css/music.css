@@ -1,82 +1,380 @@
-.mood-selector {
-    text-align: center;
-    margin-bottom: 2rem;
+/* Music Page - Retro Cassette Deck Theme */
+:root {
+    --deck-body: #2c3e50;
+    --deck-grill: #34495e;
+    --tape-window: rgba(0, 0, 0, 0.6);
+    --gold-accent: #f1c40f;
+    --plastic-shine: rgba(255, 255, 255, 0.1);
 }
 
-.mood-buttons {
+.music-interface {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem;
 }
 
-.mood-btn {
-    padding: 0.7rem 1.5rem;
-    border: 2px solid var(--border);
-    background: white;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-}
 
-.mood-btn:hover,
-.mood-btn.active {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-}
 
-.playlist-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.playlist-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px var(--shadow);
-    transition: all 0.3s ease;
-}
-
-.playlist-card:hover {
-    transform: translateY(-5px);
-}
-
-.playlist-card h3 {
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-}
-
-.mood-tag {
-    display: inline-block;
-    padding: 0.3rem 0.8rem;
-    background: var(--primary-light);
-    color: white;
-    border-radius: 15px;
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-}
-
-.play-btn {
+/* --- THE BOOMBOX --- */
+.cassette-player {
+    background: linear-gradient(145deg, #2c3e50, #1a252f);
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        inset 0 2px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -5px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px;
     width: 100%;
-    padding: 0.8rem;
-    background: var(--accent);
-    color: white;
-    border: none;
+    border: 5px solid #1a252f;
+    position: relative;
+}
+
+/* Speakers */
+.speakers {
+    width: 150px;
+    height: 150px;
+    background: #111;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 20px #000;
+    border: 4px solid #34495e;
+}
+
+.speaker-grill {
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(circle, #333 2px, transparent 3px);
+    background-size: 10px 10px;
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+.speakers.bumping {
+    animation: speakerBump 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes speakerBump {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Deck Center */
+.deck-center {
+    flex: 1;
+    background: #ecf0f1;
     border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
-.play-btn:hover {
-    background: #e0a500;
+.brand-logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
-.bg-music-control {
+/* Tape Window */
+.tape-window {
+    width: 100%;
+    height: 120px;
+    background: #333;
+    border-radius: 5px;
+    border: 3px solid #bdc3c7;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: inset 0 0 30px #000;
+    overflow: hidden;
+}
+
+.tape-viewer {
+    color: #f1c40f;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 0.9rem;
     text-align: center;
-    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 3px;
+    z-index: 2;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spool {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    position: relative;
+    opacity: 0.5;
+}
+
+.spool::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    /* Not perfectly round, like a spool key */
+}
+
+/* Spool Teeth */
+.spool::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-conic-gradient(#fff 0 30deg, transparent 30deg 60deg);
+    border-radius: 50%;
+    opacity: 0.4;
+}
+
+.spool.spinning {
+    animation: spin 2s linear infinite;
+    opacity: 1;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Controls */
+.deck-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.deck-btn {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(to bottom, #bdc3c7, #95a5a6);
+    border: none;
+    border-bottom: 4px solid #7f8c8d;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    transition: all 0.1s;
+}
+
+.deck-btn:active,
+.deck-btn.active {
+    transform: translateY(3px);
+    border-bottom: 1px solid #7f8c8d;
+    background: #7f8c8d;
+    color: #fff;
+}
+
+.eject-btn {
+    width: auto;
+    padding: 0 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Volume */
+.volume-control {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #7f8c8d;
+}
+
+input[type=range] {
+    height: 5px;
+    background: #bdc3c7;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* --- THE CASSETTE TAPES --- */
+.tape-collection-container {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+/* --- THE BOOMBOX --- */
+.cassette-player {
+    background: linear-gradient(145deg, #2c3e50, #1a252f);
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        inset 0 2px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -5px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px;
+    width: 100%;
+    border: 5px solid #1a252f;
+    position: relative;
+}
+
+.tape-collection-container h3 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tape-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.cassette-tape {
+    width: 160px;
+    height: 100px;
+    background: #333;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #444;
+}
+
+.cassette-tape:hover {
+    transform: translateY(-5px) rotate(-2deg);
+    z-index: 10;
+}
+
+/* Tape Sticker/Label */
+.tape-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    height: 60px;
+    background: #f1c40f;
+    /* Default Yellow */
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tape-text {
+    font-family: 'Shadows Into Light', cursive;
+    /* Handwritten look */
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.1;
+}
+
+/* Tape Bottom Holes */
+.cassette-tape::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 20%;
+    width: 60%;
+    height: 12px;
+    background: #222;
+    /* Dark strip at bottom */
+    border-radius: 10px;
+}
+
+/* Tape Reel Circles (Visual only on small tapes) */
+.tape-circles {
+    position: absolute;
+    bottom: 11px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    pointer-events: none;
+}
+
+.tape-circle {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+/* Active Tape (In Deck) */
+.cassette-tape.inserted {
+    opacity: 0.3;
+    pointer-events: none;
+    transform: scale(0.9);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .cassette-player {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .speakers {
+        width: 100px;
+        height: 100px;
+    }
+
+    .speaker-grill {
+        width: 80px;
+        height: 80px;
+    }
+
+    .deck-center {
+        width: 100%;
+    }
 }

@@ -45,35 +45,54 @@
 
     <section class="section">
         <div class="container">
-            <h2 style="text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem;">Mini Playlist
-                for You</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Warning: Listening may
-                cause sudden smiling.</p>
+            <div class="music-interface">
+                <!-- The Boombox -->
+                <div id="cassettePlayer" class="cassette-player">
+                    <div class="speakers left-speaker">
+                        <div class="speaker-grill"></div>
+                    </div>
 
-            <div class="mood-selector">
-                <span>What mood are you in?</span>
-                <div class="mood-buttons">
-                    <button class="mood-btn active" data-mood="all" onmouseenter="SoundFX.playHover()"
-                        onclick="SoundFX.playClick()">All</button>
-                    <button class="mood-btn" data-mood="happy" onmouseenter="SoundFX.playHover()"
-                        onclick="SoundFX.playClick()">Happy</button>
-                    <button class="mood-btn" data-mood="chill" onmouseenter="SoundFX.playHover()"
-                        onclick="SoundFX.playClick()">Chill</button>
-                    <button class="mood-btn" data-mood="nostalgic" onmouseenter="SoundFX.playHover()"
-                        onclick="SoundFX.playClick()">Nostalgic</button>
+                    <div class="deck-center">
+                        <div class="brand-logo">vAALENtine AUDIO</div>
+
+                        <div class="tape-window">
+                            <div class="spool left-spool"></div>
+                            <div class="tape-viewer" id="currentTapeLabel">NO TAPE</div>
+                            <div class="spool right-spool"></div>
+                        </div>
+
+                        <div class="deck-controls">
+                            <button class="deck-btn" id="prevBtn" onclick="MusicPlayer.prevTrack()">⏮</button>
+                            <button class="deck-btn" id="playBtn" onclick="MusicPlayer.togglePlay()">▶</button>
+                            <button class="deck-btn" id="nextBtn" onclick="MusicPlayer.nextTrack()">⏭</button>
+                            <button class="deck-btn eject-btn" onclick="MusicPlayer.ejectTape()">⏏ EJECT</button>
+                        </div>
+
+                        <div class="volume-control">
+                            <label>VOL</label>
+                            <input type="range" min="0" max="1" step="0.1" value="0.5" id="volumeKnob"
+                                oninput="MusicPlayer.setVolume(this.value)">
+                        </div>
+                    </div>
+
+                    <div class="speakers right-speaker">
+                        <div class="speaker-grill"></div>
+                    </div>
+                </div>
+
+                <!-- The Tape Stack -->
+                <div class="tape-collection-container">
+                    <h3>My Mixtapes</h3>
+                    <div id="tapeCollection" class="tape-stack">
+                        <!-- Tapes will be generated here -->
+                    </div>
                 </div>
             </div>
 
-            <div id="playlistContainer" class="playlist-container"></div>
-
-            <div class="bg-music-control">
+            <div class="bg-music-control hidden"> <!-- Hidden but functionality preserved for logic -->
                 <audio id="bgMusic" loop>
                     <source src="assets/background-music.mp3" type="audio/mpeg">
                 </audio>
-                <button id="musicToggle" class="btn btn-secondary" onmouseenter="SoundFX.playHover()"
-                    onclick="SoundFX.playClick()">
-                    <span id="musicIcon">🔇</span> Background Music
-                </button>
             </div>
 
             <div style="text-align: center; margin-top: 3rem;">
