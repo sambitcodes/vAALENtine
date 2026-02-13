@@ -90,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
             unlockDay(day, icon);
         });
     });
+
+    initHeartbeatMusic();
 });
 
 function unlockDay(day, iconElement) {
