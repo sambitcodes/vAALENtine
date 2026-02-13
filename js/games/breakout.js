@@ -38,6 +38,10 @@ export function launchBreakout(container, callbacks) {
     const sfxLose = new Audio('assets/fail_buzzer.mp3');
     const sfxWin = new Audio('assets/success.mp3');
 
+    if (window.AudioController) {
+        [sfxPaddle, sfxWall, sfxBrick, sfxLose, sfxWin].forEach(sfx => window.AudioController.register(sfx));
+    }
+
     sfxPaddle.volume = 0.5;
     sfxWall.volume = 0.4;
     sfxBrick.volume = 0.4;

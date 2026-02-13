@@ -510,6 +510,7 @@ window.openShop = async () => {
 
                 if (data.success) {
                     const sfxPurchase = new Audio('https://assets.mixkit.co/active_storage/sfx/2252/2252-preview.mp3');
+                    if (window.AudioController) window.AudioController.register(sfxPurchase);
                     sfxPurchase.play().catch(e => console.warn("Purchase sound failed:", e));
 
                     tickets = data.newBalance;

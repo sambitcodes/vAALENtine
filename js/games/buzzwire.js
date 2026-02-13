@@ -76,6 +76,11 @@ export function launchBuzzwire(container, callbacks) {
     const sfxWin = new Audio('assets/success.mp3');
     const sfxCling = new Audio('https://assets.mixkit.co/active_storage/sfx/1070/1070-preview.mp3');
     const sfxBuzz = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
+
+    if (window.AudioController) {
+        [sfxBreak, sfxWin, sfxCling, sfxBuzz].forEach(sfx => window.AudioController.register(sfx));
+    }
+
     sfxCling.volume = 0.3;
     sfxBuzz.volume = 0.5;
 

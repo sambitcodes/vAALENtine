@@ -36,6 +36,10 @@ export function launchWhack(container, callbacks) {
     const sfxPeek = new Audio('https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3');
     const sfxWin = new Audio('assets/success.mp3');
 
+    if (window.AudioController) {
+        [sfxHammer, sfxMiss, sfxPeek, sfxWin].forEach(sfx => window.AudioController.register(sfx));
+    }
+
     sfxHammer.volume = 0.6;
     sfxPeek.volume = 0.4;
 
@@ -43,6 +47,7 @@ export function launchWhack(container, callbacks) {
     let width, height;
     let holes = []; // Array of hole objects {x, y, r, state, entity, timer}
     let score = 0;
+    let successfulHits = 0;
     let timeLeft = 60;
     let isPlaying = false;
     let animationId;
@@ -128,6 +133,7 @@ export function launchWhack(container, callbacks) {
 
     function initGame() {
         score = 0;
+        successfulHits = 0;
         timeLeft = 60;
         difficultyMultiplier = 1;
         scoreEl.textContent = `SCORE: 0`;
@@ -205,6 +211,7 @@ export function launchWhack(container, callbacks) {
         if (hole.entity === ENTITY.REGRET) {
             // Good Hit
             score += 10;
+            successfulHits++;
             scoreEl.textContent = `SCORE: ${score}`;
             hole.state = 4; // Hit state
             hole.animTimer = 0;
@@ -237,19 +244,19 @@ export function launchWhack(container, callbacks) {
             const riseHeight = h.h * 0.8;
 
             if (h.state === 1) { // Rising
-                h.animTimer += 0.08 * difficultyMultiplier;
+                h.animTimer += 0.04 * difficultyMultiplier; // SLOWER (was 0.08)
                 if (h.animTimer >= 1) {
                     h.state = 2; // Full
                     h.animTimer = 0;
                 }
             } else if (h.state === 2) { // Full (Wait)
-                h.animTimer += 0.02 * difficultyMultiplier;
+                h.animTimer += 0.01 * difficultyMultiplier; // SLOWER (was 0.02)
                 if (h.animTimer >= 1) {
                     h.state = 3; // Hiding
                     h.animTimer = 0;
                 }
             } else if (h.state === 3) { // Hiding
-                h.animTimer += 0.08 * difficultyMultiplier;
+                h.animTimer += 0.04 * difficultyMultiplier; // SLOWER (was 0.08)
                 if (h.animTimer >= 1) {
                     h.state = 0; // Gone
                     h.entity = ENTITY.NONE;
@@ -368,25 +375,8 @@ export function launchWhack(container, callbacks) {
     function gameOver() {
         isPlaying = false;
 
-        // REWARD LOGIC: Random Multiplier
-        // Base: Score / 20 (e.g., 200 score = 10 base)
-        let base = Math.max(1, Math.floor(score / 20));
-        if (score <= 0) base = 0;
-
-        // Luck
-        const rand = Math.random();
-        let multiplier = 1;
-        let luckMsg = "Luck: Normal";
-
-        if (rand > 0.95) {
-            multiplier = 5;
-            luckMsg = "Luck: JACKPOT! (5x)";
-        } else if (rand > 0.7) {
-            multiplier = 2;
-            luckMsg = "Luck: Lucky! (2x)";
-        }
-
-        const ticketsWon = base * multiplier;
+        // REWARD LOGIC: 5 TICKETS PER HIT (Generous)
+        const ticketsWon = successfulHits * 5;
 
         // AUTOMATIC TICKET TALLY
         if (ticketsWon > 0) {
@@ -396,7 +386,6 @@ export function launchWhack(container, callbacks) {
         overlay.innerHTML = `
             <h2 style="color:red; margin-bottom:20px;">TIME'S UP!</h2>
             <p>Score: ${score}</p>
-            <p style="color:#ffff00; margin-bottom:10px;">${luckMsg}</p>
             <h1 style="color:#00ff00; margin-bottom:20px;">+${ticketsWon} TICKETS</h1>
             <div style="display:flex; gap:10px; justify-content:center;">
                 <button id="whRetryBtn" style="padding:15px; cursor:pointer; font-family:inherit; background:#ff0055; color:white; border:none; border-radius:5px;">PLAY AGAIN</button>

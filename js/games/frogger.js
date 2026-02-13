@@ -37,6 +37,10 @@ export function launchFrogger(container, callbacks) {
     const sfxHeart = new Audio('https://assets.mixkit.co/active_storage/sfx/2180/2180-preview.mp3');
     const sfxSwoosh = new Audio('https://assets.mixkit.co/active_storage/sfx/2813/2813-preview.mp3');
 
+    if (window.AudioController) {
+        [sfxJump, sfxDie, sfxWin, sfxHeart, sfxSwoosh].forEach(sfx => window.AudioController.register(sfx));
+    }
+
     sfxHeart.loop = true;
     sfxHeart.volume = 0.4;
     sfxSwoosh.volume = 0.5;
