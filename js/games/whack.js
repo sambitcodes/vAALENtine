@@ -31,10 +31,13 @@ export function launchWhack(container, callbacks) {
     const timerEl = container.querySelector('#whTimer');
 
     // Audio
-    const sfxHit = new Audio('assets/boom.mp3'); // Heavy hit
-    const sfxMiss = new Audio('assets/fail_buzzer.mp3'); // Pizza hit
-    const sfxSpawn = new Audio('assets/blip.mp3'); // Pop up
+    const sfxHammer = new Audio('https://assets.mixkit.co/active_storage/sfx/2083/2083-preview.mp3');
+    const sfxMiss = new Audio('assets/fail_buzzer.mp3');
+    const sfxPeek = new Audio('https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3');
     const sfxWin = new Audio('assets/success.mp3');
+
+    sfxHammer.volume = 0.6;
+    sfxPeek.volume = 0.4;
 
     // Game Variables
     let width, height;
@@ -114,7 +117,8 @@ export function launchWhack(container, callbacks) {
 
             hole.state = 1; // Rising
             hole.animTimer = 0;
-            // sfxSpawn.play().catch(()=>{});
+            sfxPeek.currentTime = 0;
+            sfxPeek.play().catch(() => { });
         }
 
         // Schedule next spawn (faster as time goes on)
@@ -208,8 +212,8 @@ export function launchWhack(container, callbacks) {
             hole.hitColor = "#00ff00";
 
             // Reset sfx to allow rapid fire
-            sfxHit.currentTime = 0;
-            sfxHit.play().catch(() => { });
+            sfxHammer.currentTime = 0;
+            sfxHammer.play().catch(() => { });
         } else if (hole.entity === ENTITY.JOY) {
             // Bad Hit
             score -= 10; // Penalize

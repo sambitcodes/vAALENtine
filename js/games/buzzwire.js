@@ -74,7 +74,10 @@ export function launchBuzzwire(container, callbacks) {
     // Audio (Create new instances to avoid conflict)
     const sfxBreak = new Audio('assets/glass_break.mp3');
     const sfxWin = new Audio('assets/success.mp3');
-    // const sfxPulse = new Audio('assets/heartbeat_fast.mp3');
+    const sfxCling = new Audio('https://assets.mixkit.co/active_storage/sfx/1070/1070-preview.mp3');
+    const sfxBuzz = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
+    sfxCling.volume = 0.3;
+    sfxBuzz.volume = 0.5;
 
     // State
     let isPlaying = false;
@@ -217,7 +220,13 @@ export function launchBuzzwire(container, callbacks) {
         let r = difficultySettings[currentDifficulty].ring;
 
         if (distToWire > r - 3) { // 3 is half wire thickness approx
+            sfxBuzz.play().catch(() => { });
             gameOver(completion);
+        } else if (distToWire > r - 6) { // Near miss
+            if (sfxCling.paused) {
+                sfxCling.currentTime = 0;
+                sfxCling.play().catch(() => { });
+            }
         }
 
         if (completion >= 99) gameWin();

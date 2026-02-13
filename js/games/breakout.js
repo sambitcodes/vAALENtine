@@ -32,9 +32,15 @@ export function launchBreakout(container, callbacks) {
     const livesEl = container.querySelector('#boLives');
 
     // Audio
-    const sfxHit = new Audio('assets/pop.mp3'); // Use existing pop/staple
+    const sfxPaddle = new Audio('https://assets.mixkit.co/active_storage/sfx/1084/1084-preview.mp3');
+    const sfxWall = new Audio('https://assets.mixkit.co/active_storage/sfx/1085/1085-preview.mp3');
+    const sfxBrick = new Audio('assets/glass_break.mp3'); // Shuttering baggage
     const sfxLose = new Audio('assets/fail_buzzer.mp3');
     const sfxWin = new Audio('assets/success.mp3');
+
+    sfxPaddle.volume = 0.5;
+    sfxWall.volume = 0.4;
+    sfxBrick.volume = 0.4;
 
     // Resize
     let width, height;
@@ -131,7 +137,8 @@ export function launchBreakout(container, callbacks) {
                     b.status = 0;
                     score += 10;
                     scoreEl.textContent = `SCORE: ${score}`;
-                    sfxHit.play().catch(() => { });
+                    sfxBrick.currentTime = 0;
+                    sfxBrick.play().catch(() => { });
                     if (score >= maxScorePossible) {
                         winGame();
                     }
@@ -152,9 +159,13 @@ export function launchBreakout(container, callbacks) {
         // Wall collisions
         if (ball.x + ball.dx > width - ball.r || ball.x + ball.dx < ball.r) {
             ball.dx = -ball.dx;
+            sfxWall.currentTime = 0;
+            sfxWall.play().catch(() => { });
         }
         if (ball.y + ball.dy < ball.r) {
             ball.dy = -ball.dy;
+            sfxWall.currentTime = 0;
+            sfxWall.play().catch(() => { });
         }
 
         // Paddle Collision - Check if ball is moving DOWN and about to cross paddle Y
@@ -165,6 +176,9 @@ export function launchBreakout(container, callbacks) {
                 // HIT!
                 ball.dy = -ball.dy;
                 ball.y = paddle.y - ball.r; // SNAP to top of paddle (Fixes leak)
+
+                sfxPaddle.currentTime = 0;
+                sfxPaddle.play().catch(() => { });
 
                 // Add some english
                 let hitPoint = ball.x - (paddle.x + paddle.w / 2);

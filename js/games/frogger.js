@@ -34,6 +34,12 @@ export function launchFrogger(container, callbacks) {
     const sfxJump = new Audio('assets/blip.mp3'); // Reuse existing
     const sfxDie = new Audio('assets/fail_buzzer.mp3');
     const sfxWin = new Audio('assets/success.mp3');
+    const sfxHeart = new Audio('https://assets.mixkit.co/active_storage/sfx/2180/2180-preview.mp3');
+    const sfxSwoosh = new Audio('https://assets.mixkit.co/active_storage/sfx/2813/2813-preview.mp3');
+
+    sfxHeart.loop = true;
+    sfxHeart.volume = 0.4;
+    sfxSwoosh.volume = 0.5;
 
     // Game Variables
     let width, height;
@@ -281,11 +287,24 @@ export function launchFrogger(container, callbacks) {
         if (!isPlaying) return;
 
         // Update Obstacles
+        const playerPX = player.c * grid + grid / 2;
         for (let r = 0; r < rows; r++) {
             const lane = lanes[r];
             if (lane.type === 'road') {
                 lane.obstacles.forEach(obs => {
+                    const oldX = obs.x;
                     obs.x += lane.speed;
+
+                    // Swoosh Logic: If red flag passes the player's X line in the current or adjacent row
+                    if (Math.abs(r - player.r) <= 1) {
+                        // If it crosses the player's center
+                        if ((oldX < playerPX && obs.x >= playerPX) || (oldX > playerPX && obs.x <= playerPX)) {
+                            if (sfxSwoosh.paused) {
+                                sfxSwoosh.currentTime = 0;
+                                sfxSwoosh.play().catch(() => { });
+                            }
+                        }
+                    }
 
                     // Wrap around
                     if (lane.speed > 0 && obs.x > width) obs.x = -obs.w;
@@ -367,6 +386,7 @@ export function launchFrogger(container, callbacks) {
     }
 
     function winRound() {
+        sfxHeart.pause();
         sfxWin.play().catch(() => { });
         score++; // Internal round counter
         scoreEl.textContent = `ROUNDS: ${score}`; // Or "ROUNDS: ${score}"
@@ -374,10 +394,16 @@ export function launchFrogger(container, callbacks) {
 
         // Reset player
         initLevel();
+        // Resume heartbeat after win animation/reset
+        setTimeout(() => {
+            if (isPlaying) sfxHeart.play().catch(() => { });
+        }, 1000);
     }
 
     function gameOver() {
         isPlaying = false;
+        sfxHeart.pause();
+        sfxHeart.currentTime = 0;
 
         // AUDIO FIX: Only play on full Game Over
         sfxDie.loop = true;
@@ -438,6 +464,7 @@ export function launchFrogger(container, callbacks) {
         overlay.style.display = 'none';
         initGame();
         isPlaying = true;
+        sfxHeart.play().catch(() => { });
         update();
     }
 
@@ -457,5 +484,7 @@ export function launchFrogger(container, callbacks) {
         window.removeEventListener('keydown', handleKey);
         canvas.removeEventListener('touchstart', handleTouchStart);
         canvas.removeEventListener('touchend', handleTouchEnd);
+        sfxHeart.pause();
+        sfxHeart.currentTime = 0;
     };
 }
